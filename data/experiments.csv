@@ -1,0 +1,13 @@
+experiment_id,experiment_name,start_date,primary_metric,sample_size,aggregate_lift,tier_1_carrier_lift,enterprise_bank_lift,mid_market_lift,statistically_significant,conclusion
+EXP-001,Confidence threshold presets,2025-01-01,workflow_completion_rate,7417,0.0432,0.0284,0.0624,0.0611,true,positive
+EXP-002,Carrier reputation cache,2025-02-01,workflow_completion_rate,7882,0.0446,0.0371,0.0656,0.0786,true,positive
+EXP-003,Fraud reason codes,2025-03-01,workflow_completion_rate,5078,0.051,0.0286,0.0696,0.0561,true,positive
+EXP-004,Bulk number review,2025-04-01,workflow_completion_rate,13501,-0.0038,-0.0025,-0.0105,0.028,false,neutral
+EXP-005,Adaptive retry policy,2025-05-01,workflow_completion_rate,5521,-0.0209,-0.0274,0.0087,0.002,false,negative
+EXP-006,Analyst digest email,2025-06-01,workflow_completion_rate,14236,0.008,0.0217,0.034,0.0456,false,neutral
+EXP-007,Low-latency endpoint,2025-07-01,workflow_completion_rate,4542,0.007,0.0227,-0.0085,0.0345,false,neutral
+EXP-008,Auto-block recommendations,2025-08-01,blocked_call_acceptance_rate,2014,0.067,-0.091,0.0718,0.0768,true,segment_conflict
+EXP-009,Webhook replay,2025-09-01,workflow_completion_rate,10503,0.0394,0.0341,0.0241,0.0438,true,positive
+EXP-010,Custom category mapping,2025-10-01,workflow_completion_rate,3935,0.0159,0.0245,0.0109,0.043,false,positive
+EXP-011,Usage anomaly alerts,2025-11-01,workflow_completion_rate,6369,0.0019,-0.0004,0.0246,0.0275,false,neutral
+EXP-012,Onboarding checklist,2025-12-01,workflow_completion_rate,15952,0.028,0.009,0.0463,0.0521,true,positive

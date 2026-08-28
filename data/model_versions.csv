@@ -1,0 +1,4 @@
+model_version,release_date,unwanted_call_precision,unwanted_call_recall,status,release_notes
+v3.0,2025-01-01,0.9575,0.7594,retired,"Baseline ensemble for spam, fraud, and robocall classification."
+v3.1,2025-05-01,0.9608,0.8275,retired,Calibration and carrier reputation improvements.
+v3.2,2025-09-01,0.8497,0.9412,active,Recall-focused graph features; monitored for legitimate-call false positives.

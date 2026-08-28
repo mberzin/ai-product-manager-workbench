@@ -1,0 +1,1001 @@
+ticket_id,customer_id,customer_segment,complaint_type,severity,ticket_date,model_version,status,resolution_hours
+TKT-00001,CUST-004,Tier 1 Carrier,false_positive,critical,2025-09-04,v3.2,resolved,26.2
+TKT-00002,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-06,v3.2,closed,47.1
+TKT-00003,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-04,v3.2,resolved,28.6
+TKT-00004,CUST-024,Enterprise Bank,availability,medium,2025-01-30,v3.0,closed,48.7
+TKT-00005,CUST-061,Mid-Market Contact Center,missed_spam,medium,2025-05-25,v3.1,resolved,52.2
+TKT-00006,CUST-053,Enterprise Contact Center,integration,high,2025-05-18,v3.1,resolved,71.3
+TKT-00007,CUST-079,Enterprise CPaaS,missed_spam,medium,2025-09-17,v3.2,resolved,114.2
+TKT-00008,CUST-034,Mid-Market Bank,missed_spam,medium,2025-04-23,v3.0,open,101.4
+TKT-00009,CUST-093,Growth CPaaS,missed_spam,medium,2025-05-05,v3.1,closed,104.9
+TKT-00010,CUST-027,Enterprise Bank,missed_spam,high,2025-03-31,v3.0,resolved,79.9
+TKT-00011,CUST-007,Tier 1 Carrier,false_positive,high,2025-02-24,v3.0,resolved,115.1
+TKT-00012,CUST-001,Tier 1 Carrier,integration,medium,2025-11-18,v3.2,resolved,93.5
+TKT-00013,CUST-008,Tier 1 Carrier,missed_spam,high,2025-09-13,v3.2,resolved,76.9
+TKT-00014,CUST-045,Mid-Market Bank,availability,low,2025-07-25,v3.1,closed,27.9
+TKT-00015,CUST-058,Enterprise Contact Center,missed_spam,high,2025-07-20,v3.1,closed,109.3
+TKT-00016,CUST-003,Tier 1 Carrier,integration,low,2025-06-04,v3.1,open,82.1
+TKT-00017,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-30,v3.2,open,56.1
+TKT-00018,CUST-069,Mid-Market Contact Center,integration,medium,2025-01-02,v3.0,open,13.3
+TKT-00019,CUST-096,Growth CPaaS,availability,critical,2025-07-19,v3.1,resolved,77.3
+TKT-00020,CUST-089,Growth CPaaS,integration,high,2025-01-01,v3.0,closed,37.5
+TKT-00021,CUST-026,Enterprise Bank,false_positive,high,2025-04-04,v3.0,resolved,38.9
+TKT-00022,CUST-035,Mid-Market Bank,missed_spam,medium,2025-07-04,v3.1,resolved,71.0
+TKT-00023,CUST-076,Enterprise CPaaS,missed_spam,high,2025-05-23,v3.1,resolved,58.5
+TKT-00024,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-03,v3.2,resolved,6.7
+TKT-00025,CUST-030,Enterprise Bank,integration,medium,2025-05-04,v3.1,resolved,68.5
+TKT-00026,CUST-072,Mid-Market Contact Center,latency,medium,2025-01-10,v3.0,resolved,59.9
+TKT-00027,CUST-041,Mid-Market Bank,billing,low,2025-02-27,v3.0,resolved,106.3
+TKT-00028,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-10-14,v3.2,resolved,100.7
+TKT-00029,CUST-004,Tier 1 Carrier,false_positive,high,2025-12-27,v3.2,resolved,53.5
+TKT-00030,CUST-083,Enterprise CPaaS,availability,medium,2025-03-08,v3.0,closed,88.7
+TKT-00031,CUST-004,Tier 1 Carrier,false_positive,medium,2025-12-21,v3.2,closed,45.4
+TKT-00032,CUST-094,Growth CPaaS,billing,low,2025-05-07,v3.1,closed,41.5
+TKT-00033,CUST-003,Tier 1 Carrier,integration,medium,2025-08-13,v3.1,resolved,115.6
+TKT-00034,CUST-007,Tier 1 Carrier,missed_spam,high,2025-08-09,v3.1,closed,52.2
+TKT-00035,CUST-086,Enterprise CPaaS,missed_spam,medium,2025-03-26,v3.0,closed,59.8
+TKT-00036,CUST-014,Regional Carrier,latency,medium,2025-05-01,v3.1,closed,23.5
+TKT-00037,CUST-008,Tier 1 Carrier,missed_spam,medium,2025-11-20,v3.2,closed,41.9
+TKT-00038,CUST-059,Mid-Market Contact Center,integration,medium,2025-01-29,v3.0,closed,119.2
+TKT-00039,CUST-006,Tier 1 Carrier,false_positive,medium,2025-12-26,v3.2,resolved,14.8
+TKT-00040,CUST-004,Tier 1 Carrier,false_positive,high,2025-10-26,v3.2,resolved,35.0
+TKT-00041,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-25,v3.2,open,4.3
+TKT-00042,CUST-021,Enterprise Bank,missed_spam,medium,2025-03-26,v3.0,resolved,2.5
+TKT-00043,CUST-053,Enterprise Contact Center,missed_spam,high,2025-10-06,v3.2,closed,14.6
+TKT-00044,CUST-021,Enterprise Bank,missed_spam,medium,2025-08-01,v3.1,resolved,13.0
+TKT-00045,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-26,v3.2,resolved,118.6
+TKT-00046,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-25,v3.2,resolved,50.1
+TKT-00047,CUST-064,Mid-Market Contact Center,false_positive,high,2025-05-08,v3.1,resolved,32.4
+TKT-00048,CUST-085,Enterprise CPaaS,missed_spam,medium,2025-02-17,v3.0,closed,88.2
+TKT-00049,CUST-096,Growth CPaaS,billing,medium,2025-03-04,v3.0,open,57.8
+TKT-00050,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-14,v3.2,resolved,18.6
+TKT-00051,CUST-003,Tier 1 Carrier,billing,medium,2025-01-17,v3.0,closed,9.0
+TKT-00052,CUST-014,Regional Carrier,integration,high,2025-01-03,v3.0,resolved,63.6
+TKT-00053,CUST-006,Tier 1 Carrier,missed_spam,medium,2025-09-06,v3.2,closed,74.2
+TKT-00054,CUST-077,Enterprise CPaaS,availability,high,2025-08-28,v3.1,resolved,115.9
+TKT-00055,CUST-033,Mid-Market Bank,latency,high,2025-11-18,v3.2,closed,63.3
+TKT-00056,CUST-001,Tier 1 Carrier,missed_spam,low,2025-12-17,v3.2,open,108.9
+TKT-00057,CUST-011,Regional Carrier,availability,high,2025-08-08,v3.1,resolved,15.7
+TKT-00058,CUST-082,Enterprise CPaaS,billing,high,2025-03-10,v3.0,resolved,66.8
+TKT-00059,CUST-011,Regional Carrier,missed_spam,medium,2025-03-29,v3.0,resolved,85.3
+TKT-00060,CUST-007,Tier 1 Carrier,integration,medium,2025-12-14,v3.2,resolved,84.3
+TKT-00061,CUST-070,Mid-Market Contact Center,missed_spam,high,2025-02-16,v3.0,resolved,94.2
+TKT-00062,CUST-012,Regional Carrier,missed_spam,high,2025-02-08,v3.0,open,68.9
+TKT-00063,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-09,v3.2,closed,64.2
+TKT-00064,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-29,v3.2,closed,57.3
+TKT-00065,CUST-037,Mid-Market Bank,availability,medium,2025-04-17,v3.0,open,75.9
+TKT-00066,CUST-007,Tier 1 Carrier,latency,medium,2025-10-05,v3.2,closed,65.7
+TKT-00067,CUST-031,Enterprise Bank,missed_spam,medium,2025-12-18,v3.2,open,53.1
+TKT-00068,CUST-098,Growth CPaaS,integration,medium,2025-03-29,v3.0,closed,92.6
+TKT-00069,CUST-021,Enterprise Bank,missed_spam,medium,2025-01-06,v3.0,closed,28.4
+TKT-00070,CUST-007,Tier 1 Carrier,missed_spam,medium,2025-09-01,v3.2,resolved,43.0
+TKT-00071,CUST-093,Growth CPaaS,availability,high,2025-10-24,v3.2,resolved,5.4
+TKT-00072,CUST-074,Mid-Market Contact Center,missed_spam,high,2025-06-12,v3.1,closed,3.9
+TKT-00073,CUST-005,Tier 1 Carrier,false_positive,medium,2025-11-12,v3.2,resolved,87.2
+TKT-00074,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-26,v3.2,resolved,52.1
+TKT-00075,CUST-028,Enterprise Bank,missed_spam,low,2025-01-24,v3.0,resolved,75.4
+TKT-00076,CUST-005,Tier 1 Carrier,latency,high,2025-11-02,v3.2,resolved,86.6
+TKT-00077,CUST-085,Enterprise CPaaS,availability,high,2025-09-04,v3.2,resolved,51.1
+TKT-00078,CUST-079,Enterprise CPaaS,latency,low,2025-07-07,v3.1,resolved,91.2
+TKT-00079,CUST-001,Tier 1 Carrier,missed_spam,high,2025-09-24,v3.2,resolved,52.7
+TKT-00080,CUST-044,Mid-Market Bank,latency,critical,2025-01-18,v3.0,resolved,85.3
+TKT-00081,CUST-078,Enterprise CPaaS,billing,medium,2025-02-23,v3.0,closed,46.4
+TKT-00082,CUST-006,Tier 1 Carrier,missed_spam,high,2025-01-27,v3.0,resolved,52.2
+TKT-00083,CUST-002,Tier 1 Carrier,false_positive,high,2025-10-17,v3.2,resolved,93.2
+TKT-00084,CUST-003,Tier 1 Carrier,integration,medium,2025-06-16,v3.1,resolved,76.8
+TKT-00085,CUST-029,Enterprise Bank,latency,low,2025-07-09,v3.1,open,113.6
+TKT-00086,CUST-040,Mid-Market Bank,false_positive,medium,2025-09-18,v3.2,resolved,36.1
+TKT-00087,CUST-049,Enterprise Contact Center,latency,medium,2025-05-10,v3.1,resolved,22.8
+TKT-00088,CUST-023,Enterprise Bank,missed_spam,medium,2025-07-29,v3.1,resolved,97.9
+TKT-00089,CUST-024,Enterprise Bank,false_positive,low,2025-09-24,v3.2,closed,119.4
+TKT-00090,CUST-037,Mid-Market Bank,missed_spam,medium,2025-03-06,v3.0,open,83.3
+TKT-00091,CUST-021,Enterprise Bank,missed_spam,medium,2025-12-31,v3.2,closed,73.2
+TKT-00092,CUST-001,Tier 1 Carrier,billing,high,2025-11-05,v3.2,closed,102.8
+TKT-00093,CUST-081,Enterprise CPaaS,billing,medium,2025-02-13,v3.0,resolved,99.0
+TKT-00094,CUST-048,Enterprise Contact Center,availability,medium,2025-12-05,v3.2,resolved,39.0
+TKT-00095,CUST-062,Mid-Market Contact Center,false_positive,critical,2025-02-19,v3.0,resolved,95.8
+TKT-00096,CUST-067,Mid-Market Contact Center,availability,high,2025-04-19,v3.0,resolved,49.1
+TKT-00097,CUST-043,Mid-Market Bank,latency,medium,2025-04-11,v3.0,resolved,77.5
+TKT-00098,CUST-072,Mid-Market Contact Center,integration,low,2025-12-21,v3.2,resolved,9.9
+TKT-00099,CUST-054,Enterprise Contact Center,missed_spam,high,2025-01-13,v3.0,resolved,117.0
+TKT-00100,CUST-100,Growth CPaaS,missed_spam,high,2025-07-12,v3.1,open,16.1
+TKT-00101,CUST-099,Growth CPaaS,missed_spam,medium,2025-12-05,v3.2,closed,65.0
+TKT-00102,CUST-093,Growth CPaaS,billing,medium,2025-02-08,v3.0,closed,2.4
+TKT-00103,CUST-002,Tier 1 Carrier,false_positive,low,2025-09-08,v3.2,resolved,112.2
+TKT-00104,CUST-022,Enterprise Bank,missed_spam,critical,2025-11-20,v3.2,closed,87.8
+TKT-00105,CUST-006,Tier 1 Carrier,false_positive,critical,2025-11-16,v3.2,resolved,70.1
+TKT-00106,CUST-005,Tier 1 Carrier,false_positive,high,2025-10-07,v3.2,closed,82.9
+TKT-00107,CUST-094,Growth CPaaS,integration,medium,2025-06-23,v3.1,open,24.9
+TKT-00108,CUST-055,Enterprise Contact Center,latency,critical,2025-10-12,v3.2,resolved,114.0
+TKT-00109,CUST-001,Tier 1 Carrier,integration,medium,2025-08-01,v3.1,open,76.1
+TKT-00110,CUST-092,Growth CPaaS,latency,medium,2025-10-20,v3.2,closed,118.2
+TKT-00111,CUST-021,Enterprise Bank,integration,high,2025-07-21,v3.1,resolved,105.8
+TKT-00112,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-21,v3.2,closed,118.2
+TKT-00113,CUST-006,Tier 1 Carrier,false_positive,low,2025-01-28,v3.0,closed,95.0
+TKT-00114,CUST-009,Regional Carrier,missed_spam,critical,2025-09-16,v3.2,closed,27.3
+TKT-00115,CUST-001,Tier 1 Carrier,billing,high,2025-05-09,v3.1,open,71.4
+TKT-00116,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-15,v3.2,closed,8.5
+TKT-00117,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-09,v3.2,resolved,103.4
+TKT-00118,CUST-051,Enterprise Contact Center,billing,high,2025-02-26,v3.0,resolved,63.8
+TKT-00119,CUST-008,Tier 1 Carrier,latency,medium,2025-11-13,v3.2,closed,72.7
+TKT-00120,CUST-008,Tier 1 Carrier,false_positive,critical,2025-12-17,v3.2,closed,18.4
+TKT-00121,CUST-047,Enterprise Contact Center,availability,high,2025-12-01,v3.2,resolved,27.6
+TKT-00122,CUST-086,Enterprise CPaaS,latency,medium,2025-07-19,v3.1,resolved,109.7
+TKT-00123,CUST-068,Mid-Market Contact Center,latency,high,2025-02-09,v3.0,resolved,84.1
+TKT-00124,CUST-002,Tier 1 Carrier,false_positive,high,2025-11-16,v3.2,closed,72.5
+TKT-00125,CUST-054,Enterprise Contact Center,integration,high,2025-11-13,v3.2,closed,98.5
+TKT-00126,CUST-076,Enterprise CPaaS,integration,high,2025-03-12,v3.0,resolved,71.1
+TKT-00127,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-17,v3.2,resolved,22.7
+TKT-00128,CUST-012,Regional Carrier,missed_spam,medium,2025-11-08,v3.2,closed,58.7
+TKT-00129,CUST-065,Mid-Market Contact Center,missed_spam,high,2025-02-02,v3.0,closed,56.5
+TKT-00130,CUST-012,Regional Carrier,latency,medium,2025-06-23,v3.1,open,89.9
+TKT-00131,CUST-053,Enterprise Contact Center,false_positive,high,2025-12-21,v3.2,closed,97.4
+TKT-00132,CUST-002,Tier 1 Carrier,false_positive,high,2025-12-16,v3.2,open,105.7
+TKT-00133,CUST-026,Enterprise Bank,false_positive,high,2025-10-03,v3.2,resolved,47.0
+TKT-00134,CUST-094,Growth CPaaS,availability,high,2025-03-13,v3.0,closed,101.5
+TKT-00135,CUST-052,Enterprise Contact Center,integration,low,2025-08-19,v3.1,resolved,77.1
+TKT-00136,CUST-100,Growth CPaaS,availability,medium,2025-05-08,v3.1,closed,35.7
+TKT-00137,CUST-054,Enterprise Contact Center,availability,high,2025-09-29,v3.2,resolved,17.1
+TKT-00138,CUST-026,Enterprise Bank,billing,medium,2025-08-13,v3.1,resolved,114.9
+TKT-00139,CUST-034,Mid-Market Bank,billing,medium,2025-06-27,v3.1,resolved,73.7
+TKT-00140,CUST-019,Regional Carrier,false_positive,critical,2025-09-13,v3.2,closed,33.3
+TKT-00141,CUST-007,Tier 1 Carrier,missed_spam,medium,2025-04-03,v3.0,open,79.5
+TKT-00142,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-17,v3.2,resolved,41.4
+TKT-00143,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-23,v3.2,resolved,10.5
+TKT-00144,CUST-001,Tier 1 Carrier,missed_spam,high,2025-08-05,v3.1,resolved,48.3
+TKT-00145,CUST-069,Mid-Market Contact Center,latency,low,2025-07-24,v3.1,closed,17.7
+TKT-00146,CUST-044,Mid-Market Bank,integration,medium,2025-12-06,v3.2,resolved,117.2
+TKT-00147,CUST-001,Tier 1 Carrier,false_positive,critical,2025-12-04,v3.2,resolved,42.7
+TKT-00148,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-18,v3.2,closed,53.5
+TKT-00149,CUST-096,Growth CPaaS,integration,high,2025-01-07,v3.0,resolved,93.1
+TKT-00150,CUST-001,Tier 1 Carrier,latency,medium,2025-11-20,v3.2,closed,90.5
+TKT-00151,CUST-014,Regional Carrier,latency,medium,2025-07-21,v3.1,closed,37.4
+TKT-00152,CUST-001,Tier 1 Carrier,missed_spam,high,2025-12-13,v3.2,open,4.7
+TKT-00153,CUST-013,Regional Carrier,integration,critical,2025-05-29,v3.1,closed,76.0
+TKT-00154,CUST-016,Regional Carrier,integration,high,2025-03-29,v3.0,resolved,106.2
+TKT-00155,CUST-005,Tier 1 Carrier,integration,medium,2025-10-18,v3.2,closed,114.2
+TKT-00156,CUST-049,Enterprise Contact Center,missed_spam,medium,2025-09-23,v3.2,resolved,57.4
+TKT-00157,CUST-006,Tier 1 Carrier,availability,critical,2025-12-19,v3.2,closed,107.2
+TKT-00158,CUST-006,Tier 1 Carrier,false_positive,high,2025-12-09,v3.2,resolved,16.8
+TKT-00159,CUST-065,Mid-Market Contact Center,missed_spam,low,2025-07-05,v3.1,closed,30.0
+TKT-00160,CUST-082,Enterprise CPaaS,billing,medium,2025-10-17,v3.2,resolved,62.9
+TKT-00161,CUST-076,Enterprise CPaaS,missed_spam,medium,2025-06-07,v3.1,closed,44.3
+TKT-00162,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-08,v3.2,resolved,2.9
+TKT-00163,CUST-041,Mid-Market Bank,false_positive,high,2025-02-01,v3.0,resolved,7.1
+TKT-00164,CUST-012,Regional Carrier,integration,high,2025-03-27,v3.0,resolved,56.3
+TKT-00165,CUST-044,Mid-Market Bank,availability,medium,2025-11-25,v3.2,resolved,57.1
+TKT-00166,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-31,v3.2,closed,3.1
+TKT-00167,CUST-001,Tier 1 Carrier,false_positive,critical,2025-11-12,v3.2,open,14.8
+TKT-00168,CUST-061,Mid-Market Contact Center,integration,medium,2025-05-16,v3.1,resolved,55.7
+TKT-00169,CUST-069,Mid-Market Contact Center,integration,low,2025-11-08,v3.2,resolved,108.1
+TKT-00170,CUST-100,Growth CPaaS,integration,medium,2025-09-04,v3.2,closed,114.3
+TKT-00171,CUST-004,Tier 1 Carrier,false_positive,high,2025-09-12,v3.2,resolved,28.6
+TKT-00172,CUST-004,Tier 1 Carrier,false_positive,critical,2025-10-11,v3.2,closed,38.0
+TKT-00173,CUST-003,Tier 1 Carrier,integration,medium,2025-05-15,v3.1,closed,74.8
+TKT-00174,CUST-036,Mid-Market Bank,false_positive,medium,2025-08-01,v3.1,resolved,56.6
+TKT-00175,CUST-001,Tier 1 Carrier,latency,high,2025-11-20,v3.2,resolved,4.5
+TKT-00176,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-19,v3.2,resolved,104.0
+TKT-00177,CUST-001,Tier 1 Carrier,latency,medium,2025-12-05,v3.2,resolved,98.9
+TKT-00178,CUST-009,Regional Carrier,false_positive,low,2025-01-22,v3.0,closed,107.9
+TKT-00179,CUST-054,Enterprise Contact Center,integration,medium,2025-04-01,v3.0,closed,9.5
+TKT-00180,CUST-053,Enterprise Contact Center,availability,medium,2025-11-21,v3.2,open,66.5
+TKT-00181,CUST-001,Tier 1 Carrier,false_positive,critical,2025-11-29,v3.2,resolved,108.9
+TKT-00182,CUST-008,Tier 1 Carrier,false_positive,high,2025-08-16,v3.1,closed,49.2
+TKT-00183,CUST-007,Tier 1 Carrier,false_positive,low,2025-10-04,v3.2,open,87.3
+TKT-00184,CUST-017,Regional Carrier,latency,critical,2025-05-12,v3.1,resolved,54.7
+TKT-00185,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-08,v3.2,closed,83.0
+TKT-00186,CUST-030,Enterprise Bank,availability,high,2025-01-20,v3.0,closed,106.3
+TKT-00187,CUST-095,Growth CPaaS,latency,medium,2025-02-24,v3.0,closed,24.9
+TKT-00188,CUST-029,Enterprise Bank,integration,medium,2025-07-16,v3.1,resolved,104.5
+TKT-00189,CUST-100,Growth CPaaS,integration,medium,2025-01-30,v3.0,resolved,94.3
+TKT-00190,CUST-003,Tier 1 Carrier,false_positive,low,2025-10-24,v3.2,resolved,77.5
+TKT-00191,CUST-007,Tier 1 Carrier,availability,low,2025-01-07,v3.0,resolved,105.8
+TKT-00192,CUST-013,Regional Carrier,availability,critical,2025-03-22,v3.0,closed,47.9
+TKT-00193,CUST-013,Regional Carrier,latency,critical,2025-07-27,v3.1,resolved,31.2
+TKT-00194,CUST-013,Regional Carrier,false_positive,critical,2025-08-07,v3.1,resolved,10.3
+TKT-00195,CUST-028,Enterprise Bank,false_positive,medium,2025-04-03,v3.0,closed,49.9
+TKT-00196,CUST-009,Regional Carrier,false_positive,medium,2025-11-26,v3.2,resolved,27.2
+TKT-00197,CUST-026,Enterprise Bank,availability,medium,2025-04-20,v3.0,open,66.1
+TKT-00198,CUST-053,Enterprise Contact Center,integration,high,2025-06-08,v3.1,closed,3.0
+TKT-00199,CUST-023,Enterprise Bank,missed_spam,medium,2025-01-08,v3.0,resolved,26.2
+TKT-00200,CUST-012,Regional Carrier,integration,medium,2025-04-02,v3.0,resolved,87.3
+TKT-00201,CUST-033,Mid-Market Bank,integration,high,2025-12-29,v3.2,resolved,21.5
+TKT-00202,CUST-042,Mid-Market Bank,false_positive,high,2025-04-23,v3.0,closed,117.1
+TKT-00203,CUST-086,Enterprise CPaaS,false_positive,medium,2025-12-28,v3.2,resolved,62.5
+TKT-00204,CUST-033,Mid-Market Bank,false_positive,high,2025-08-22,v3.1,closed,68.0
+TKT-00205,CUST-097,Growth CPaaS,integration,medium,2025-03-07,v3.0,resolved,21.6
+TKT-00206,CUST-016,Regional Carrier,missed_spam,high,2025-01-21,v3.0,resolved,113.3
+TKT-00207,CUST-008,Tier 1 Carrier,billing,high,2025-08-19,v3.1,resolved,35.2
+TKT-00208,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-11-14,v3.2,resolved,32.9
+TKT-00209,CUST-008,Tier 1 Carrier,integration,high,2025-09-26,v3.2,resolved,41.1
+TKT-00210,CUST-008,Tier 1 Carrier,billing,medium,2025-10-07,v3.2,closed,36.8
+TKT-00211,CUST-063,Mid-Market Contact Center,integration,medium,2025-09-27,v3.2,closed,54.0
+TKT-00212,CUST-001,Tier 1 Carrier,latency,high,2025-11-06,v3.2,resolved,88.2
+TKT-00213,CUST-006,Tier 1 Carrier,false_positive,medium,2025-12-22,v3.2,resolved,107.2
+TKT-00214,CUST-060,Mid-Market Contact Center,integration,medium,2025-04-28,v3.0,resolved,105.3
+TKT-00215,CUST-066,Mid-Market Contact Center,latency,medium,2025-11-16,v3.2,closed,67.0
+TKT-00216,CUST-001,Tier 1 Carrier,latency,medium,2025-09-25,v3.2,resolved,87.2
+TKT-00217,CUST-008,Tier 1 Carrier,billing,high,2025-02-03,v3.0,resolved,72.0
+TKT-00218,CUST-013,Regional Carrier,latency,medium,2025-09-26,v3.2,resolved,70.4
+TKT-00219,CUST-028,Enterprise Bank,latency,low,2025-05-28,v3.1,closed,105.6
+TKT-00220,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-26,v3.2,resolved,75.8
+TKT-00221,CUST-038,Mid-Market Bank,missed_spam,high,2025-06-21,v3.1,resolved,46.7
+TKT-00222,CUST-045,Mid-Market Bank,missed_spam,medium,2025-03-26,v3.0,closed,93.3
+TKT-00223,CUST-051,Enterprise Contact Center,availability,medium,2025-05-30,v3.1,resolved,44.2
+TKT-00224,CUST-088,Enterprise CPaaS,missed_spam,medium,2025-02-10,v3.0,closed,101.6
+TKT-00225,CUST-002,Tier 1 Carrier,missed_spam,medium,2025-11-09,v3.2,resolved,34.5
+TKT-00226,CUST-088,Enterprise CPaaS,availability,low,2025-08-20,v3.1,open,9.0
+TKT-00227,CUST-007,Tier 1 Carrier,false_positive,high,2025-11-08,v3.2,open,26.6
+TKT-00228,CUST-005,Tier 1 Carrier,integration,medium,2025-10-05,v3.2,closed,31.7
+TKT-00229,CUST-063,Mid-Market Contact Center,latency,low,2025-05-13,v3.1,resolved,38.8
+TKT-00230,CUST-093,Growth CPaaS,latency,high,2025-05-06,v3.1,resolved,7.5
+TKT-00231,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-15,v3.2,resolved,5.7
+TKT-00232,CUST-031,Enterprise Bank,missed_spam,medium,2025-05-26,v3.1,closed,13.9
+TKT-00233,CUST-005,Tier 1 Carrier,false_positive,low,2025-09-28,v3.2,closed,95.9
+TKT-00234,CUST-052,Enterprise Contact Center,integration,medium,2025-01-07,v3.0,closed,25.3
+TKT-00235,CUST-031,Enterprise Bank,false_positive,medium,2025-02-08,v3.0,resolved,58.3
+TKT-00236,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-30,v3.2,closed,113.9
+TKT-00237,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-09-04,v3.2,resolved,81.7
+TKT-00238,CUST-097,Growth CPaaS,integration,high,2025-03-03,v3.0,resolved,110.7
+TKT-00239,CUST-001,Tier 1 Carrier,integration,high,2025-09-24,v3.2,resolved,11.5
+TKT-00240,CUST-014,Regional Carrier,missed_spam,medium,2025-03-25,v3.0,closed,113.9
+TKT-00241,CUST-088,Enterprise CPaaS,integration,low,2025-07-05,v3.1,resolved,109.6
+TKT-00242,CUST-089,Growth CPaaS,false_positive,low,2025-12-31,v3.2,closed,110.7
+TKT-00243,CUST-018,Regional Carrier,availability,medium,2025-04-27,v3.0,closed,23.8
+TKT-00244,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-29,v3.2,resolved,93.3
+TKT-00245,CUST-020,Regional Carrier,latency,medium,2025-06-18,v3.1,resolved,58.3
+TKT-00246,CUST-048,Enterprise Contact Center,latency,critical,2025-06-04,v3.1,closed,65.4
+TKT-00247,CUST-025,Enterprise Bank,availability,medium,2025-02-05,v3.0,closed,5.0
+TKT-00248,CUST-049,Enterprise Contact Center,missed_spam,low,2025-08-02,v3.1,closed,84.4
+TKT-00249,CUST-030,Enterprise Bank,false_positive,medium,2025-04-11,v3.0,resolved,88.8
+TKT-00250,CUST-001,Tier 1 Carrier,latency,medium,2025-11-30,v3.2,closed,6.7
+TKT-00251,CUST-076,Enterprise CPaaS,missed_spam,medium,2025-06-21,v3.1,resolved,31.9
+TKT-00252,CUST-089,Growth CPaaS,integration,medium,2025-08-07,v3.1,closed,102.5
+TKT-00253,CUST-003,Tier 1 Carrier,false_positive,medium,2025-12-29,v3.2,open,26.6
+TKT-00254,CUST-047,Enterprise Contact Center,billing,critical,2025-03-08,v3.0,closed,5.2
+TKT-00255,CUST-050,Enterprise Contact Center,integration,medium,2025-02-04,v3.0,resolved,68.0
+TKT-00256,CUST-050,Enterprise Contact Center,integration,medium,2025-10-22,v3.2,resolved,103.1
+TKT-00257,CUST-001,Tier 1 Carrier,missed_spam,high,2025-11-04,v3.2,resolved,108.9
+TKT-00258,CUST-010,Regional Carrier,billing,medium,2025-12-30,v3.2,resolved,82.7
+TKT-00259,CUST-081,Enterprise CPaaS,missed_spam,medium,2025-04-09,v3.0,resolved,51.2
+TKT-00260,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-19,v3.2,resolved,50.5
+TKT-00261,CUST-099,Growth CPaaS,billing,high,2025-06-30,v3.1,closed,14.2
+TKT-00262,CUST-080,Enterprise CPaaS,availability,medium,2025-03-27,v3.0,closed,66.1
+TKT-00263,CUST-070,Mid-Market Contact Center,latency,high,2025-10-01,v3.2,closed,20.6
+TKT-00264,CUST-060,Mid-Market Contact Center,billing,high,2025-03-17,v3.0,resolved,25.4
+TKT-00265,CUST-093,Growth CPaaS,integration,medium,2025-05-14,v3.1,resolved,65.1
+TKT-00266,CUST-020,Regional Carrier,latency,high,2025-08-27,v3.1,closed,30.6
+TKT-00267,CUST-071,Mid-Market Contact Center,false_positive,low,2025-11-12,v3.2,closed,72.9
+TKT-00268,CUST-036,Mid-Market Bank,missed_spam,medium,2025-01-19,v3.0,resolved,3.5
+TKT-00269,CUST-041,Mid-Market Bank,billing,medium,2025-11-07,v3.2,closed,85.1
+TKT-00270,CUST-077,Enterprise CPaaS,false_positive,critical,2025-04-10,v3.0,resolved,39.8
+TKT-00271,CUST-016,Regional Carrier,availability,high,2025-03-17,v3.0,open,82.4
+TKT-00272,CUST-060,Mid-Market Contact Center,integration,low,2025-11-06,v3.2,resolved,111.2
+TKT-00273,CUST-072,Mid-Market Contact Center,availability,high,2025-08-24,v3.1,resolved,36.8
+TKT-00274,CUST-001,Tier 1 Carrier,integration,high,2025-12-06,v3.2,closed,33.9
+TKT-00275,CUST-005,Tier 1 Carrier,false_positive,medium,2025-12-22,v3.2,closed,113.3
+TKT-00276,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-24,v3.2,resolved,17.8
+TKT-00277,CUST-007,Tier 1 Carrier,missed_spam,high,2025-04-11,v3.0,resolved,84.4
+TKT-00278,CUST-082,Enterprise CPaaS,missed_spam,high,2025-01-14,v3.0,resolved,74.8
+TKT-00279,CUST-031,Enterprise Bank,missed_spam,medium,2025-07-10,v3.1,resolved,5.9
+TKT-00280,CUST-041,Mid-Market Bank,latency,high,2025-03-18,v3.0,resolved,83.0
+TKT-00281,CUST-061,Mid-Market Contact Center,latency,high,2025-04-17,v3.0,closed,48.1
+TKT-00282,CUST-079,Enterprise CPaaS,latency,high,2025-04-23,v3.0,closed,63.2
+TKT-00283,CUST-001,Tier 1 Carrier,false_positive,low,2025-12-19,v3.2,resolved,90.9
+TKT-00284,CUST-033,Mid-Market Bank,missed_spam,medium,2025-03-27,v3.0,resolved,67.7
+TKT-00285,CUST-006,Tier 1 Carrier,false_positive,high,2025-11-29,v3.2,open,85.1
+TKT-00286,CUST-066,Mid-Market Contact Center,missed_spam,low,2025-01-30,v3.0,resolved,22.9
+TKT-00287,CUST-008,Tier 1 Carrier,false_positive,critical,2025-10-31,v3.2,resolved,40.1
+TKT-00288,CUST-001,Tier 1 Carrier,false_positive,critical,2025-10-02,v3.2,open,63.8
+TKT-00289,CUST-019,Regional Carrier,missed_spam,medium,2025-06-29,v3.1,open,16.1
+TKT-00290,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-23,v3.2,resolved,60.7
+TKT-00291,CUST-079,Enterprise CPaaS,latency,medium,2025-01-14,v3.0,resolved,33.0
+TKT-00292,CUST-012,Regional Carrier,availability,medium,2025-05-02,v3.1,resolved,55.1
+TKT-00293,CUST-001,Tier 1 Carrier,missed_spam,critical,2025-05-11,v3.1,resolved,109.2
+TKT-00294,CUST-081,Enterprise CPaaS,integration,medium,2025-01-31,v3.0,resolved,97.6
+TKT-00295,CUST-006,Tier 1 Carrier,false_positive,critical,2025-10-26,v3.2,resolved,13.7
+TKT-00296,CUST-023,Enterprise Bank,latency,high,2025-03-16,v3.0,resolved,36.9
+TKT-00297,CUST-016,Regional Carrier,missed_spam,medium,2025-12-17,v3.2,closed,62.5
+TKT-00298,CUST-016,Regional Carrier,missed_spam,medium,2025-06-09,v3.1,resolved,120.0
+TKT-00299,CUST-001,Tier 1 Carrier,false_positive,low,2025-09-13,v3.2,resolved,89.2
+TKT-00300,CUST-069,Mid-Market Contact Center,latency,medium,2025-07-15,v3.1,closed,89.9
+TKT-00301,CUST-010,Regional Carrier,availability,medium,2025-09-17,v3.2,closed,35.2
+TKT-00302,CUST-070,Mid-Market Contact Center,latency,high,2025-01-04,v3.0,resolved,100.8
+TKT-00303,CUST-087,Enterprise CPaaS,missed_spam,high,2025-09-03,v3.2,resolved,84.9
+TKT-00304,CUST-005,Tier 1 Carrier,missed_spam,high,2025-07-12,v3.1,closed,28.4
+TKT-00305,CUST-044,Mid-Market Bank,integration,medium,2025-07-07,v3.1,closed,19.2
+TKT-00306,CUST-036,Mid-Market Bank,availability,medium,2025-09-11,v3.2,resolved,55.9
+TKT-00307,CUST-083,Enterprise CPaaS,integration,high,2025-07-12,v3.1,closed,118.2
+TKT-00308,CUST-065,Mid-Market Contact Center,integration,high,2025-02-16,v3.0,resolved,44.0
+TKT-00309,CUST-020,Regional Carrier,missed_spam,high,2025-12-24,v3.2,open,32.8
+TKT-00310,CUST-090,Growth CPaaS,missed_spam,medium,2025-10-01,v3.2,open,22.0
+TKT-00311,CUST-047,Enterprise Contact Center,missed_spam,low,2025-12-24,v3.2,closed,77.8
+TKT-00312,CUST-009,Regional Carrier,latency,medium,2025-01-08,v3.0,closed,89.5
+TKT-00313,CUST-044,Mid-Market Bank,integration,high,2025-08-14,v3.1,closed,114.4
+TKT-00314,CUST-040,Mid-Market Bank,integration,high,2025-09-23,v3.2,resolved,111.1
+TKT-00315,CUST-059,Mid-Market Contact Center,integration,high,2025-01-20,v3.0,resolved,61.0
+TKT-00316,CUST-012,Regional Carrier,integration,low,2025-12-03,v3.2,open,116.5
+TKT-00317,CUST-005,Tier 1 Carrier,false_positive,low,2025-11-14,v3.2,closed,72.1
+TKT-00318,CUST-052,Enterprise Contact Center,billing,medium,2025-03-06,v3.0,closed,97.8
+TKT-00319,CUST-006,Tier 1 Carrier,integration,medium,2025-03-19,v3.0,closed,70.1
+TKT-00320,CUST-030,Enterprise Bank,integration,medium,2025-01-04,v3.0,resolved,62.3
+TKT-00321,CUST-008,Tier 1 Carrier,missed_spam,medium,2025-11-16,v3.2,resolved,23.0
+TKT-00322,CUST-005,Tier 1 Carrier,missed_spam,high,2025-11-06,v3.2,open,68.7
+TKT-00323,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-11,v3.2,closed,80.4
+TKT-00324,CUST-004,Tier 1 Carrier,latency,medium,2025-11-08,v3.2,closed,45.7
+TKT-00325,CUST-092,Growth CPaaS,latency,low,2025-09-02,v3.2,open,117.9
+TKT-00326,CUST-007,Tier 1 Carrier,availability,high,2025-12-24,v3.2,closed,55.0
+TKT-00327,CUST-082,Enterprise CPaaS,false_positive,medium,2025-10-24,v3.2,resolved,84.1
+TKT-00328,CUST-095,Growth CPaaS,integration,high,2025-05-21,v3.1,closed,5.4
+TKT-00329,CUST-023,Enterprise Bank,billing,medium,2025-06-11,v3.1,open,71.4
+TKT-00330,CUST-042,Mid-Market Bank,availability,high,2025-04-23,v3.0,resolved,40.8
+TKT-00331,CUST-006,Tier 1 Carrier,false_positive,medium,2025-10-15,v3.2,resolved,30.8
+TKT-00332,CUST-013,Regional Carrier,integration,low,2025-08-12,v3.1,resolved,114.7
+TKT-00333,CUST-003,Tier 1 Carrier,false_positive,medium,2025-10-14,v3.2,resolved,66.9
+TKT-00334,CUST-003,Tier 1 Carrier,missed_spam,high,2025-10-31,v3.2,closed,70.3
+TKT-00335,CUST-039,Mid-Market Bank,missed_spam,medium,2025-05-20,v3.1,closed,94.9
+TKT-00336,CUST-080,Enterprise CPaaS,availability,medium,2025-02-09,v3.0,resolved,106.4
+TKT-00337,CUST-001,Tier 1 Carrier,false_positive,low,2025-10-14,v3.2,closed,53.7
+TKT-00338,CUST-002,Tier 1 Carrier,false_positive,critical,2025-04-23,v3.0,resolved,111.3
+TKT-00339,CUST-008,Tier 1 Carrier,false_positive,medium,2025-10-27,v3.2,open,60.5
+TKT-00340,CUST-090,Growth CPaaS,integration,medium,2025-06-11,v3.1,resolved,102.4
+TKT-00341,CUST-014,Regional Carrier,integration,low,2025-01-08,v3.0,closed,50.9
+TKT-00342,CUST-011,Regional Carrier,availability,critical,2025-07-10,v3.1,closed,19.1
+TKT-00343,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-16,v3.2,resolved,110.1
+TKT-00344,CUST-012,Regional Carrier,availability,high,2025-06-14,v3.1,resolved,63.8
+TKT-00345,CUST-001,Tier 1 Carrier,latency,medium,2025-02-13,v3.0,closed,99.9
+TKT-00346,CUST-097,Growth CPaaS,missed_spam,medium,2025-05-29,v3.1,resolved,118.6
+TKT-00347,CUST-001,Tier 1 Carrier,false_positive,critical,2025-11-07,v3.2,closed,23.6
+TKT-00348,CUST-049,Enterprise Contact Center,integration,high,2025-02-17,v3.0,closed,50.6
+TKT-00349,CUST-099,Growth CPaaS,missed_spam,medium,2025-07-19,v3.1,closed,26.3
+TKT-00350,CUST-045,Mid-Market Bank,latency,medium,2025-07-15,v3.1,closed,114.6
+TKT-00351,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-30,v3.2,resolved,28.0
+TKT-00352,CUST-005,Tier 1 Carrier,missed_spam,medium,2025-07-16,v3.1,closed,16.9
+TKT-00353,CUST-005,Tier 1 Carrier,availability,critical,2025-05-20,v3.1,resolved,56.4
+TKT-00354,CUST-003,Tier 1 Carrier,false_positive,critical,2025-09-18,v3.2,closed,69.7
+TKT-00355,CUST-094,Growth CPaaS,integration,high,2025-10-18,v3.2,resolved,10.9
+TKT-00356,CUST-028,Enterprise Bank,availability,medium,2025-10-02,v3.2,resolved,110.8
+TKT-00357,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-26,v3.2,closed,101.4
+TKT-00358,CUST-001,Tier 1 Carrier,latency,high,2025-10-18,v3.2,closed,51.5
+TKT-00359,CUST-044,Mid-Market Bank,missed_spam,medium,2025-04-22,v3.0,resolved,111.5
+TKT-00360,CUST-022,Enterprise Bank,integration,high,2025-07-23,v3.1,closed,73.9
+TKT-00361,CUST-025,Enterprise Bank,missed_spam,low,2025-08-04,v3.1,resolved,16.3
+TKT-00362,CUST-072,Mid-Market Contact Center,availability,medium,2025-02-24,v3.0,closed,15.9
+TKT-00363,CUST-046,Enterprise Contact Center,integration,medium,2025-08-13,v3.1,resolved,102.7
+TKT-00364,CUST-022,Enterprise Bank,billing,medium,2025-08-09,v3.1,closed,24.8
+TKT-00365,CUST-008,Tier 1 Carrier,false_positive,high,2025-10-30,v3.2,resolved,53.2
+TKT-00366,CUST-098,Growth CPaaS,missed_spam,critical,2025-08-19,v3.1,resolved,41.1
+TKT-00367,CUST-029,Enterprise Bank,billing,medium,2025-06-07,v3.1,open,51.4
+TKT-00368,CUST-098,Growth CPaaS,false_positive,medium,2025-06-17,v3.1,closed,58.2
+TKT-00369,CUST-003,Tier 1 Carrier,false_positive,low,2025-10-20,v3.2,closed,72.5
+TKT-00370,CUST-001,Tier 1 Carrier,false_positive,low,2025-09-18,v3.2,resolved,110.3
+TKT-00371,CUST-093,Growth CPaaS,latency,medium,2025-04-18,v3.0,resolved,105.4
+TKT-00372,CUST-093,Growth CPaaS,billing,low,2025-03-15,v3.0,resolved,84.7
+TKT-00373,CUST-005,Tier 1 Carrier,latency,medium,2025-11-02,v3.2,open,22.8
+TKT-00374,CUST-003,Tier 1 Carrier,false_positive,high,2025-12-09,v3.2,resolved,89.7
+TKT-00375,CUST-025,Enterprise Bank,missed_spam,critical,2025-07-23,v3.1,resolved,106.9
+TKT-00376,CUST-054,Enterprise Contact Center,missed_spam,medium,2025-05-29,v3.1,closed,75.9
+TKT-00377,CUST-023,Enterprise Bank,integration,medium,2025-05-05,v3.1,resolved,71.1
+TKT-00378,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-29,v3.2,open,54.9
+TKT-00379,CUST-099,Growth CPaaS,missed_spam,medium,2025-05-13,v3.1,resolved,7.9
+TKT-00380,CUST-095,Growth CPaaS,missed_spam,low,2025-07-13,v3.1,resolved,24.4
+TKT-00381,CUST-073,Mid-Market Contact Center,integration,critical,2025-06-08,v3.1,closed,2.4
+TKT-00382,CUST-059,Mid-Market Contact Center,availability,medium,2025-10-09,v3.2,resolved,34.4
+TKT-00383,CUST-058,Enterprise Contact Center,billing,high,2025-02-10,v3.0,resolved,94.1
+TKT-00384,CUST-100,Growth CPaaS,integration,medium,2025-09-09,v3.2,resolved,83.6
+TKT-00385,CUST-024,Enterprise Bank,false_positive,high,2025-07-05,v3.1,open,102.2
+TKT-00386,CUST-095,Growth CPaaS,availability,medium,2025-12-14,v3.2,closed,66.4
+TKT-00387,CUST-013,Regional Carrier,false_positive,high,2025-08-19,v3.1,closed,74.3
+TKT-00388,CUST-073,Mid-Market Contact Center,false_positive,high,2025-01-31,v3.0,resolved,110.4
+TKT-00389,CUST-067,Mid-Market Contact Center,integration,medium,2025-07-20,v3.1,resolved,17.6
+TKT-00390,CUST-045,Mid-Market Bank,missed_spam,medium,2025-08-06,v3.1,open,116.2
+TKT-00391,CUST-017,Regional Carrier,integration,medium,2025-01-26,v3.0,closed,52.1
+TKT-00392,CUST-055,Enterprise Contact Center,integration,high,2025-05-10,v3.1,resolved,10.7
+TKT-00393,CUST-021,Enterprise Bank,integration,medium,2025-08-15,v3.1,resolved,67.3
+TKT-00394,CUST-001,Tier 1 Carrier,latency,high,2025-08-18,v3.1,resolved,85.0
+TKT-00395,CUST-019,Regional Carrier,false_positive,low,2025-07-23,v3.1,closed,105.9
+TKT-00396,CUST-026,Enterprise Bank,billing,medium,2025-03-21,v3.0,resolved,18.9
+TKT-00397,CUST-064,Mid-Market Contact Center,missed_spam,medium,2025-08-18,v3.1,resolved,66.6
+TKT-00398,CUST-014,Regional Carrier,false_positive,high,2025-08-04,v3.1,resolved,95.5
+TKT-00399,CUST-083,Enterprise CPaaS,integration,high,2025-12-10,v3.2,resolved,81.3
+TKT-00400,CUST-023,Enterprise Bank,missed_spam,low,2025-07-02,v3.1,closed,18.7
+TKT-00401,CUST-082,Enterprise CPaaS,billing,critical,2025-05-20,v3.1,closed,107.6
+TKT-00402,CUST-022,Enterprise Bank,billing,medium,2025-06-05,v3.1,resolved,119.0
+TKT-00403,CUST-071,Mid-Market Contact Center,latency,high,2025-07-21,v3.1,resolved,22.1
+TKT-00404,CUST-001,Tier 1 Carrier,false_positive,low,2025-10-05,v3.2,resolved,25.3
+TKT-00405,CUST-049,Enterprise Contact Center,latency,medium,2025-07-06,v3.1,closed,14.5
+TKT-00406,CUST-001,Tier 1 Carrier,billing,medium,2025-10-10,v3.2,closed,9.9
+TKT-00407,CUST-024,Enterprise Bank,false_positive,medium,2025-12-07,v3.2,resolved,74.9
+TKT-00408,CUST-050,Enterprise Contact Center,availability,medium,2025-11-01,v3.2,closed,97.3
+TKT-00409,CUST-068,Mid-Market Contact Center,availability,high,2025-01-20,v3.0,open,105.6
+TKT-00410,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-04,v3.2,closed,63.3
+TKT-00411,CUST-001,Tier 1 Carrier,integration,high,2025-11-25,v3.2,closed,44.9
+TKT-00412,CUST-075,Mid-Market Contact Center,integration,medium,2025-11-17,v3.2,resolved,68.3
+TKT-00413,CUST-001,Tier 1 Carrier,integration,high,2025-12-01,v3.2,closed,99.4
+TKT-00414,CUST-064,Mid-Market Contact Center,billing,medium,2025-10-11,v3.2,resolved,59.7
+TKT-00415,CUST-041,Mid-Market Bank,latency,high,2025-03-26,v3.0,closed,9.0
+TKT-00416,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-21,v3.2,resolved,41.7
+TKT-00417,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-28,v3.2,resolved,36.0
+TKT-00418,CUST-094,Growth CPaaS,false_positive,high,2025-05-26,v3.1,open,30.7
+TKT-00419,CUST-086,Enterprise CPaaS,false_positive,high,2025-03-07,v3.0,open,66.3
+TKT-00420,CUST-001,Tier 1 Carrier,latency,low,2025-09-24,v3.2,resolved,30.9
+TKT-00421,CUST-073,Mid-Market Contact Center,integration,high,2025-05-13,v3.1,closed,18.3
+TKT-00422,CUST-061,Mid-Market Contact Center,latency,high,2025-01-23,v3.0,resolved,62.0
+TKT-00423,CUST-007,Tier 1 Carrier,latency,high,2025-10-10,v3.2,resolved,11.4
+TKT-00424,CUST-097,Growth CPaaS,missed_spam,high,2025-10-06,v3.2,resolved,94.9
+TKT-00425,CUST-049,Enterprise Contact Center,missed_spam,high,2025-02-06,v3.0,resolved,75.2
+TKT-00426,CUST-009,Regional Carrier,missed_spam,high,2025-11-01,v3.2,resolved,26.5
+TKT-00427,CUST-075,Mid-Market Contact Center,latency,medium,2025-05-12,v3.1,resolved,12.6
+TKT-00428,CUST-063,Mid-Market Contact Center,billing,medium,2025-05-06,v3.1,open,64.2
+TKT-00429,CUST-005,Tier 1 Carrier,integration,high,2025-12-21,v3.2,resolved,17.6
+TKT-00430,CUST-005,Tier 1 Carrier,latency,medium,2025-12-22,v3.2,resolved,66.7
+TKT-00431,CUST-014,Regional Carrier,missed_spam,low,2025-07-02,v3.1,closed,19.4
+TKT-00432,CUST-007,Tier 1 Carrier,integration,medium,2025-07-10,v3.1,resolved,70.8
+TKT-00433,CUST-082,Enterprise CPaaS,false_positive,medium,2025-07-22,v3.1,resolved,87.2
+TKT-00434,CUST-001,Tier 1 Carrier,false_positive,low,2025-10-04,v3.2,resolved,67.8
+TKT-00435,CUST-078,Enterprise CPaaS,false_positive,medium,2025-12-25,v3.2,resolved,119.3
+TKT-00436,CUST-066,Mid-Market Contact Center,integration,high,2025-04-10,v3.0,closed,69.6
+TKT-00437,CUST-071,Mid-Market Contact Center,integration,medium,2025-04-10,v3.0,resolved,8.3
+TKT-00438,CUST-053,Enterprise Contact Center,missed_spam,high,2025-10-26,v3.2,resolved,86.7
+TKT-00439,CUST-086,Enterprise CPaaS,billing,medium,2025-06-19,v3.1,resolved,50.2
+TKT-00440,CUST-008,Tier 1 Carrier,availability,medium,2025-08-17,v3.1,resolved,37.8
+TKT-00441,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-24,v3.2,closed,96.3
+TKT-00442,CUST-005,Tier 1 Carrier,availability,high,2025-11-15,v3.2,resolved,105.5
+TKT-00443,CUST-042,Mid-Market Bank,availability,high,2025-10-08,v3.2,resolved,86.0
+TKT-00444,CUST-045,Mid-Market Bank,latency,medium,2025-07-28,v3.1,resolved,27.3
+TKT-00445,CUST-001,Tier 1 Carrier,availability,medium,2025-09-10,v3.2,closed,94.5
+TKT-00446,CUST-078,Enterprise CPaaS,false_positive,high,2025-01-30,v3.0,resolved,109.9
+TKT-00447,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-26,v3.2,closed,68.4
+TKT-00448,CUST-029,Enterprise Bank,false_positive,medium,2025-10-06,v3.2,closed,91.1
+TKT-00449,CUST-053,Enterprise Contact Center,missed_spam,medium,2025-06-16,v3.1,resolved,38.7
+TKT-00450,CUST-007,Tier 1 Carrier,false_positive,medium,2025-10-25,v3.2,resolved,30.6
+TKT-00451,CUST-082,Enterprise CPaaS,false_positive,critical,2025-02-23,v3.0,resolved,86.8
+TKT-00452,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-12,v3.2,closed,43.8
+TKT-00453,CUST-062,Mid-Market Contact Center,latency,medium,2025-11-19,v3.2,closed,68.9
+TKT-00454,CUST-044,Mid-Market Bank,integration,high,2025-12-27,v3.2,resolved,40.3
+TKT-00455,CUST-065,Mid-Market Contact Center,availability,critical,2025-07-01,v3.1,closed,62.1
+TKT-00456,CUST-056,Enterprise Contact Center,missed_spam,medium,2025-01-16,v3.0,open,104.3
+TKT-00457,CUST-001,Tier 1 Carrier,false_positive,critical,2025-12-16,v3.2,resolved,6.7
+TKT-00458,CUST-070,Mid-Market Contact Center,integration,low,2025-07-21,v3.1,resolved,117.6
+TKT-00459,CUST-099,Growth CPaaS,latency,medium,2025-03-02,v3.0,resolved,88.4
+TKT-00460,CUST-063,Mid-Market Contact Center,latency,high,2025-06-25,v3.1,resolved,64.7
+TKT-00461,CUST-005,Tier 1 Carrier,false_positive,medium,2025-11-11,v3.2,resolved,118.6
+TKT-00462,CUST-001,Tier 1 Carrier,integration,high,2025-10-23,v3.2,resolved,87.6
+TKT-00463,CUST-096,Growth CPaaS,integration,low,2025-04-02,v3.0,resolved,106.1
+TKT-00464,CUST-007,Tier 1 Carrier,false_positive,medium,2025-10-15,v3.2,resolved,101.1
+TKT-00465,CUST-006,Tier 1 Carrier,false_positive,low,2025-10-15,v3.2,open,112.1
+TKT-00466,CUST-005,Tier 1 Carrier,false_positive,critical,2025-12-13,v3.2,resolved,103.6
+TKT-00467,CUST-024,Enterprise Bank,latency,critical,2025-06-10,v3.1,resolved,63.1
+TKT-00468,CUST-072,Mid-Market Contact Center,latency,medium,2025-08-12,v3.1,resolved,79.3
+TKT-00469,CUST-046,Enterprise Contact Center,availability,medium,2025-09-10,v3.2,closed,48.2
+TKT-00470,CUST-097,Growth CPaaS,false_positive,critical,2025-09-11,v3.2,resolved,20.4
+TKT-00471,CUST-071,Mid-Market Contact Center,false_positive,medium,2025-10-27,v3.2,open,63.9
+TKT-00472,CUST-065,Mid-Market Contact Center,false_positive,high,2025-04-06,v3.0,resolved,21.6
+TKT-00473,CUST-053,Enterprise Contact Center,latency,medium,2025-12-31,v3.2,closed,47.1
+TKT-00474,CUST-074,Mid-Market Contact Center,missed_spam,medium,2025-05-12,v3.1,closed,61.7
+TKT-00475,CUST-007,Tier 1 Carrier,false_positive,medium,2025-11-29,v3.2,resolved,90.8
+TKT-00476,CUST-003,Tier 1 Carrier,false_positive,medium,2025-10-25,v3.2,closed,96.6
+TKT-00477,CUST-007,Tier 1 Carrier,false_positive,medium,2025-11-27,v3.2,closed,31.2
+TKT-00478,CUST-076,Enterprise CPaaS,latency,critical,2025-05-07,v3.1,open,67.0
+TKT-00479,CUST-033,Mid-Market Bank,latency,medium,2025-02-11,v3.0,resolved,105.4
+TKT-00480,CUST-003,Tier 1 Carrier,false_positive,high,2025-12-11,v3.2,closed,12.0
+TKT-00481,CUST-084,Enterprise CPaaS,latency,high,2025-11-14,v3.2,resolved,103.1
+TKT-00482,CUST-030,Enterprise Bank,availability,medium,2025-02-05,v3.0,resolved,92.6
+TKT-00483,CUST-016,Regional Carrier,false_positive,high,2025-02-27,v3.0,closed,97.4
+TKT-00484,CUST-005,Tier 1 Carrier,false_positive,medium,2025-09-08,v3.2,closed,23.1
+TKT-00485,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-23,v3.2,closed,114.1
+TKT-00486,CUST-034,Mid-Market Bank,missed_spam,medium,2025-03-21,v3.0,resolved,23.3
+TKT-00487,CUST-008,Tier 1 Carrier,false_positive,medium,2025-12-10,v3.2,open,116.1
+TKT-00488,CUST-001,Tier 1 Carrier,billing,high,2025-09-19,v3.2,closed,35.0
+TKT-00489,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-20,v3.2,closed,84.0
+TKT-00490,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-09-19,v3.2,closed,42.5
+TKT-00491,CUST-055,Enterprise Contact Center,missed_spam,high,2025-08-20,v3.1,resolved,80.8
+TKT-00492,CUST-001,Tier 1 Carrier,availability,medium,2025-10-15,v3.2,resolved,94.6
+TKT-00493,CUST-028,Enterprise Bank,latency,critical,2025-03-26,v3.0,closed,60.8
+TKT-00494,CUST-020,Regional Carrier,integration,high,2025-02-07,v3.0,open,110.8
+TKT-00495,CUST-068,Mid-Market Contact Center,false_positive,high,2025-09-06,v3.2,resolved,58.3
+TKT-00496,CUST-061,Mid-Market Contact Center,billing,high,2025-08-29,v3.1,resolved,93.0
+TKT-00497,CUST-075,Mid-Market Contact Center,false_positive,medium,2025-10-31,v3.2,closed,53.2
+TKT-00498,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-30,v3.2,resolved,26.7
+TKT-00499,CUST-026,Enterprise Bank,integration,medium,2025-09-24,v3.2,closed,15.6
+TKT-00500,CUST-093,Growth CPaaS,false_positive,high,2025-08-20,v3.1,resolved,53.3
+TKT-00501,CUST-005,Tier 1 Carrier,billing,high,2025-09-15,v3.2,resolved,68.4
+TKT-00502,CUST-097,Growth CPaaS,latency,medium,2025-08-12,v3.1,resolved,47.1
+TKT-00503,CUST-032,Enterprise Bank,false_positive,critical,2025-02-08,v3.0,resolved,88.7
+TKT-00504,CUST-038,Mid-Market Bank,billing,high,2025-06-10,v3.1,open,5.4
+TKT-00505,CUST-011,Regional Carrier,billing,high,2025-08-22,v3.1,resolved,102.1
+TKT-00506,CUST-076,Enterprise CPaaS,availability,medium,2025-08-03,v3.1,closed,76.5
+TKT-00507,CUST-075,Mid-Market Contact Center,false_positive,high,2025-05-20,v3.1,resolved,85.0
+TKT-00508,CUST-091,Growth CPaaS,latency,high,2025-12-08,v3.2,resolved,98.5
+TKT-00509,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-16,v3.2,closed,48.0
+TKT-00510,CUST-001,Tier 1 Carrier,latency,medium,2025-12-08,v3.2,resolved,86.6
+TKT-00511,CUST-004,Tier 1 Carrier,false_positive,medium,2025-11-29,v3.2,closed,41.7
+TKT-00512,CUST-049,Enterprise Contact Center,false_positive,critical,2025-10-26,v3.2,closed,58.1
+TKT-00513,CUST-013,Regional Carrier,latency,high,2025-12-15,v3.2,closed,11.5
+TKT-00514,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-25,v3.2,resolved,65.1
+TKT-00515,CUST-052,Enterprise Contact Center,integration,medium,2025-01-24,v3.0,closed,113.2
+TKT-00516,CUST-022,Enterprise Bank,false_positive,high,2025-03-13,v3.0,open,90.8
+TKT-00517,CUST-020,Regional Carrier,latency,medium,2025-07-28,v3.1,resolved,13.1
+TKT-00518,CUST-002,Tier 1 Carrier,billing,critical,2025-03-03,v3.0,closed,75.3
+TKT-00519,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-09,v3.2,resolved,20.7
+TKT-00520,CUST-021,Enterprise Bank,integration,critical,2025-08-25,v3.1,resolved,56.4
+TKT-00521,CUST-081,Enterprise CPaaS,false_positive,high,2025-12-13,v3.2,closed,82.4
+TKT-00522,CUST-008,Tier 1 Carrier,integration,critical,2025-02-15,v3.0,closed,43.0
+TKT-00523,CUST-001,Tier 1 Carrier,integration,high,2025-10-30,v3.2,closed,68.4
+TKT-00524,CUST-014,Regional Carrier,availability,medium,2025-12-22,v3.2,closed,8.8
+TKT-00525,CUST-067,Mid-Market Contact Center,integration,critical,2025-08-11,v3.1,closed,83.0
+TKT-00526,CUST-080,Enterprise CPaaS,integration,low,2025-08-30,v3.1,resolved,62.1
+TKT-00527,CUST-053,Enterprise Contact Center,missed_spam,high,2025-01-30,v3.0,resolved,24.0
+TKT-00528,CUST-078,Enterprise CPaaS,latency,medium,2025-01-21,v3.0,resolved,70.4
+TKT-00529,CUST-002,Tier 1 Carrier,false_positive,high,2025-09-28,v3.2,resolved,53.3
+TKT-00530,CUST-004,Tier 1 Carrier,false_positive,high,2025-12-29,v3.2,resolved,48.1
+TKT-00531,CUST-006,Tier 1 Carrier,false_positive,medium,2025-12-28,v3.2,closed,37.2
+TKT-00532,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-18,v3.2,resolved,40.8
+TKT-00533,CUST-007,Tier 1 Carrier,false_positive,medium,2025-10-20,v3.2,resolved,19.5
+TKT-00534,CUST-041,Mid-Market Bank,integration,medium,2025-04-12,v3.0,resolved,111.1
+TKT-00535,CUST-001,Tier 1 Carrier,false_positive,critical,2025-11-23,v3.2,closed,61.3
+TKT-00536,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-05,v3.2,closed,7.4
+TKT-00537,CUST-019,Regional Carrier,availability,high,2025-04-04,v3.0,resolved,29.3
+TKT-00538,CUST-001,Tier 1 Carrier,billing,low,2025-11-24,v3.2,resolved,84.2
+TKT-00539,CUST-004,Tier 1 Carrier,false_positive,medium,2025-10-12,v3.2,resolved,102.5
+TKT-00540,CUST-084,Enterprise CPaaS,missed_spam,high,2025-06-03,v3.1,closed,12.3
+TKT-00541,CUST-037,Mid-Market Bank,false_positive,low,2025-09-08,v3.2,closed,59.7
+TKT-00542,CUST-004,Tier 1 Carrier,false_positive,medium,2025-09-25,v3.2,resolved,7.5
+TKT-00543,CUST-048,Enterprise Contact Center,missed_spam,medium,2025-01-28,v3.0,resolved,9.0
+TKT-00544,CUST-006,Tier 1 Carrier,false_positive,medium,2025-10-16,v3.2,resolved,98.2
+TKT-00545,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-26,v3.2,resolved,88.5
+TKT-00546,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-20,v3.2,resolved,97.3
+TKT-00547,CUST-039,Mid-Market Bank,false_positive,high,2025-07-25,v3.1,open,73.9
+TKT-00548,CUST-002,Tier 1 Carrier,availability,medium,2025-11-09,v3.2,resolved,102.6
+TKT-00549,CUST-002,Tier 1 Carrier,missed_spam,medium,2025-07-22,v3.1,closed,94.1
+TKT-00550,CUST-029,Enterprise Bank,latency,high,2025-02-14,v3.0,resolved,50.7
+TKT-00551,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-08,v3.2,resolved,41.3
+TKT-00552,CUST-086,Enterprise CPaaS,false_positive,high,2025-05-07,v3.1,resolved,26.8
+TKT-00553,CUST-072,Mid-Market Contact Center,integration,low,2025-01-19,v3.0,resolved,116.9
+TKT-00554,CUST-028,Enterprise Bank,missed_spam,medium,2025-10-25,v3.2,closed,69.3
+TKT-00555,CUST-071,Mid-Market Contact Center,missed_spam,medium,2025-11-12,v3.2,closed,44.8
+TKT-00556,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-30,v3.2,closed,7.6
+TKT-00557,CUST-031,Enterprise Bank,latency,medium,2025-08-20,v3.1,resolved,9.5
+TKT-00558,CUST-048,Enterprise Contact Center,latency,high,2025-05-18,v3.1,closed,8.2
+TKT-00559,CUST-080,Enterprise CPaaS,missed_spam,medium,2025-02-07,v3.0,resolved,84.2
+TKT-00560,CUST-100,Growth CPaaS,false_positive,critical,2025-09-20,v3.2,closed,9.9
+TKT-00561,CUST-051,Enterprise Contact Center,latency,medium,2025-04-04,v3.0,open,92.9
+TKT-00562,CUST-081,Enterprise CPaaS,availability,critical,2025-07-27,v3.1,closed,19.8
+TKT-00563,CUST-065,Mid-Market Contact Center,missed_spam,medium,2025-03-09,v3.0,closed,117.2
+TKT-00564,CUST-094,Growth CPaaS,missed_spam,medium,2025-03-08,v3.0,closed,43.8
+TKT-00565,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-26,v3.2,open,9.7
+TKT-00566,CUST-069,Mid-Market Contact Center,false_positive,low,2025-07-17,v3.1,resolved,46.5
+TKT-00567,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-05,v3.2,resolved,116.9
+TKT-00568,CUST-043,Mid-Market Bank,missed_spam,medium,2025-06-23,v3.1,resolved,83.7
+TKT-00569,CUST-097,Growth CPaaS,integration,high,2025-02-12,v3.0,closed,111.6
+TKT-00570,CUST-049,Enterprise Contact Center,integration,medium,2025-12-09,v3.2,closed,118.4
+TKT-00571,CUST-084,Enterprise CPaaS,missed_spam,medium,2025-02-22,v3.0,open,30.9
+TKT-00572,CUST-019,Regional Carrier,false_positive,medium,2025-11-02,v3.2,resolved,21.4
+TKT-00573,CUST-048,Enterprise Contact Center,integration,high,2025-04-18,v3.0,closed,104.8
+TKT-00574,CUST-002,Tier 1 Carrier,false_positive,high,2025-09-09,v3.2,closed,75.6
+TKT-00575,CUST-069,Mid-Market Contact Center,missed_spam,high,2025-12-31,v3.2,resolved,62.2
+TKT-00576,CUST-009,Regional Carrier,availability,high,2025-07-30,v3.1,closed,85.7
+TKT-00577,CUST-078,Enterprise CPaaS,billing,high,2025-07-22,v3.1,resolved,72.7
+TKT-00578,CUST-033,Mid-Market Bank,false_positive,critical,2025-12-04,v3.2,resolved,69.9
+TKT-00579,CUST-031,Enterprise Bank,missed_spam,critical,2025-07-17,v3.1,resolved,112.0
+TKT-00580,CUST-062,Mid-Market Contact Center,missed_spam,medium,2025-02-25,v3.0,closed,18.7
+TKT-00581,CUST-047,Enterprise Contact Center,availability,medium,2025-12-25,v3.2,resolved,113.8
+TKT-00582,CUST-001,Tier 1 Carrier,latency,high,2025-10-13,v3.2,resolved,67.8
+TKT-00583,CUST-011,Regional Carrier,availability,medium,2025-07-15,v3.1,closed,56.7
+TKT-00584,CUST-002,Tier 1 Carrier,false_positive,medium,2025-11-22,v3.2,closed,28.7
+TKT-00585,CUST-026,Enterprise Bank,missed_spam,high,2025-06-13,v3.1,closed,60.6
+TKT-00586,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-09,v3.2,resolved,62.3
+TKT-00587,CUST-027,Enterprise Bank,false_positive,high,2025-08-06,v3.1,resolved,81.0
+TKT-00588,CUST-094,Growth CPaaS,missed_spam,medium,2025-03-29,v3.0,resolved,55.3
+TKT-00589,CUST-001,Tier 1 Carrier,false_positive,critical,2025-11-22,v3.2,closed,40.5
+TKT-00590,CUST-005,Tier 1 Carrier,false_positive,medium,2025-12-02,v3.2,resolved,45.5
+TKT-00591,CUST-067,Mid-Market Contact Center,billing,medium,2025-03-26,v3.0,resolved,54.1
+TKT-00592,CUST-003,Tier 1 Carrier,false_positive,high,2025-12-12,v3.2,resolved,87.6
+TKT-00593,CUST-005,Tier 1 Carrier,false_positive,medium,2025-10-30,v3.2,closed,104.9
+TKT-00594,CUST-100,Growth CPaaS,latency,medium,2025-04-18,v3.0,closed,118.7
+TKT-00595,CUST-095,Growth CPaaS,billing,medium,2025-06-03,v3.1,closed,101.2
+TKT-00596,CUST-077,Enterprise CPaaS,integration,high,2025-11-16,v3.2,resolved,7.8
+TKT-00597,CUST-010,Regional Carrier,missed_spam,medium,2025-04-10,v3.0,closed,84.4
+TKT-00598,CUST-008,Tier 1 Carrier,false_positive,high,2025-12-19,v3.2,resolved,27.5
+TKT-00599,CUST-013,Regional Carrier,availability,critical,2025-11-05,v3.2,resolved,50.6
+TKT-00600,CUST-005,Tier 1 Carrier,false_positive,low,2025-10-01,v3.2,resolved,89.6
+TKT-00601,CUST-028,Enterprise Bank,availability,high,2025-08-18,v3.1,resolved,109.1
+TKT-00602,CUST-052,Enterprise Contact Center,missed_spam,medium,2025-01-19,v3.0,resolved,33.4
+TKT-00603,CUST-002,Tier 1 Carrier,false_positive,medium,2025-10-18,v3.2,closed,34.4
+TKT-00604,CUST-062,Mid-Market Contact Center,missed_spam,high,2025-03-08,v3.0,resolved,17.0
+TKT-00605,CUST-065,Mid-Market Contact Center,integration,critical,2025-04-17,v3.0,open,112.8
+TKT-00606,CUST-057,Enterprise Contact Center,integration,medium,2025-03-16,v3.0,closed,116.6
+TKT-00607,CUST-095,Growth CPaaS,integration,medium,2025-11-26,v3.2,resolved,16.4
+TKT-00608,CUST-052,Enterprise Contact Center,billing,medium,2025-02-15,v3.0,closed,47.7
+TKT-00609,CUST-100,Growth CPaaS,billing,medium,2025-11-16,v3.2,resolved,44.6
+TKT-00610,CUST-024,Enterprise Bank,false_positive,low,2025-01-12,v3.0,closed,95.8
+TKT-00611,CUST-055,Enterprise Contact Center,false_positive,high,2025-06-19,v3.1,resolved,98.6
+TKT-00612,CUST-005,Tier 1 Carrier,false_positive,critical,2025-09-05,v3.2,closed,104.9
+TKT-00613,CUST-040,Mid-Market Bank,latency,high,2025-11-14,v3.2,resolved,64.3
+TKT-00614,CUST-080,Enterprise CPaaS,missed_spam,low,2025-12-06,v3.2,resolved,34.2
+TKT-00615,CUST-001,Tier 1 Carrier,false_positive,critical,2025-10-18,v3.2,resolved,46.6
+TKT-00616,CUST-004,Tier 1 Carrier,false_positive,high,2025-12-28,v3.2,resolved,27.1
+TKT-00617,CUST-008,Tier 1 Carrier,missed_spam,high,2025-11-25,v3.2,open,14.5
+TKT-00618,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-01,v3.2,resolved,25.4
+TKT-00619,CUST-048,Enterprise Contact Center,false_positive,critical,2025-08-07,v3.1,resolved,5.9
+TKT-00620,CUST-063,Mid-Market Contact Center,availability,medium,2025-06-11,v3.1,closed,87.7
+TKT-00621,CUST-098,Growth CPaaS,missed_spam,high,2025-02-07,v3.0,closed,50.3
+TKT-00622,CUST-004,Tier 1 Carrier,integration,medium,2025-07-14,v3.1,resolved,119.0
+TKT-00623,CUST-027,Enterprise Bank,availability,medium,2025-04-09,v3.0,resolved,106.2
+TKT-00624,CUST-030,Enterprise Bank,integration,high,2025-04-16,v3.0,closed,114.7
+TKT-00625,CUST-005,Tier 1 Carrier,missed_spam,high,2025-10-22,v3.2,resolved,61.1
+TKT-00626,CUST-032,Enterprise Bank,latency,low,2025-09-29,v3.2,resolved,93.9
+TKT-00627,CUST-016,Regional Carrier,false_positive,medium,2025-09-01,v3.2,resolved,59.7
+TKT-00628,CUST-072,Mid-Market Contact Center,integration,medium,2025-11-12,v3.2,closed,60.2
+TKT-00629,CUST-005,Tier 1 Carrier,missed_spam,medium,2025-11-26,v3.2,open,81.8
+TKT-00630,CUST-039,Mid-Market Bank,missed_spam,medium,2025-02-03,v3.0,resolved,100.3
+TKT-00631,CUST-066,Mid-Market Contact Center,billing,high,2025-02-20,v3.0,resolved,110.3
+TKT-00632,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-02,v3.2,open,19.1
+TKT-00633,CUST-003,Tier 1 Carrier,latency,critical,2025-05-22,v3.1,resolved,46.8
+TKT-00634,CUST-058,Enterprise Contact Center,missed_spam,medium,2025-09-18,v3.2,closed,99.7
+TKT-00635,CUST-035,Mid-Market Bank,billing,medium,2025-09-10,v3.2,closed,76.9
+TKT-00636,CUST-033,Mid-Market Bank,missed_spam,high,2025-06-12,v3.1,resolved,29.8
+TKT-00637,CUST-095,Growth CPaaS,latency,medium,2025-06-10,v3.1,resolved,63.4
+TKT-00638,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-10,v3.2,closed,37.8
+TKT-00639,CUST-077,Enterprise CPaaS,availability,medium,2025-02-09,v3.0,resolved,15.0
+TKT-00640,CUST-057,Enterprise Contact Center,latency,low,2025-01-31,v3.0,resolved,40.6
+TKT-00641,CUST-062,Mid-Market Contact Center,missed_spam,medium,2025-01-09,v3.0,resolved,56.1
+TKT-00642,CUST-095,Growth CPaaS,latency,low,2025-06-13,v3.1,closed,26.4
+TKT-00643,CUST-015,Regional Carrier,latency,medium,2025-07-20,v3.1,open,11.0
+TKT-00644,CUST-006,Tier 1 Carrier,false_positive,high,2025-11-04,v3.2,resolved,39.7
+TKT-00645,CUST-008,Tier 1 Carrier,false_positive,medium,2025-10-13,v3.2,resolved,38.9
+TKT-00646,CUST-011,Regional Carrier,false_positive,high,2025-09-27,v3.2,resolved,10.9
+TKT-00647,CUST-097,Growth CPaaS,integration,medium,2025-06-12,v3.1,closed,19.5
+TKT-00648,CUST-004,Tier 1 Carrier,false_positive,medium,2025-11-10,v3.2,resolved,82.1
+TKT-00649,CUST-049,Enterprise Contact Center,integration,medium,2025-07-10,v3.1,resolved,42.4
+TKT-00650,CUST-025,Enterprise Bank,missed_spam,high,2025-06-12,v3.1,resolved,119.5
+TKT-00651,CUST-006,Tier 1 Carrier,integration,medium,2025-12-08,v3.2,closed,2.4
+TKT-00652,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-24,v3.2,open,73.9
+TKT-00653,CUST-058,Enterprise Contact Center,missed_spam,medium,2025-07-19,v3.1,resolved,76.9
+TKT-00654,CUST-006,Tier 1 Carrier,integration,medium,2025-02-01,v3.0,closed,96.0
+TKT-00655,CUST-090,Growth CPaaS,billing,high,2025-01-31,v3.0,open,112.5
+TKT-00656,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-16,v3.2,closed,35.9
+TKT-00657,CUST-005,Tier 1 Carrier,billing,medium,2025-12-19,v3.2,resolved,82.0
+TKT-00658,CUST-011,Regional Carrier,integration,high,2025-06-04,v3.1,closed,88.5
+TKT-00659,CUST-003,Tier 1 Carrier,availability,high,2025-09-09,v3.2,resolved,43.5
+TKT-00660,CUST-054,Enterprise Contact Center,integration,high,2025-10-17,v3.2,closed,108.3
+TKT-00661,CUST-001,Tier 1 Carrier,availability,medium,2025-11-26,v3.2,resolved,68.6
+TKT-00662,CUST-059,Mid-Market Contact Center,latency,medium,2025-09-14,v3.2,resolved,60.1
+TKT-00663,CUST-002,Tier 1 Carrier,false_positive,medium,2025-12-10,v3.2,resolved,68.3
+TKT-00664,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-03,v3.2,resolved,5.5
+TKT-00665,CUST-001,Tier 1 Carrier,latency,medium,2025-12-23,v3.2,resolved,57.3
+TKT-00666,CUST-042,Mid-Market Bank,missed_spam,low,2025-08-23,v3.1,resolved,3.3
+TKT-00667,CUST-049,Enterprise Contact Center,false_positive,high,2025-05-08,v3.1,resolved,37.5
+TKT-00668,CUST-099,Growth CPaaS,availability,medium,2025-09-22,v3.2,closed,119.3
+TKT-00669,CUST-072,Mid-Market Contact Center,integration,medium,2025-08-25,v3.1,open,13.7
+TKT-00670,CUST-072,Mid-Market Contact Center,availability,medium,2025-03-08,v3.0,closed,4.4
+TKT-00671,CUST-002,Tier 1 Carrier,false_positive,high,2025-11-20,v3.2,resolved,25.9
+TKT-00672,CUST-073,Mid-Market Contact Center,availability,critical,2025-02-20,v3.0,open,112.3
+TKT-00673,CUST-031,Enterprise Bank,missed_spam,high,2025-02-11,v3.0,closed,6.6
+TKT-00674,CUST-030,Enterprise Bank,missed_spam,high,2025-09-07,v3.2,open,85.5
+TKT-00675,CUST-001,Tier 1 Carrier,latency,high,2025-11-10,v3.2,resolved,108.2
+TKT-00676,CUST-082,Enterprise CPaaS,latency,medium,2025-09-23,v3.2,closed,104.5
+TKT-00677,CUST-088,Enterprise CPaaS,integration,low,2025-06-03,v3.1,resolved,24.3
+TKT-00678,CUST-001,Tier 1 Carrier,latency,medium,2025-10-21,v3.2,open,16.5
+TKT-00679,CUST-083,Enterprise CPaaS,false_positive,high,2025-12-14,v3.2,closed,94.2
+TKT-00680,CUST-007,Tier 1 Carrier,billing,medium,2025-12-04,v3.2,open,86.7
+TKT-00681,CUST-049,Enterprise Contact Center,false_positive,high,2025-03-11,v3.0,resolved,98.5
+TKT-00682,CUST-015,Regional Carrier,false_positive,high,2025-10-07,v3.2,closed,48.3
+TKT-00683,CUST-026,Enterprise Bank,false_positive,high,2025-01-02,v3.0,open,47.7
+TKT-00684,CUST-007,Tier 1 Carrier,missed_spam,high,2025-09-01,v3.2,open,14.4
+TKT-00685,CUST-067,Mid-Market Contact Center,availability,high,2025-07-06,v3.1,resolved,107.2
+TKT-00686,CUST-030,Enterprise Bank,false_positive,high,2025-03-01,v3.0,resolved,37.7
+TKT-00687,CUST-005,Tier 1 Carrier,billing,high,2025-10-30,v3.2,closed,32.0
+TKT-00688,CUST-001,Tier 1 Carrier,billing,medium,2025-09-01,v3.2,open,68.0
+TKT-00689,CUST-095,Growth CPaaS,false_positive,critical,2025-02-01,v3.0,resolved,30.8
+TKT-00690,CUST-006,Tier 1 Carrier,false_positive,medium,2025-10-14,v3.2,resolved,103.4
+TKT-00691,CUST-011,Regional Carrier,false_positive,critical,2025-08-27,v3.1,closed,100.0
+TKT-00692,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-21,v3.2,resolved,92.3
+TKT-00693,CUST-001,Tier 1 Carrier,availability,high,2025-12-21,v3.2,resolved,85.3
+TKT-00694,CUST-082,Enterprise CPaaS,false_positive,high,2025-02-28,v3.0,resolved,116.6
+TKT-00695,CUST-062,Mid-Market Contact Center,false_positive,medium,2025-06-10,v3.1,closed,39.4
+TKT-00696,CUST-001,Tier 1 Carrier,latency,medium,2025-10-10,v3.2,resolved,70.6
+TKT-00697,CUST-006,Tier 1 Carrier,missed_spam,medium,2025-05-04,v3.1,resolved,29.6
+TKT-00698,CUST-024,Enterprise Bank,false_positive,medium,2025-01-17,v3.0,closed,11.1
+TKT-00699,CUST-097,Growth CPaaS,availability,high,2025-02-04,v3.0,closed,60.2
+TKT-00700,CUST-003,Tier 1 Carrier,availability,high,2025-10-13,v3.2,open,42.4
+TKT-00701,CUST-001,Tier 1 Carrier,latency,medium,2025-11-24,v3.2,resolved,103.9
+TKT-00702,CUST-038,Mid-Market Bank,latency,high,2025-07-26,v3.1,resolved,7.3
+TKT-00703,CUST-001,Tier 1 Carrier,false_positive,critical,2025-12-16,v3.2,open,32.6
+TKT-00704,CUST-004,Tier 1 Carrier,false_positive,medium,2025-09-13,v3.2,resolved,91.6
+TKT-00705,CUST-099,Growth CPaaS,integration,high,2025-03-31,v3.0,resolved,66.7
+TKT-00706,CUST-034,Mid-Market Bank,integration,low,2025-06-13,v3.1,resolved,118.2
+TKT-00707,CUST-060,Mid-Market Contact Center,integration,low,2025-09-23,v3.2,closed,21.0
+TKT-00708,CUST-028,Enterprise Bank,availability,critical,2025-08-14,v3.1,closed,14.7
+TKT-00709,CUST-001,Tier 1 Carrier,availability,high,2025-10-10,v3.2,resolved,41.3
+TKT-00710,CUST-052,Enterprise Contact Center,latency,high,2025-01-19,v3.0,resolved,10.1
+TKT-00711,CUST-066,Mid-Market Contact Center,missed_spam,high,2025-08-18,v3.1,resolved,27.4
+TKT-00712,CUST-100,Growth CPaaS,latency,medium,2025-11-04,v3.2,resolved,84.4
+TKT-00713,CUST-001,Tier 1 Carrier,false_positive,low,2025-09-10,v3.2,closed,42.7
+TKT-00714,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-24,v3.2,closed,58.6
+TKT-00715,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-29,v3.2,closed,7.9
+TKT-00716,CUST-021,Enterprise Bank,missed_spam,medium,2025-05-28,v3.1,resolved,113.2
+TKT-00717,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-01,v3.2,closed,59.5
+TKT-00718,CUST-002,Tier 1 Carrier,false_positive,critical,2025-10-01,v3.2,open,62.8
+TKT-00719,CUST-026,Enterprise Bank,integration,high,2025-05-03,v3.1,closed,32.3
+TKT-00720,CUST-072,Mid-Market Contact Center,false_positive,low,2025-02-18,v3.0,resolved,103.3
+TKT-00721,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-10,v3.2,closed,55.4
+TKT-00722,CUST-010,Regional Carrier,availability,high,2025-02-28,v3.0,resolved,12.4
+TKT-00723,CUST-093,Growth CPaaS,availability,high,2025-02-27,v3.0,closed,19.3
+TKT-00724,CUST-021,Enterprise Bank,integration,high,2025-03-24,v3.0,resolved,104.5
+TKT-00725,CUST-007,Tier 1 Carrier,availability,medium,2025-10-29,v3.2,closed,63.0
+TKT-00726,CUST-003,Tier 1 Carrier,latency,low,2025-10-30,v3.2,resolved,116.1
+TKT-00727,CUST-082,Enterprise CPaaS,missed_spam,medium,2025-04-02,v3.0,resolved,29.8
+TKT-00728,CUST-030,Enterprise Bank,availability,medium,2025-03-09,v3.0,resolved,65.8
+TKT-00729,CUST-036,Mid-Market Bank,availability,critical,2025-05-31,v3.1,resolved,108.9
+TKT-00730,CUST-076,Enterprise CPaaS,missed_spam,medium,2025-05-10,v3.1,open,89.6
+TKT-00731,CUST-041,Mid-Market Bank,availability,low,2025-09-18,v3.2,closed,84.2
+TKT-00732,CUST-063,Mid-Market Contact Center,billing,low,2025-02-14,v3.0,closed,107.0
+TKT-00733,CUST-086,Enterprise CPaaS,integration,medium,2025-03-23,v3.0,closed,63.6
+TKT-00734,CUST-062,Mid-Market Contact Center,latency,critical,2025-06-27,v3.1,resolved,41.5
+TKT-00735,CUST-019,Regional Carrier,false_positive,medium,2025-10-05,v3.2,resolved,2.7
+TKT-00736,CUST-080,Enterprise CPaaS,integration,medium,2025-05-30,v3.1,closed,9.1
+TKT-00737,CUST-074,Mid-Market Contact Center,latency,high,2025-01-12,v3.0,resolved,82.1
+TKT-00738,CUST-017,Regional Carrier,latency,high,2025-08-28,v3.1,resolved,50.7
+TKT-00739,CUST-012,Regional Carrier,missed_spam,medium,2025-02-06,v3.0,resolved,24.4
+TKT-00740,CUST-052,Enterprise Contact Center,latency,medium,2025-06-13,v3.1,resolved,30.3
+TKT-00741,CUST-085,Enterprise CPaaS,missed_spam,medium,2025-11-25,v3.2,resolved,64.7
+TKT-00742,CUST-069,Mid-Market Contact Center,missed_spam,high,2025-02-18,v3.0,open,26.7
+TKT-00743,CUST-099,Growth CPaaS,billing,medium,2025-11-20,v3.2,closed,5.5
+TKT-00744,CUST-055,Enterprise Contact Center,latency,medium,2025-07-22,v3.1,resolved,17.5
+TKT-00745,CUST-019,Regional Carrier,integration,high,2025-11-02,v3.2,resolved,103.5
+TKT-00746,CUST-065,Mid-Market Contact Center,integration,medium,2025-04-01,v3.0,resolved,45.0
+TKT-00747,CUST-069,Mid-Market Contact Center,availability,high,2025-01-20,v3.0,resolved,57.1
+TKT-00748,CUST-037,Mid-Market Bank,availability,high,2025-08-27,v3.1,resolved,47.1
+TKT-00749,CUST-031,Enterprise Bank,availability,medium,2025-10-26,v3.2,resolved,29.5
+TKT-00750,CUST-080,Enterprise CPaaS,false_positive,high,2025-05-18,v3.1,resolved,32.8
+TKT-00751,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-25,v3.2,resolved,60.9
+TKT-00752,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-18,v3.2,resolved,87.6
+TKT-00753,CUST-082,Enterprise CPaaS,missed_spam,medium,2025-11-27,v3.2,open,107.7
+TKT-00754,CUST-003,Tier 1 Carrier,false_positive,high,2025-12-18,v3.2,resolved,114.2
+TKT-00755,CUST-064,Mid-Market Contact Center,availability,medium,2025-09-08,v3.2,resolved,88.7
+TKT-00756,CUST-049,Enterprise Contact Center,latency,medium,2025-01-10,v3.0,closed,82.2
+TKT-00757,CUST-004,Tier 1 Carrier,false_positive,medium,2025-10-08,v3.2,closed,3.5
+TKT-00758,CUST-002,Tier 1 Carrier,false_positive,medium,2025-10-09,v3.2,resolved,18.5
+TKT-00759,CUST-090,Growth CPaaS,availability,high,2025-06-13,v3.1,open,39.6
+TKT-00760,CUST-074,Mid-Market Contact Center,availability,medium,2025-03-12,v3.0,resolved,68.4
+TKT-00761,CUST-015,Regional Carrier,false_positive,medium,2025-12-25,v3.2,closed,104.0
+TKT-00762,CUST-076,Enterprise CPaaS,billing,low,2025-07-20,v3.1,resolved,118.0
+TKT-00763,CUST-001,Tier 1 Carrier,integration,medium,2025-12-14,v3.2,resolved,59.7
+TKT-00764,CUST-008,Tier 1 Carrier,false_positive,high,2025-11-27,v3.2,closed,2.9
+TKT-00765,CUST-015,Regional Carrier,integration,medium,2025-04-28,v3.0,resolved,44.3
+TKT-00766,CUST-069,Mid-Market Contact Center,availability,medium,2025-03-21,v3.0,resolved,43.2
+TKT-00767,CUST-025,Enterprise Bank,latency,high,2025-04-01,v3.0,resolved,39.6
+TKT-00768,CUST-065,Mid-Market Contact Center,latency,high,2025-08-15,v3.1,closed,67.3
+TKT-00769,CUST-003,Tier 1 Carrier,false_positive,critical,2025-11-14,v3.2,closed,54.2
+TKT-00770,CUST-089,Growth CPaaS,latency,medium,2025-12-19,v3.2,resolved,32.3
+TKT-00771,CUST-012,Regional Carrier,false_positive,medium,2025-02-23,v3.0,resolved,109.8
+TKT-00772,CUST-078,Enterprise CPaaS,billing,low,2025-01-16,v3.0,resolved,109.1
+TKT-00773,CUST-037,Mid-Market Bank,latency,medium,2025-07-02,v3.1,resolved,87.5
+TKT-00774,CUST-001,Tier 1 Carrier,billing,medium,2025-12-01,v3.2,closed,114.5
+TKT-00775,CUST-035,Mid-Market Bank,integration,medium,2025-11-16,v3.2,resolved,76.5
+TKT-00776,CUST-005,Tier 1 Carrier,false_positive,high,2025-11-18,v3.2,resolved,108.0
+TKT-00777,CUST-046,Enterprise Contact Center,false_positive,high,2025-04-30,v3.0,open,85.9
+TKT-00778,CUST-001,Tier 1 Carrier,availability,medium,2025-11-17,v3.2,closed,18.9
+TKT-00779,CUST-050,Enterprise Contact Center,billing,high,2025-05-01,v3.1,open,53.3
+TKT-00780,CUST-001,Tier 1 Carrier,availability,high,2025-11-16,v3.2,closed,55.7
+TKT-00781,CUST-020,Regional Carrier,billing,medium,2025-07-14,v3.1,open,80.7
+TKT-00782,CUST-019,Regional Carrier,latency,medium,2025-06-22,v3.1,resolved,38.3
+TKT-00783,CUST-001,Tier 1 Carrier,integration,high,2025-10-23,v3.2,closed,7.8
+TKT-00784,CUST-002,Tier 1 Carrier,false_positive,low,2025-10-09,v3.2,closed,41.4
+TKT-00785,CUST-004,Tier 1 Carrier,false_positive,critical,2025-10-08,v3.2,resolved,80.5
+TKT-00786,CUST-073,Mid-Market Contact Center,missed_spam,low,2025-07-31,v3.1,resolved,83.7
+TKT-00787,CUST-024,Enterprise Bank,missed_spam,high,2025-06-29,v3.1,resolved,112.6
+TKT-00788,CUST-066,Mid-Market Contact Center,latency,medium,2025-03-30,v3.0,closed,35.5
+TKT-00789,CUST-063,Mid-Market Contact Center,latency,high,2025-05-17,v3.1,open,38.1
+TKT-00790,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-11-20,v3.2,resolved,114.4
+TKT-00791,CUST-071,Mid-Market Contact Center,integration,high,2025-04-19,v3.0,resolved,28.8
+TKT-00792,CUST-098,Growth CPaaS,availability,high,2025-12-06,v3.2,closed,44.0
+TKT-00793,CUST-011,Regional Carrier,false_positive,high,2025-06-26,v3.1,resolved,96.4
+TKT-00794,CUST-064,Mid-Market Contact Center,availability,critical,2025-04-16,v3.0,closed,30.3
+TKT-00795,CUST-058,Enterprise Contact Center,missed_spam,critical,2025-04-30,v3.0,open,116.8
+TKT-00796,CUST-031,Enterprise Bank,false_positive,high,2025-05-19,v3.1,closed,85.4
+TKT-00797,CUST-024,Enterprise Bank,false_positive,medium,2025-02-02,v3.0,closed,108.7
+TKT-00798,CUST-038,Mid-Market Bank,billing,high,2025-04-26,v3.0,open,13.0
+TKT-00799,CUST-012,Regional Carrier,missed_spam,high,2025-07-28,v3.1,resolved,108.3
+TKT-00800,CUST-032,Enterprise Bank,false_positive,high,2025-11-29,v3.2,closed,68.2
+TKT-00801,CUST-081,Enterprise CPaaS,missed_spam,medium,2025-04-15,v3.0,resolved,98.1
+TKT-00802,CUST-002,Tier 1 Carrier,false_positive,medium,2025-12-19,v3.2,resolved,62.6
+TKT-00803,CUST-023,Enterprise Bank,integration,low,2025-05-04,v3.1,resolved,38.2
+TKT-00804,CUST-080,Enterprise CPaaS,missed_spam,high,2025-01-23,v3.0,resolved,66.8
+TKT-00805,CUST-078,Enterprise CPaaS,false_positive,low,2025-04-24,v3.0,resolved,118.6
+TKT-00806,CUST-007,Tier 1 Carrier,false_positive,critical,2025-09-15,v3.2,resolved,8.3
+TKT-00807,CUST-008,Tier 1 Carrier,false_positive,medium,2025-12-23,v3.2,resolved,29.9
+TKT-00808,CUST-042,Mid-Market Bank,billing,medium,2025-10-25,v3.2,resolved,35.1
+TKT-00809,CUST-040,Mid-Market Bank,latency,medium,2025-11-22,v3.2,closed,41.4
+TKT-00810,CUST-094,Growth CPaaS,latency,medium,2025-06-08,v3.1,resolved,44.8
+TKT-00811,CUST-008,Tier 1 Carrier,missed_spam,medium,2025-10-22,v3.2,open,93.3
+TKT-00812,CUST-003,Tier 1 Carrier,false_positive,critical,2025-12-07,v3.2,open,68.5
+TKT-00813,CUST-028,Enterprise Bank,availability,high,2025-05-09,v3.1,resolved,32.6
+TKT-00814,CUST-002,Tier 1 Carrier,false_positive,high,2025-10-02,v3.2,resolved,61.9
+TKT-00815,CUST-031,Enterprise Bank,missed_spam,medium,2025-03-31,v3.0,closed,26.7
+TKT-00816,CUST-074,Mid-Market Contact Center,latency,medium,2025-07-23,v3.1,resolved,38.6
+TKT-00817,CUST-041,Mid-Market Bank,latency,critical,2025-03-22,v3.0,resolved,62.7
+TKT-00818,CUST-006,Tier 1 Carrier,integration,medium,2025-09-19,v3.2,resolved,21.6
+TKT-00819,CUST-006,Tier 1 Carrier,false_positive,high,2025-09-14,v3.2,closed,23.7
+TKT-00820,CUST-068,Mid-Market Contact Center,billing,medium,2025-04-20,v3.0,open,102.4
+TKT-00821,CUST-006,Tier 1 Carrier,false_positive,medium,2025-12-07,v3.2,resolved,91.0
+TKT-00822,CUST-080,Enterprise CPaaS,missed_spam,medium,2025-05-08,v3.1,resolved,119.8
+TKT-00823,CUST-032,Enterprise Bank,missed_spam,medium,2025-08-10,v3.1,closed,105.8
+TKT-00824,CUST-005,Tier 1 Carrier,latency,critical,2025-01-18,v3.0,resolved,12.2
+TKT-00825,CUST-081,Enterprise CPaaS,billing,medium,2025-07-09,v3.1,resolved,73.2
+TKT-00826,CUST-069,Mid-Market Contact Center,integration,medium,2025-02-26,v3.0,resolved,77.0
+TKT-00827,CUST-069,Mid-Market Contact Center,false_positive,critical,2025-04-01,v3.0,closed,38.0
+TKT-00828,CUST-002,Tier 1 Carrier,false_positive,critical,2025-10-21,v3.2,closed,91.5
+TKT-00829,CUST-038,Mid-Market Bank,integration,high,2025-03-31,v3.0,resolved,78.1
+TKT-00830,CUST-017,Regional Carrier,missed_spam,medium,2025-02-03,v3.0,closed,52.9
+TKT-00831,CUST-059,Mid-Market Contact Center,false_positive,high,2025-10-25,v3.2,resolved,81.2
+TKT-00832,CUST-055,Enterprise Contact Center,integration,high,2025-03-02,v3.0,resolved,39.2
+TKT-00833,CUST-076,Enterprise CPaaS,billing,medium,2025-07-28,v3.1,resolved,88.3
+TKT-00834,CUST-001,Tier 1 Carrier,latency,medium,2025-12-13,v3.2,resolved,42.7
+TKT-00835,CUST-088,Enterprise CPaaS,integration,high,2025-04-08,v3.0,resolved,104.5
+TKT-00836,CUST-070,Mid-Market Contact Center,integration,high,2025-01-21,v3.0,resolved,103.6
+TKT-00837,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-26,v3.2,resolved,55.1
+TKT-00838,CUST-049,Enterprise Contact Center,missed_spam,low,2025-11-04,v3.2,resolved,75.2
+TKT-00839,CUST-042,Mid-Market Bank,integration,medium,2025-02-14,v3.0,resolved,57.3
+TKT-00840,CUST-094,Growth CPaaS,integration,high,2025-08-31,v3.1,resolved,72.9
+TKT-00841,CUST-082,Enterprise CPaaS,latency,medium,2025-07-15,v3.1,closed,99.2
+TKT-00842,CUST-007,Tier 1 Carrier,latency,high,2025-06-25,v3.1,closed,43.6
+TKT-00843,CUST-081,Enterprise CPaaS,integration,critical,2025-06-23,v3.1,closed,54.7
+TKT-00844,CUST-054,Enterprise Contact Center,integration,medium,2025-12-07,v3.2,resolved,3.8
+TKT-00845,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-04,v3.2,open,57.8
+TKT-00846,CUST-067,Mid-Market Contact Center,missed_spam,low,2025-11-20,v3.2,open,62.2
+TKT-00847,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-26,v3.2,resolved,58.5
+TKT-00848,CUST-071,Mid-Market Contact Center,integration,high,2025-02-17,v3.0,closed,74.7
+TKT-00849,CUST-010,Regional Carrier,integration,high,2025-04-10,v3.0,resolved,28.8
+TKT-00850,CUST-014,Regional Carrier,missed_spam,high,2025-12-21,v3.2,closed,89.2
+TKT-00851,CUST-084,Enterprise CPaaS,billing,high,2025-08-07,v3.1,closed,90.6
+TKT-00852,CUST-001,Tier 1 Carrier,false_positive,medium,2025-12-18,v3.2,resolved,30.8
+TKT-00853,CUST-020,Regional Carrier,missed_spam,high,2025-01-07,v3.0,resolved,67.3
+TKT-00854,CUST-006,Tier 1 Carrier,false_positive,high,2025-11-13,v3.2,closed,95.6
+TKT-00855,CUST-092,Growth CPaaS,false_positive,critical,2025-02-18,v3.0,resolved,18.1
+TKT-00856,CUST-025,Enterprise Bank,false_positive,medium,2025-06-12,v3.1,closed,115.8
+TKT-00857,CUST-001,Tier 1 Carrier,latency,medium,2025-12-23,v3.2,resolved,58.8
+TKT-00858,CUST-069,Mid-Market Contact Center,integration,medium,2025-05-25,v3.1,resolved,40.4
+TKT-00859,CUST-067,Mid-Market Contact Center,integration,high,2025-09-10,v3.2,resolved,88.7
+TKT-00860,CUST-037,Mid-Market Bank,billing,medium,2025-08-25,v3.1,resolved,58.2
+TKT-00861,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-03,v3.2,resolved,66.6
+TKT-00862,CUST-007,Tier 1 Carrier,false_positive,medium,2025-09-27,v3.2,closed,71.3
+TKT-00863,CUST-093,Growth CPaaS,integration,medium,2025-08-31,v3.1,open,30.0
+TKT-00864,CUST-082,Enterprise CPaaS,availability,high,2025-08-07,v3.1,resolved,86.6
+TKT-00865,CUST-001,Tier 1 Carrier,false_positive,critical,2025-09-16,v3.2,open,47.8
+TKT-00866,CUST-037,Mid-Market Bank,latency,high,2025-04-20,v3.0,closed,8.6
+TKT-00867,CUST-059,Mid-Market Contact Center,false_positive,critical,2025-10-02,v3.2,closed,5.2
+TKT-00868,CUST-004,Tier 1 Carrier,false_positive,critical,2025-11-23,v3.2,resolved,61.5
+TKT-00869,CUST-055,Enterprise Contact Center,integration,medium,2025-11-25,v3.2,resolved,66.3
+TKT-00870,CUST-001,Tier 1 Carrier,missed_spam,high,2025-11-01,v3.2,closed,102.6
+TKT-00871,CUST-028,Enterprise Bank,missed_spam,medium,2025-07-28,v3.1,resolved,51.6
+TKT-00872,CUST-027,Enterprise Bank,false_positive,high,2025-06-19,v3.1,resolved,10.3
+TKT-00873,CUST-015,Regional Carrier,billing,medium,2025-12-07,v3.2,resolved,64.5
+TKT-00874,CUST-008,Tier 1 Carrier,latency,low,2025-12-19,v3.2,resolved,33.5
+TKT-00875,CUST-004,Tier 1 Carrier,missed_spam,high,2025-12-11,v3.2,closed,15.6
+TKT-00876,CUST-002,Tier 1 Carrier,latency,medium,2025-11-01,v3.2,resolved,18.5
+TKT-00877,CUST-063,Mid-Market Contact Center,latency,high,2025-10-10,v3.2,resolved,11.5
+TKT-00878,CUST-079,Enterprise CPaaS,billing,medium,2025-10-21,v3.2,resolved,93.7
+TKT-00879,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-10,v3.2,open,15.6
+TKT-00880,CUST-004,Tier 1 Carrier,missed_spam,medium,2025-09-27,v3.2,resolved,33.9
+TKT-00881,CUST-094,Growth CPaaS,latency,high,2025-01-07,v3.0,closed,83.4
+TKT-00882,CUST-059,Mid-Market Contact Center,integration,low,2025-01-04,v3.0,closed,53.0
+TKT-00883,CUST-001,Tier 1 Carrier,availability,high,2025-05-31,v3.1,open,53.5
+TKT-00884,CUST-078,Enterprise CPaaS,integration,medium,2025-07-03,v3.1,closed,46.4
+TKT-00885,CUST-056,Enterprise Contact Center,availability,medium,2025-06-27,v3.1,resolved,119.2
+TKT-00886,CUST-003,Tier 1 Carrier,integration,low,2025-06-01,v3.1,resolved,73.0
+TKT-00887,CUST-007,Tier 1 Carrier,missed_spam,medium,2025-09-24,v3.2,closed,76.9
+TKT-00888,CUST-027,Enterprise Bank,missed_spam,medium,2025-06-17,v3.1,closed,29.2
+TKT-00889,CUST-022,Enterprise Bank,integration,low,2025-08-09,v3.1,resolved,117.7
+TKT-00890,CUST-074,Mid-Market Contact Center,missed_spam,medium,2025-03-27,v3.0,open,100.0
+TKT-00891,CUST-045,Mid-Market Bank,false_positive,medium,2025-09-22,v3.2,resolved,15.2
+TKT-00892,CUST-035,Mid-Market Bank,integration,high,2025-01-13,v3.0,closed,104.8
+TKT-00893,CUST-007,Tier 1 Carrier,false_positive,low,2025-11-29,v3.2,closed,43.7
+TKT-00894,CUST-002,Tier 1 Carrier,false_positive,high,2025-11-16,v3.2,resolved,33.9
+TKT-00895,CUST-069,Mid-Market Contact Center,false_positive,medium,2025-04-18,v3.0,resolved,97.1
+TKT-00896,CUST-073,Mid-Market Contact Center,availability,critical,2025-02-03,v3.0,resolved,87.6
+TKT-00897,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-18,v3.2,resolved,98.7
+TKT-00898,CUST-060,Mid-Market Contact Center,billing,medium,2025-03-01,v3.0,closed,81.7
+TKT-00899,CUST-031,Enterprise Bank,latency,critical,2025-05-15,v3.1,resolved,101.7
+TKT-00900,CUST-039,Mid-Market Bank,missed_spam,medium,2025-06-22,v3.1,resolved,110.2
+TKT-00901,CUST-075,Mid-Market Contact Center,false_positive,low,2025-04-09,v3.0,resolved,20.4
+TKT-00902,CUST-099,Growth CPaaS,missed_spam,critical,2025-07-17,v3.1,closed,22.0
+TKT-00903,CUST-021,Enterprise Bank,latency,medium,2025-12-12,v3.2,closed,9.2
+TKT-00904,CUST-020,Regional Carrier,false_positive,high,2025-08-09,v3.1,closed,58.7
+TKT-00905,CUST-003,Tier 1 Carrier,missed_spam,medium,2025-11-13,v3.2,resolved,67.1
+TKT-00906,CUST-008,Tier 1 Carrier,latency,low,2025-11-01,v3.2,resolved,55.8
+TKT-00907,CUST-059,Mid-Market Contact Center,latency,medium,2025-08-13,v3.1,closed,35.5
+TKT-00908,CUST-022,Enterprise Bank,integration,medium,2025-07-11,v3.1,closed,79.0
+TKT-00909,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-25,v3.2,resolved,62.4
+TKT-00910,CUST-024,Enterprise Bank,latency,medium,2025-08-18,v3.1,closed,25.4
+TKT-00911,CUST-005,Tier 1 Carrier,false_positive,high,2025-09-25,v3.2,resolved,62.2
+TKT-00912,CUST-070,Mid-Market Contact Center,availability,medium,2025-07-06,v3.1,resolved,64.1
+TKT-00913,CUST-006,Tier 1 Carrier,integration,high,2025-03-08,v3.0,resolved,90.5
+TKT-00914,CUST-014,Regional Carrier,availability,high,2025-02-27,v3.0,resolved,56.5
+TKT-00915,CUST-001,Tier 1 Carrier,false_positive,high,2025-10-01,v3.2,open,6.9
+TKT-00916,CUST-036,Mid-Market Bank,availability,medium,2025-04-07,v3.0,closed,75.4
+TKT-00917,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-04,v3.2,closed,76.6
+TKT-00918,CUST-084,Enterprise CPaaS,missed_spam,medium,2025-03-24,v3.0,resolved,44.7
+TKT-00919,CUST-092,Growth CPaaS,integration,medium,2025-12-08,v3.2,closed,45.7
+TKT-00920,CUST-027,Enterprise Bank,latency,medium,2025-04-29,v3.0,closed,92.8
+TKT-00921,CUST-001,Tier 1 Carrier,false_positive,medium,2025-11-12,v3.2,resolved,112.6
+TKT-00922,CUST-044,Mid-Market Bank,billing,high,2025-09-26,v3.2,resolved,32.0
+TKT-00923,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-23,v3.2,closed,107.3
+TKT-00924,CUST-074,Mid-Market Contact Center,missed_spam,medium,2025-09-10,v3.2,resolved,13.0
+TKT-00925,CUST-001,Tier 1 Carrier,integration,medium,2025-11-13,v3.2,closed,18.4
+TKT-00926,CUST-089,Growth CPaaS,false_positive,medium,2025-04-12,v3.0,closed,32.3
+TKT-00927,CUST-045,Mid-Market Bank,availability,high,2025-03-14,v3.0,resolved,101.1
+TKT-00928,CUST-086,Enterprise CPaaS,integration,low,2025-08-26,v3.1,resolved,110.9
+TKT-00929,CUST-024,Enterprise Bank,latency,medium,2025-03-21,v3.0,closed,9.0
+TKT-00930,CUST-076,Enterprise CPaaS,integration,high,2025-08-05,v3.1,resolved,67.4
+TKT-00931,CUST-058,Enterprise Contact Center,missed_spam,high,2025-06-05,v3.1,resolved,116.2
+TKT-00932,CUST-015,Regional Carrier,billing,medium,2025-10-10,v3.2,resolved,7.6
+TKT-00933,CUST-007,Tier 1 Carrier,false_positive,high,2025-09-12,v3.2,closed,119.8
+TKT-00934,CUST-057,Enterprise Contact Center,missed_spam,high,2025-11-09,v3.2,resolved,102.7
+TKT-00935,CUST-003,Tier 1 Carrier,false_positive,medium,2025-09-23,v3.2,closed,21.6
+TKT-00936,CUST-081,Enterprise CPaaS,false_positive,high,2025-05-10,v3.1,open,106.3
+TKT-00937,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-08,v3.2,resolved,98.0
+TKT-00938,CUST-057,Enterprise Contact Center,missed_spam,medium,2025-01-14,v3.0,closed,101.7
+TKT-00939,CUST-005,Tier 1 Carrier,missed_spam,medium,2025-12-02,v3.2,resolved,11.7
+TKT-00940,CUST-095,Growth CPaaS,missed_spam,high,2025-10-23,v3.2,resolved,2.5
+TKT-00941,CUST-054,Enterprise Contact Center,false_positive,high,2025-12-17,v3.2,closed,118.1
+TKT-00942,CUST-053,Enterprise Contact Center,false_positive,high,2025-02-27,v3.0,open,17.5
+TKT-00943,CUST-098,Growth CPaaS,missed_spam,critical,2025-01-22,v3.0,resolved,77.8
+TKT-00944,CUST-051,Enterprise Contact Center,integration,medium,2025-05-28,v3.1,resolved,48.6
+TKT-00945,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-18,v3.2,closed,33.8
+TKT-00946,CUST-063,Mid-Market Contact Center,integration,medium,2025-04-04,v3.0,resolved,75.1
+TKT-00947,CUST-008,Tier 1 Carrier,false_positive,medium,2025-11-24,v3.2,resolved,108.9
+TKT-00948,CUST-008,Tier 1 Carrier,false_positive,high,2025-01-10,v3.0,resolved,111.3
+TKT-00949,CUST-087,Enterprise CPaaS,missed_spam,critical,2025-04-22,v3.0,resolved,97.0
+TKT-00950,CUST-062,Mid-Market Contact Center,latency,high,2025-10-06,v3.2,resolved,49.9
+TKT-00951,CUST-087,Enterprise CPaaS,latency,high,2025-07-05,v3.1,closed,49.1
+TKT-00952,CUST-089,Growth CPaaS,billing,medium,2025-03-14,v3.0,closed,46.0
+TKT-00953,CUST-015,Regional Carrier,false_positive,medium,2025-02-26,v3.0,closed,3.6
+TKT-00954,CUST-015,Regional Carrier,latency,low,2025-05-03,v3.1,resolved,99.0
+TKT-00955,CUST-001,Tier 1 Carrier,missed_spam,medium,2025-12-11,v3.2,open,37.2
+TKT-00956,CUST-069,Mid-Market Contact Center,latency,medium,2025-11-26,v3.2,closed,67.9
+TKT-00957,CUST-013,Regional Carrier,latency,medium,2025-12-04,v3.2,closed,49.3
+TKT-00958,CUST-018,Regional Carrier,billing,medium,2025-09-06,v3.2,open,47.2
+TKT-00959,CUST-024,Enterprise Bank,availability,critical,2025-06-09,v3.1,resolved,28.1
+TKT-00960,CUST-031,Enterprise Bank,false_positive,medium,2025-09-01,v3.2,closed,111.2
+TKT-00961,CUST-001,Tier 1 Carrier,false_positive,high,2025-11-24,v3.2,closed,56.2
+TKT-00962,CUST-052,Enterprise Contact Center,missed_spam,medium,2025-03-11,v3.0,resolved,41.0
+TKT-00963,CUST-007,Tier 1 Carrier,false_positive,high,2025-10-31,v3.2,resolved,58.2
+TKT-00964,CUST-021,Enterprise Bank,false_positive,critical,2025-06-30,v3.1,closed,67.5
+TKT-00965,CUST-006,Tier 1 Carrier,integration,medium,2025-05-11,v3.1,resolved,76.5
+TKT-00966,CUST-008,Tier 1 Carrier,false_positive,medium,2025-10-21,v3.2,resolved,23.9
+TKT-00967,CUST-003,Tier 1 Carrier,false_positive,medium,2025-12-01,v3.2,resolved,61.2
+TKT-00968,CUST-003,Tier 1 Carrier,false_positive,high,2025-12-14,v3.2,open,22.3
+TKT-00969,CUST-003,Tier 1 Carrier,latency,high,2025-12-25,v3.2,resolved,19.3
+TKT-00970,CUST-044,Mid-Market Bank,false_positive,high,2025-04-14,v3.0,open,108.1
+TKT-00971,CUST-083,Enterprise CPaaS,missed_spam,high,2025-11-09,v3.2,closed,88.7
+TKT-00972,CUST-091,Growth CPaaS,integration,high,2025-06-14,v3.1,resolved,91.9
+TKT-00973,CUST-075,Mid-Market Contact Center,integration,medium,2025-01-02,v3.0,resolved,69.1
+TKT-00974,CUST-008,Tier 1 Carrier,false_positive,high,2025-09-24,v3.2,resolved,12.2
+TKT-00975,CUST-097,Growth CPaaS,availability,critical,2025-01-31,v3.0,resolved,111.0
+TKT-00976,CUST-022,Enterprise Bank,availability,medium,2025-04-22,v3.0,closed,77.9
+TKT-00977,CUST-015,Regional Carrier,missed_spam,high,2025-07-25,v3.1,open,114.3
+TKT-00978,CUST-001,Tier 1 Carrier,false_positive,medium,2025-10-14,v3.2,closed,110.7
+TKT-00979,CUST-081,Enterprise CPaaS,integration,medium,2025-05-06,v3.1,resolved,60.4
+TKT-00980,CUST-001,Tier 1 Carrier,false_positive,high,2025-12-19,v3.2,closed,33.4
+TKT-00981,CUST-015,Regional Carrier,integration,high,2025-03-19,v3.0,resolved,25.8
+TKT-00982,CUST-061,Mid-Market Contact Center,integration,low,2025-06-06,v3.1,resolved,58.5
+TKT-00983,CUST-078,Enterprise CPaaS,integration,high,2025-03-13,v3.0,resolved,49.8
+TKT-00984,CUST-090,Growth CPaaS,integration,medium,2025-12-29,v3.2,resolved,113.0
+TKT-00985,CUST-060,Mid-Market Contact Center,integration,medium,2025-08-09,v3.1,resolved,27.7
+TKT-00986,CUST-001,Tier 1 Carrier,false_positive,high,2025-09-18,v3.2,closed,31.8
+TKT-00987,CUST-053,Enterprise Contact Center,availability,high,2025-09-23,v3.2,closed,41.3
+TKT-00988,CUST-060,Mid-Market Contact Center,false_positive,low,2025-09-21,v3.2,closed,86.0
+TKT-00989,CUST-001,Tier 1 Carrier,false_positive,medium,2025-09-13,v3.2,resolved,107.3
+TKT-00990,CUST-021,Enterprise Bank,false_positive,high,2025-11-24,v3.2,resolved,57.7
+TKT-00991,CUST-077,Enterprise CPaaS,false_positive,critical,2025-12-22,v3.2,resolved,3.0
+TKT-00992,CUST-008,Tier 1 Carrier,availability,critical,2025-02-05,v3.0,open,18.2
+TKT-00993,CUST-047,Enterprise Contact Center,missed_spam,high,2025-12-25,v3.2,resolved,118.2
+TKT-00994,CUST-023,Enterprise Bank,integration,medium,2025-01-15,v3.0,resolved,71.3
+TKT-00995,CUST-006,Tier 1 Carrier,availability,high,2025-04-30,v3.0,resolved,80.4
+TKT-00996,CUST-001,Tier 1 Carrier,false_positive,critical,2025-12-18,v3.2,resolved,41.0
+TKT-00997,CUST-100,Growth CPaaS,integration,low,2025-04-21,v3.0,closed,115.4
+TKT-00998,CUST-011,Regional Carrier,missed_spam,medium,2025-06-19,v3.1,resolved,28.2
+TKT-00999,CUST-100,Growth CPaaS,latency,critical,2025-05-14,v3.1,resolved,68.5
+TKT-01000,CUST-005,Tier 1 Carrier,false_positive,medium,2025-09-20,v3.2,closed,2.7

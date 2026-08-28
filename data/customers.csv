@@ -1,0 +1,101 @@
+customer_id,customer_name,customer_type,customer_segment,ARR,country,carrier,contract_start_date,account_status
+CUST-001,Northstar Mobile,mobile_carrier,Tier 1 Carrier,2800000,United States,Northstar Mobile,2024-12-13,at_risk
+CUST-002,Alder Cloud,mobile_carrier,Tier 1 Carrier,2780000,Canada,Alder Cloud,2023-07-29,active
+CUST-003,Bluepeak Bank,mobile_carrier,Tier 1 Carrier,2870000,Netherlands,Bluepeak Bank,2022-07-17,at_risk
+CUST-004,Cinder Telecom,mobile_carrier,Tier 1 Carrier,1890000,Australia,Cinder Telecom,2024-12-27,active
+CUST-005,Driftwood Voice,mobile_carrier,Tier 1 Carrier,1680000,United States,Driftwood Voice,2023-08-30,active
+CUST-006,Everfield Connect,mobile_carrier,Tier 1 Carrier,2920000,Ireland,Everfield Connect,2024-01-24,active
+CUST-007,Fairway Financial,mobile_carrier,Tier 1 Carrier,2590000,United States,Fairway Financial,2024-06-19,active
+CUST-008,Granite Mobile,mobile_carrier,Tier 1 Carrier,2050000,United States,Granite Mobile,2023-08-19,active
+CUST-009,Harbor CX,mobile_carrier,Regional Carrier,670000,France,Harbor CX,2024-08-23,active
+CUST-010,Ironwood Cloud,mobile_carrier,Regional Carrier,610000,Canada,Ironwood Cloud,2024-12-27,active
+CUST-011,Juniper Bank,mobile_carrier,Regional Carrier,340000,United States,Juniper Bank,2022-01-27,active
+CUST-012,Keystone Telecom,mobile_carrier,Regional Carrier,510000,France,Keystone Telecom,2023-08-17,active
+CUST-013,Lighthouse Voice,mobile_carrier,Regional Carrier,400000,United States,Lighthouse Voice,2024-05-04,active
+CUST-014,Meadow Connect,mobile_carrier,Regional Carrier,690000,United States,Meadow Connect,2023-07-21,active
+CUST-015,Nimbus Financial,mobile_carrier,Regional Carrier,750000,France,Nimbus Financial,2022-01-31,active
+CUST-016,Oakline Mobile,mobile_carrier,Regional Carrier,330000,United States,Oakline Mobile,2023-10-18,active
+CUST-017,Pioneer CX,mobile_carrier,Regional Carrier,880000,United States,Pioneer CX,2022-03-16,active
+CUST-018,Quartz Cloud,mobile_carrier,Regional Carrier,750000,Germany,Quartz Cloud,2024-04-13,active
+CUST-019,Redwood Bank,mobile_carrier,Regional Carrier,560000,United States,Redwood Bank,2024-04-21,active
+CUST-020,Summit Telecom,mobile_carrier,Regional Carrier,610000,United States,Summit Telecom,2023-09-22,active
+CUST-021,Tandem Voice,bank,Enterprise Bank,1350000,Netherlands,Northstar Mobile,2022-05-23,active
+CUST-022,Union Connect,bank,Enterprise Bank,1010000,Canada,Alder Telecom,2023-07-20,active
+CUST-023,Vantage Financial,bank,Enterprise Bank,960000,Australia,Northstar Mobile,2023-03-13,active
+CUST-024,Willow Mobile,bank,Enterprise Bank,1940000,Ireland,Bluepeak Mobile,2022-04-01,active
+CUST-025,Zenith CX,bank,Enterprise Bank,900000,United States,Northstar Mobile,2024-03-11,active
+CUST-026,Northstar Cloud,bank,Enterprise Bank,1320000,Canada,Alder Telecom,2024-09-26,active
+CUST-027,Alder Bank,bank,Enterprise Bank,1050000,Germany,Alder Telecom,2024-06-26,at_risk
+CUST-028,Bluepeak Telecom,bank,Enterprise Bank,950000,United States,Northstar Mobile,2023-05-04,active
+CUST-029,Cinder Voice,bank,Enterprise Bank,2080000,United States,multi-carrier,2024-07-15,active
+CUST-030,Driftwood Connect,bank,Enterprise Bank,710000,Spain,multi-carrier,2024-07-12,active
+CUST-031,Everfield Financial,bank,Enterprise Bank,1590000,Australia,Northstar Mobile,2023-02-06,active
+CUST-032,Fairway Mobile,bank,Enterprise Bank,750000,United States,Bluepeak Mobile,2024-10-29,active
+CUST-033,Granite CX,bank,Mid-Market Bank,320000,Ireland,Alder Telecom,2024-05-07,active
+CUST-034,Harbor Cloud,bank,Mid-Market Bank,220000,Canada,Northstar Mobile,2022-01-11,active
+CUST-035,Ironwood Bank,bank,Mid-Market Bank,620000,United States,multi-carrier,2022-05-03,active
+CUST-036,Juniper Telecom,bank,Mid-Market Bank,300000,Netherlands,Northstar Mobile,2023-05-27,active
+CUST-037,Keystone Voice,bank,Mid-Market Bank,250000,Australia,Bluepeak Mobile,2023-08-19,active
+CUST-038,Lighthouse Connect,bank,Mid-Market Bank,650000,Canada,multi-carrier,2024-11-06,active
+CUST-039,Meadow Financial,bank,Mid-Market Bank,360000,Ireland,Northstar Mobile,2024-02-09,active
+CUST-040,Nimbus Mobile,bank,Mid-Market Bank,640000,Canada,Bluepeak Mobile,2023-03-12,active
+CUST-041,Oakline CX,bank,Mid-Market Bank,590000,Australia,Alder Telecom,2024-04-10,active
+CUST-042,Pioneer Cloud,bank,Mid-Market Bank,260000,Germany,Bluepeak Mobile,2023-01-08,active
+CUST-043,Quartz Bank,bank,Mid-Market Bank,250000,Canada,Bluepeak Mobile,2023-06-19,active
+CUST-044,Redwood Telecom,bank,Mid-Market Bank,260000,Australia,multi-carrier,2024-05-31,active
+CUST-045,Summit Voice,bank,Mid-Market Bank,610000,France,multi-carrier,2022-06-14,active
+CUST-046,Tandem Connect,contact_center,Enterprise Contact Center,1380000,Australia,Northstar Mobile,2024-12-24,active
+CUST-047,Union Financial,contact_center,Enterprise Contact Center,680000,United States,Bluepeak Mobile,2022-12-13,active
+CUST-048,Vantage Mobile,contact_center,Enterprise Contact Center,570000,France,multi-carrier,2024-01-11,active
+CUST-049,Willow CX,contact_center,Enterprise Contact Center,600000,United States,Bluepeak Mobile,2023-10-19,active
+CUST-050,Zenith Cloud,contact_center,Enterprise Contact Center,1280000,Canada,Alder Telecom,2022-12-18,active
+CUST-051,Northstar Bank,contact_center,Enterprise Contact Center,1100000,Ireland,Bluepeak Mobile,2023-03-24,active
+CUST-052,Alder Telecom,contact_center,Enterprise Contact Center,610000,Canada,Alder Telecom,2023-09-27,active
+CUST-053,Bluepeak Voice,contact_center,Enterprise Contact Center,700000,Australia,Northstar Mobile,2022-11-25,active
+CUST-054,Cinder Connect,contact_center,Enterprise Contact Center,920000,Netherlands,Alder Telecom,2022-08-20,active
+CUST-055,Driftwood Financial,contact_center,Enterprise Contact Center,1230000,Australia,Bluepeak Mobile,2024-10-02,active
+CUST-056,Everfield Mobile,contact_center,Enterprise Contact Center,850000,Australia,Northstar Mobile,2023-12-13,active
+CUST-057,Fairway CX,contact_center,Enterprise Contact Center,1400000,France,Bluepeak Mobile,2024-07-29,active
+CUST-058,Granite Cloud,contact_center,Enterprise Contact Center,860000,Canada,Alder Telecom,2023-05-18,active
+CUST-059,Harbor Bank,contact_center,Mid-Market Contact Center,290000,United States,Northstar Mobile,2022-01-31,active
+CUST-060,Ironwood Telecom,contact_center,Mid-Market Contact Center,430000,Spain,Northstar Mobile,2022-03-07,active
+CUST-061,Juniper Voice,contact_center,Mid-Market Contact Center,240000,United States,multi-carrier,2022-01-04,active
+CUST-062,Keystone Connect,contact_center,Mid-Market Contact Center,430000,Canada,Northstar Mobile,2023-10-15,active
+CUST-063,Lighthouse Financial,contact_center,Mid-Market Contact Center,250000,France,Northstar Mobile,2023-03-29,active
+CUST-064,Meadow Mobile,contact_center,Mid-Market Contact Center,380000,Australia,multi-carrier,2024-12-17,active
+CUST-065,Nimbus CX,contact_center,Mid-Market Contact Center,160000,Canada,Northstar Mobile,2024-10-09,active
+CUST-066,Oakline Cloud,contact_center,Mid-Market Contact Center,380000,Germany,Northstar Mobile,2024-06-21,active
+CUST-067,Pioneer Bank,contact_center,Mid-Market Contact Center,380000,Australia,Northstar Mobile,2023-03-01,active
+CUST-068,Quartz Telecom,contact_center,Mid-Market Contact Center,170000,Canada,Northstar Mobile,2023-08-01,active
+CUST-069,Redwood Voice,contact_center,Mid-Market Contact Center,350000,Spain,Northstar Mobile,2022-07-07,active
+CUST-070,Summit Connect,contact_center,Mid-Market Contact Center,370000,Australia,Northstar Mobile,2023-09-24,active
+CUST-071,Tandem Financial,contact_center,Mid-Market Contact Center,380000,Canada,Northstar Mobile,2022-11-04,active
+CUST-072,Union Mobile,contact_center,Mid-Market Contact Center,220000,France,Bluepeak Mobile,2022-04-03,active
+CUST-073,Vantage CX,contact_center,Mid-Market Contact Center,440000,Australia,Alder Telecom,2022-06-08,active
+CUST-074,Willow Cloud,contact_center,Mid-Market Contact Center,130000,Canada,Bluepeak Mobile,2022-10-22,active
+CUST-075,Zenith Bank,contact_center,Mid-Market Contact Center,330000,Spain,multi-carrier,2022-12-29,active
+CUST-076,Northstar Telecom,communications_platform,Enterprise CPaaS,1560000,Australia,multi-carrier,2023-01-23,active
+CUST-077,Alder Voice,communications_platform,Enterprise CPaaS,1740000,Australia,Alder Telecom,2023-02-01,active
+CUST-078,Bluepeak Connect,communications_platform,Enterprise CPaaS,950000,Ireland,Bluepeak Mobile,2023-02-26,active
+CUST-079,Cinder Financial,communications_platform,Enterprise CPaaS,1430000,Canada,multi-carrier,2022-08-25,active
+CUST-080,Driftwood Mobile,communications_platform,Enterprise CPaaS,1250000,Canada,Alder Telecom,2023-07-08,active
+CUST-081,Everfield CX,communications_platform,Enterprise CPaaS,970000,Netherlands,Bluepeak Mobile,2023-03-30,active
+CUST-082,Fairway Cloud,communications_platform,Enterprise CPaaS,1190000,United States,Bluepeak Mobile,2023-12-12,active
+CUST-083,Granite Bank,communications_platform,Enterprise CPaaS,1630000,Canada,Alder Telecom,2024-06-29,active
+CUST-084,Harbor Telecom,communications_platform,Enterprise CPaaS,1150000,Germany,Bluepeak Mobile,2022-03-18,active
+CUST-085,Ironwood Voice,communications_platform,Enterprise CPaaS,1500000,Australia,multi-carrier,2022-01-27,active
+CUST-086,Juniper Connect,communications_platform,Enterprise CPaaS,1760000,Canada,Bluepeak Mobile,2023-03-20,active
+CUST-087,Keystone Financial,communications_platform,Enterprise CPaaS,1740000,Ireland,Northstar Mobile,2022-12-09,active
+CUST-088,Lighthouse Mobile,communications_platform,Enterprise CPaaS,870000,Australia,Bluepeak Mobile,2022-09-03,active
+CUST-089,Meadow CX,communications_platform,Growth CPaaS,490000,Australia,Bluepeak Mobile,2023-11-18,active
+CUST-090,Nimbus Cloud,communications_platform,Growth CPaaS,440000,Spain,Northstar Mobile,2022-08-29,active
+CUST-091,Oakline Bank,communications_platform,Growth CPaaS,190000,Australia,multi-carrier,2024-04-16,active
+CUST-092,Pioneer Telecom,communications_platform,Growth CPaaS,450000,United States,Alder Telecom,2024-04-30,active
+CUST-093,Quartz Voice,communications_platform,Growth CPaaS,480000,Netherlands,Alder Telecom,2023-10-10,active
+CUST-094,Redwood Connect,communications_platform,Growth CPaaS,380000,Australia,Alder Telecom,2023-08-28,active
+CUST-095,Summit Financial,communications_platform,Growth CPaaS,480000,Australia,Alder Telecom,2024-08-24,active
+CUST-096,Tandem Mobile,communications_platform,Growth CPaaS,230000,Netherlands,Northstar Mobile,2022-09-20,active
+CUST-097,Union CX,communications_platform,Growth CPaaS,170000,Australia,multi-carrier,2022-07-13,active
+CUST-098,Vantage Cloud,communications_platform,Growth CPaaS,300000,Canada,Bluepeak Mobile,2022-09-24,active
+CUST-099,Willow Bank,communications_platform,Growth CPaaS,240000,Spain,Alder Telecom,2022-05-01,active
+CUST-100,Zenith Telecom,communications_platform,Growth CPaaS,310000,United States,Northstar Mobile,2023-05-24,active
