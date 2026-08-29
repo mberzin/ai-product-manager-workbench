@@ -45,6 +45,8 @@ class EvaluationCaseTests(unittest.TestCase):
             {"Product Strategist", "Technical Product Manager"},
         )
         self.assertEqual(case.expected_tool_families, ("complaints", "model_performance"))
+        self.assertEqual(case.expected_knowledge_sources, ())
+        self.assertEqual(case.mode, "quantitative")
         self.assertTrue(case.required_evidence)
         self.assertTrue(case.conclusion_characteristics)
         self.assertTrue(case.known_uncertainties)

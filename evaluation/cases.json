@@ -44,11 +44,11 @@
       {"id": "tier_one_concentration", "response_any": ["tier 1", "tier one"], "tool_families_any": ["complaints"]},
       {"id": "false_positive_tradeoff", "response_any": ["false positive", "precision"], "tool_families_any": ["model_performance"]}
     ],
-    "expected_knowledge_sources": ["product_strategy.md"],
+    "expected_knowledge_sources": [],
     "expected_tool_families": ["complaints", "model_performance"],
     "conclusion_characteristics": [["associated", "coincid", "supports"], ["not prove", "does not prove", "causality"]],
     "known_uncertainties": ["Timing and concentration do not prove the model release caused every complaint."],
-    "mode": "both"
+    "mode": "quantitative"
   },
   {
     "id": "global_v32_rollback",

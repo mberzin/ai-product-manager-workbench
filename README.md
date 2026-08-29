@@ -96,7 +96,8 @@ plain diagnostic question requires Data Analyst only. Product Strategist becomes
 required only when strategic or customer implications are requested, and Technical
 PM only when technical cause, architecture, rollout mechanics, or mitigation is in
 scope. This corrects a stale routing expectation without changing the case's
-quantitative evidence, conclusion, uncertainty, or causality checks.
+quantitative evidence, conclusion, uncertainty, or causality checks. The case no
+longer requires a retrieved knowledge source and is classified as quantitative.
 
 Deterministic evaluation scores objective behavior:
 
