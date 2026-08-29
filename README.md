@@ -14,20 +14,29 @@ Streamlit chat UI (app.py)
 Product Manager agent (agents/product_manager.py)
         |
         v
-OpenAI Agents SDK
+Deterministic function tools (tools/)
+        |
+        v
+Synthetic CallGuard AI CSVs (data/)
 ```
 
 - `app.py` loads local environment variables, manages the visible chat history,
   and runs the agent.
-- `agents/product_manager.py` contains the single agent and its instructions.
+- `agents/product_manager.py` contains the single agent, its evidence-aware
+  instructions, and its analytical tool registration.
 - The local `agents/` directory deliberately has no `__init__.py`, because the
   Agents SDK itself uses the Python package name `agents`. The app loads the local
   definition by file path to keep the requested layout without shadowing the SDK.
-- `data/`, `knowledge/`, and `tools/` are placeholders for later phases.
-- `tests/` contains lightweight checks that do not call the OpenAI API.
+- `data/` contains the deterministic synthetic CallGuard AI dataset. Its
+  developer-only ground-truth guide is not available to production tools.
+- `knowledge/` documents the fictional company, personas, strategy, architecture,
+  and roadmap for future phases.
+- `tools/` contains read-only pandas analyses for model quality, complaints,
+  customer risk, reliability, feature usage, and experiments.
+- `tests/` covers the dataset and analytical tools without calling the OpenAI API.
 
-There is intentionally no RAG, vector database, synthetic data, multi-agent flow,
-handoff, analytics tooling, authentication, or deployment configuration yet.
+There is intentionally no RAG, vector database, multi-agent flow, handoff,
+authentication, or deployment configuration yet.
 
 ## Local setup
 
@@ -68,5 +77,6 @@ Python 3.13 is required.
 
 ## Project status
 
-This is **Phase 1**: one agent and one simple chat interface. The empty foundation
-directories make future learning steps visible without implementing them early.
+This is **Phase 3**: one Product Manager agent, one simple chat interface, a fully
+synthetic company dataset, and deterministic analytical tools. RAG and multi-agent
+patterns remain intentionally out of scope.

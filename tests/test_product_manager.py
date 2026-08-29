@@ -31,6 +31,22 @@ class ProductManagerAgentTests(unittest.TestCase):
         self.assertIn("known facts", instructions)
         self.assertIn("assumptions", instructions)
         self.assertIn("insufficient data", instructions)
+        self.assertIn("tool-derived facts", instructions)
+        self.assertIn("do not claim a root cause", instructions)
+
+    def test_agent_has_all_phase_three_tools(self) -> None:
+        tool_names = {tool.name for tool in product_manager_agent.tools}
+        self.assertEqual(
+            tool_names,
+            {
+                "compare_model_versions", "calculate_precision", "calculate_recall",
+                "calculate_false_positive_rate", "segment_model_performance",
+                "analyze_complaint_trends", "segment_complaints",
+                "identify_high_risk_customers", "analyze_latency_by_region",
+                "analyze_uptime_by_customer", "analyze_feature_usage",
+                "analyze_experiment", "compare_experiment_segments",
+            },
+        )
 
 
 if __name__ == "__main__":

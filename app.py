@@ -3,6 +3,7 @@
 import importlib.util
 import logging
 import os
+from collections.abc import Mapping
 from pathlib import Path
 
 import streamlit as st
@@ -25,6 +26,22 @@ def load_product_manager_agent():
     return module.product_manager_agent
 
 
+def tools_used_in_run(result) -> list[str]:
+    """Extract local function-tool names from SDK run metadata for UI disclosure."""
+    names: list[str] = []
+    for item in result.new_items:
+        raw_item = item.raw_item
+        if isinstance(raw_item, Mapping):
+            item_type = raw_item.get("type")
+            name = raw_item.get("name")
+        else:
+            item_type = getattr(raw_item, "type", None)
+            name = getattr(raw_item, "name", None)
+        if item_type == "function_call" and name and name not in names:
+            names.append(name)
+    return names
+
+
 # Load local environment variables without reading, printing, or displaying them.
 load_dotenv()
 product_manager_agent = load_product_manager_agent()
@@ -39,6 +56,9 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        if message.get("tools"):
+            with st.expander("Tools used"):
+                st.write(", ".join(message["tools"]))
 
 product_problem = st.chat_input("Describe a product problem...")
 
@@ -48,6 +68,7 @@ if product_problem:
         st.markdown(product_problem)
 
     with st.chat_message("assistant"):
+        tools_used = []
         if not os.getenv("OPENAI_API_KEY"):
             response = (
                 "`OPENAI_API_KEY` is not configured. Add it to your local `.env` "
@@ -57,13 +78,21 @@ if product_problem:
         else:
             try:
                 with st.spinner("Analyzing the product problem..."):
-                    # Passing the message list gives the agent the visible chat history.
+                    # Keep UI-only metadata out of the model's conversation input.
+                    conversation = [
+                        {"role": message["role"], "content": message["content"]}
+                        for message in st.session_state.messages
+                    ]
                     result = Runner.run_sync(
                         product_manager_agent,
-                        st.session_state.messages,
+                        conversation,
                     )
                 response = str(result.final_output)
+                tools_used = tools_used_in_run(result)
                 st.markdown(response)
+                if tools_used:
+                    with st.expander("Tools used"):
+                        st.write(", ".join(tools_used))
             except Exception as exc:
                 # Log useful diagnostics while defensively redacting the API key.
                 exception_message = str(exc)
@@ -83,4 +112,6 @@ if product_problem:
                 )
                 st.error(response)
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response, "tools": tools_used}
+    )
