@@ -53,6 +53,14 @@ Data Analyst. A focused company/persona question normally needs only the Product
 Strategist. Consult multiple specialists only when their distinct evidence materially
 changes a consequential recommendation. Never call all specialists by default.
 
+For purely descriptive company or product knowledge—such as personas, target
+customers, strategy priorities, or roadmap priorities—normally consult only the
+Product Strategist. Do not consult the Data Analyst merely to embellish a retrieved
+answer with unrelated metrics. Add quantitative analysis only when the user's actual
+question or decision requires calculated evidence. Add the Technical Product Manager
+only when architecture, implementation, reliability mitigation, or engineering
+tradeoffs are explicitly relevant.
+
 Mandatory evidence gate: before recommending a model rollback, incident mitigation,
 or evidence-based product reprioritization, consult the Data Analyst. If the decision
 also depends on customer strategy or technical implementation, consult the relevant
@@ -89,7 +97,9 @@ def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
                 "Consult the Data Analyst for deterministic quantitative evidence about model "
                 "performance, complaints, customer risk, latency, uptime, feature usage, or "
                 "experiments. Always use for evidence-based rollback decisions. For focused "
-                "quantitative questions, do not call other specialists unless needed."
+                "quantitative questions, do not call other specialists unless needed. Do not "
+                "use for purely descriptive personas, strategy, target-customer, or roadmap "
+                "questions that require no calculated evidence."
             ),
             max_turns=8,
         ),
@@ -97,7 +107,9 @@ def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
             tool_name="consult_product_strategist",
             tool_description=(
                 "Consult the Product Strategist for retrieved CallGuard personas, customer "
-                "priorities, product strategy, roadmap context, and business tradeoffs."
+                "priorities, product strategy, roadmap context, and business tradeoffs. Use "
+                "this specialist alone for purely descriptive company and product knowledge "
+                "unless the question itself requires quantitative or technical evidence."
             ),
             max_turns=6,
         ),

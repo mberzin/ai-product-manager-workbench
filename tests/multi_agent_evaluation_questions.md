@@ -7,12 +7,13 @@ one concise PM synthesis rather than concatenated specialist reports.
 ## 1. What happened to EU latency?
 
 - **Ideal specialists:** Data Analyst only.
-- **Evidence:** `analyze_latency_by_region`, split around 2025-07-15, with EU mean,
-  p95, sample sizes, and comparison to Non-EU traffic.
-- **Strong conclusion:** EU latency materially regressed after the change window;
+- **Evidence:** time-aware `analyze_latency_by_region` calls that discover the
+  meaningful change around September 2025, with EU mean, p95, sample sizes, and a
+  comparison showing Non-EU traffic remains essentially unchanged.
+- **Strong conclusion:** EU latency materially regressed around the discovered change window;
   timing supports investigation but does not establish a technical root cause.
 
-## 2. Who are CallGuard's main personas?
+## 2. Who are CallGuard's main personas and what matters most to them?
 
 - **Ideal specialists:** Product Strategist only.
 - **Evidence:** retrieved persona roles and priorities from `personas.md`, supported

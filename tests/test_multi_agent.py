@@ -79,6 +79,29 @@ class MultiAgentConstructionTests(unittest.TestCase):
             {"consult_data_analyst", "consult_product_strategist", "consult_technical_pm"},
         )
 
+    def test_data_analyst_instructions_require_time_aware_change_analysis(self) -> None:
+        instructions = " ".join(self.data_module.DATA_ANALYST_INSTRUCTIONS.lower().split())
+        for phrase in ["what happened", "regression", "time period", "bounded date windows"]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, instructions)
+        self.assertIn("do not stop at an all-time aggregate", instructions)
+        self.assertIn("successive narrower calendar windows", instructions)
+        self.assertIn("monthly where feasible", instructions)
+        self.assertIn("never assume a release or incident date", instructions)
+
+    def test_orchestrator_keeps_descriptive_knowledge_routing_specialized(self) -> None:
+        instructions = " ".join(
+            self.orchestrator_module.PRODUCT_MANAGER_INSTRUCTIONS.lower().split()
+        )
+        self.assertIn("purely descriptive company or product knowledge", instructions)
+        self.assertIn("consult only the product strategist", instructions)
+        self.assertIn("do not consult the data analyst merely", instructions)
+
+        agent = self.orchestrator_module.build_product_manager_agent("vs_test123")
+        descriptions = {tool.name: tool.description.lower() for tool in agent.tools}
+        self.assertIn("do not use for purely descriptive", descriptions["consult_data_analyst"])
+        self.assertIn("use this specialist alone", descriptions["consult_product_strategist"])
+
     def test_specialists_do_not_expose_forbidden_file_or_path_parameters(self) -> None:
         strategist = self.strategy_module.build_product_strategist_agent("vs_test123")
         technical = self.technical_module.build_technical_pm_agent("vs_test123")

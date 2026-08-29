@@ -1,4 +1,4 @@
-"""Run two optional live Phase 5 multi-agent smoke evaluations.
+"""Run optional live Phase 5 multi-agent routing evaluations.
 
 This script makes OpenAI API calls and is intentionally excluded from unittest
 discovery. It prints questions, answers, tool names, and retrieved filenames, but
@@ -94,13 +94,21 @@ def main() -> int:
     questions = [
         "What happened to EU latency? Use only the specialist analysis needed and keep the answer under 250 words.",
         (
+            "Who are CallGuard's main personas and what matters most to them? Use only "
+            "the specialist needed and keep the answer under 250 words."
+        ),
+        (
             "Should we roll back v3.2 specifically for Tier 1 carriers, considering customer "
             "strategy and technical mitigation options? Use the specialists that materially "
             "improve the decision, cite evidence, and keep the answer under 350 words."
         ),
     ]
     if "--complex-only" in sys.argv:
-        questions = questions[1:]
+        questions = questions[2:]
+    elif "--routing-only" in sys.argv:
+        questions = questions[:2]
+    elif "--latency-only" in sys.argv:
+        questions = questions[:1]
     for number, question in enumerate(questions, 1):
         print(f"Evaluation {number}: {question}")
         try:
