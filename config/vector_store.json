@@ -1,0 +1,32 @@
+{
+  "config_version": 1,
+  "files": {
+    "architecture.md": {
+      "file_id": "file-62vdLpaWAt9DGm1i7jJiZW",
+      "sha256": "ffe1e89a1481c0e872e626d24dcc3535011ae8f0ca67be254d6172d791bb30e7",
+      "status": "completed"
+    },
+    "company_overview.md": {
+      "file_id": "file-2qTpznuYC5FU7Hae6Y3B7F",
+      "sha256": "c33be8930832f3dad987f7e205354338df4bd3308d8652cadbb7cff59372993a",
+      "status": "completed"
+    },
+    "personas.md": {
+      "file_id": "file-Eb9XauSHh8GqodWgmLQCtp",
+      "sha256": "9af499761c36d73c893f4dff766e77e864167f5eff9e2a9502d9d919d2a82967",
+      "status": "completed"
+    },
+    "product_strategy.md": {
+      "file_id": "file-4KMdMWkJLEM2TxfAFBzsbB",
+      "sha256": "e6b586fe1903a1f634c4d69c7189cdbc82c75807ec80e9f479f95b19e307f0b4",
+      "status": "completed"
+    },
+    "roadmap.md": {
+      "file_id": "file-7YsYtVBnrUjD6zvcvSK7zk",
+      "sha256": "e55b78171a578258d39d8d9ebcf2b179e400ffda1b39176d163758570291fba5",
+      "status": "completed"
+    }
+  },
+  "vector_store_id": "vs_6a93257b0d588191aa00e3b140b87790",
+  "vector_store_name": "CallGuard AI synthetic knowledge base"
+}

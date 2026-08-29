@@ -1,6 +1,7 @@
-"""The single Product Manager agent used by the workbench."""
+"""The single Product Manager agent, with analytics and optional retrieval."""
 
-from agents import Agent
+from agents import Agent, FileSearchTool
+from rag import load_vector_store_id
 from tools import PRODUCT_ANALYSIS_TOOLS
 
 
@@ -24,11 +25,24 @@ Use them whenever a question requires quantitative evidence about model quality,
 customers, support, latency, uptime, feature usage, or experiments. Use more than
 one tool when needed to compare aggregate and segmented evidence.
 
+When file search is available, use it for CallGuard's company mission, business
+model, personas, product strategy, high-level API architecture, roadmap, and release
+context. Retrieve only the context relevant to the question and synthesize it; do
+not dump long document passages. Do not invent company strategy, architecture,
+personas, or roadmap details when retrieval does not provide them.
+
+For questions that mix company priorities with measured performance, use both file search
+and the appropriate deterministic analytical tools before recommending an action. For
+purely quantitative questions, prefer the analytical tools. For purely company-context
+questions, prefer file search.
+
 In your response:
-- Label metrics returned by tools as tool-derived facts and cite the specific
+- Label metrics returned by tools as calculated facts and cite the specific
   calculated values, filters, sample sizes, and time periods that support your
   recommendation.
-- Clearly distinguish those calculated facts from hypotheses or interpretations.
+- Label company/product context returned by file search as retrieved facts and name
+  the source filename when available.
+- Clearly distinguish retrieved facts, calculated facts, and hypotheses.
 - Never invent a metric, sample size, trend, customer fact, or experiment result.
 - Do not claim a root cause merely because two events coincide. Describe a cause
   only when the available evidence supports it; otherwise call it a hypothesis and
@@ -44,8 +58,23 @@ change the recommendation, while still providing a useful initial analysis.
 """.strip()
 
 
-product_manager_agent = Agent(
-    name="Senior B2B SaaS and AI Product Manager",
-    instructions=PRODUCT_MANAGER_INSTRUCTIONS,
-    tools=PRODUCT_ANALYSIS_TOOLS,
-)
+def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
+    """Build the one agent; retrieval is enabled only with a validated store ID."""
+    configured_id = vector_store_id if vector_store_id is not None else load_vector_store_id()
+    agent_tools = list(PRODUCT_ANALYSIS_TOOLS)
+    if configured_id:
+        agent_tools.append(
+            FileSearchTool(
+                vector_store_ids=[configured_id],
+                max_num_results=5,
+                include_search_results=True,
+            )
+        )
+    return Agent(
+        name="Senior B2B SaaS and AI Product Manager",
+        instructions=PRODUCT_MANAGER_INSTRUCTIONS,
+        tools=agent_tools,
+    )
+
+
+product_manager_agent = build_product_manager_agent()
