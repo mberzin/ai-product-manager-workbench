@@ -37,8 +37,8 @@
     "id": "v32_complaint_spike",
     "question": "Why did customer complaints spike after model v3.2?",
     "category": "model_quality",
-    "expected_specialists": ["Data Analyst", "Product Strategist"],
-    "normally_not_required": ["Technical Product Manager"],
+    "expected_specialists": ["Data Analyst"],
+    "normally_not_required": ["Product Strategist", "Technical Product Manager"],
     "required_evidence": [
       {"id": "complaint_trend", "response_any": ["complaint", "ticket"], "tool_families_any": ["complaints"]},
       {"id": "tier_one_concentration", "response_any": ["tier 1", "tier one"], "tool_families_any": ["complaints"]},

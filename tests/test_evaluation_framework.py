@@ -37,6 +37,18 @@ class EvaluationCaseTests(unittest.TestCase):
                 self.assertTrue(case.required_evidence)
                 self.assertTrue(case.known_uncertainties)
 
+    def test_complaint_spike_routing_matches_quantitative_diagnosis_policy(self) -> None:
+        case = {case.id: case for case in self.cases}["v32_complaint_spike"]
+        self.assertEqual(case.expected_specialists, ("Data Analyst",))
+        self.assertEqual(
+            set(case.normally_not_required),
+            {"Product Strategist", "Technical Product Manager"},
+        )
+        self.assertEqual(case.expected_tool_families, ("complaints", "model_performance"))
+        self.assertTrue(case.required_evidence)
+        self.assertTrue(case.conclusion_characteristics)
+        self.assertTrue(case.known_uncertainties)
+
     def test_evaluation_code_can_access_ground_truth(self) -> None:
         text = load_evaluation_ground_truth()
         self.assertEqual(GROUND_TRUTH_PATH.parent, PROJECT_ROOT / "data")

@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import asyncio
 import importlib.util
+import json
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 from rag.config import KNOWLEDGE_FILES
 
@@ -115,6 +118,7 @@ class MultiAgentConstructionTests(unittest.TestCase):
             "use all three only when",
             "distinguish diagnosis from decision-making",
             "product rollout posture is a strategic decision",
+            "operational roadmap reprioritization or engineering sequencing",
         ]:
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, instructions)
@@ -125,6 +129,60 @@ class MultiAgentConstructionTests(unittest.TestCase):
         self.assertIn("do not use for account ranking", descriptions["consult_product_strategist"])
         self.assertIn("company-level product decisions", descriptions["consult_product_strategist"])
         self.assertIn("topic alone is not sufficient", descriptions["consult_technical_pm"])
+        self.assertIn("operational roadmap reprioritization", descriptions["consult_technical_pm"])
+
+    def test_causal_language_is_calibrated_throughout(self) -> None:
+        analyst = " ".join(self.data_module.DATA_ANALYST_INSTRUCTIONS.lower().split())
+        orchestrator = " ".join(
+            self.orchestrator_module.PRODUCT_MANAGER_INSTRUCTIONS.lower().split()
+        )
+        for instructions in [analyst, orchestrator]:
+            with self.subTest(instructions=instructions[:30]):
+                self.assertIn("strongly associated with", instructions)
+                self.assertIn("likely contributor", instructions)
+                self.assertIn("throughout", instructions)
+
+    def test_successful_tool_evidence_recovers_false_unavailable_summary(self) -> None:
+        agent = self.data_module.build_data_analyst_agent()
+        successful = self.data_module.ToolCallOutputItem(
+            agent=agent,
+            raw_item={"type": "function_call_output", "call_id": "call_test"},
+            output=json.dumps({
+                "status": "ok", "sample_size": 42,
+                "results": [{"region": "example", "mean_latency_ms": 123.4}],
+            }),
+        )
+        result = SimpleNamespace(
+            final_output="I couldn't retrieve the analysis right now.",
+            new_items=[successful],
+        )
+        recovered = asyncio.run(self.data_module.extract_data_analyst_output(result))
+        self.assertIn("Calculated evidence is available", recovered)
+        self.assertIn('\"sample_size\":42', recovered)
+        self.assertNotIn("couldn't retrieve", recovered.lower())
+
+    def test_recovery_does_not_override_valid_summary_or_failed_tool(self) -> None:
+        agent = self.data_module.build_data_analyst_agent()
+        failed = self.data_module.ToolCallOutputItem(
+            agent=agent,
+            raw_item={"type": "function_call_output", "call_id": "call_test"},
+            output=json.dumps({"status": "error", "error": "No matching records."}),
+        )
+        unavailable = SimpleNamespace(
+            final_output="Analysis is unavailable.", new_items=[failed]
+        )
+        valid = SimpleNamespace(
+            final_output="Calculated evidence shows a measurable change.",
+            new_items=[failed],
+        )
+        self.assertEqual(
+            asyncio.run(self.data_module.extract_data_analyst_output(unavailable)),
+            "Analysis is unavailable.",
+        )
+        self.assertEqual(
+            asyncio.run(self.data_module.extract_data_analyst_output(valid)),
+            valid.final_output,
+        )
 
     def test_specialists_do_not_expose_forbidden_file_or_path_parameters(self) -> None:
         strategist = self.strategy_module.build_product_strategist_agent("vs_test123")

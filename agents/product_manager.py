@@ -26,6 +26,9 @@ def _load_builder(filename: str, builder_name: str):
 
 
 build_data_analyst_agent = _load_builder("data_analyst.py", "build_data_analyst_agent")
+extract_data_analyst_output = _load_builder(
+    "data_analyst.py", "extract_data_analyst_output"
+)
 build_product_strategist_agent = _load_builder(
     "product_strategist.py", "build_product_strategist_agent"
 )
@@ -71,6 +74,12 @@ Distinguish diagnosis from decision-making:
   impact with documented strategy and customer priorities.
 - Product rollout posture is a strategic decision; rollout mechanics are technical.
   Do not treat the former as sufficient reason to invoke the Technical Product Manager.
+- When a request combines a measured reliability, latency, or technical regression
+  with operational roadmap reprioritization or engineering sequencing, use all three:
+  Data Analyst for magnitude, Product Strategist for roadmap/business priorities,
+  and Technical Product Manager for architecture, feasibility, sequencing, and
+  operational tradeoffs. A purely descriptive roadmap question remains Product
+  Strategist-only.
 
 For purely descriptive company or product knowledge—such as personas, target
 customers, strategy priorities, or roadmap priorities—normally consult only the
@@ -110,6 +119,9 @@ tradeoffs otherwise. Distinguish:
 - Your final recommendation and prioritized next steps.
 
 Never invent metrics, company strategy, architecture, customer facts, or root cause.
+Calibrate causal wording throughout the answer. Unless causal evidence exists, say
+"strongly associated with," "consistent with," "likely contributor," or "evidence
+suggests" rather than presenting causality strongly and adding a later disclaimer.
 Do not claim causality from correlation or release timing alone. Cite the specific
 values, sample sizes, periods, segments, and retrieved sources that support the
 answer. Keep the final response concise, practical, and PM-oriented.
@@ -139,6 +151,7 @@ def build_product_manager_agent(
                 "use for purely descriptive personas, strategy, target-customer, or roadmap "
                 "questions that require no calculated evidence."
             ),
+            custom_output_extractor=extract_data_analyst_output,
             max_turns=8,
             hooks=specialist_hooks,
         ),
@@ -164,7 +177,9 @@ def build_product_manager_agent(
                 "operational risk, and engineering tradeoffs. Use only when the requested "
                 "answer needs those technical dimensions. A model, incident, complaint, "
                 "reliability, or rollback topic alone is not sufficient reason to call this "
-                "specialist."
+                "specialist. Do use when a measured technical or reliability regression is "
+                "being combined with operational roadmap reprioritization or engineering "
+                "sequencing."
             ),
             max_turns=6,
             hooks=specialist_hooks,

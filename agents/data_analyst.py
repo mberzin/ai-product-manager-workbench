@@ -1,6 +1,12 @@
 """Quantitative specialist for the synthetic CallGuard AI dataset."""
 
+from __future__ import annotations
+
+import json
+from collections.abc import Mapping
+
 from agents import Agent
+from agents.items import ToolCallOutputItem
 
 from tools import PRODUCT_ANALYSIS_TOOLS
 
@@ -36,9 +42,58 @@ Return concise findings for a Product Manager using these sections when relevant
   company strategy or engineering decision.
 - Unknowns: evidence that the available data cannot establish.
 
-Call calculated outputs "calculated evidence." Do not claim causality from timing or
-correlation. Keep the response under 400 words and do not return raw tables.
+Call calculated outputs "calculated evidence." Calibrate causal language throughout
+the response: use phrases such as "strongly associated with," "consistent with,"
+"likely contributor," or "evidence suggests" unless the analysis establishes a
+causal effect. Do not state a causal conclusion strongly and try to repair it with a
+later caveat. Keep the response under 400 words and do not return raw tables.
 """.strip()
+
+
+UNAVAILABLE_EVIDENCE_MARKERS = (
+    "couldn't retrieve", "could not retrieve", "unable to retrieve",
+    "analysis is unavailable", "analysis was unavailable", "evidence is unavailable",
+    "can't reliably state", "cannot reliably state",
+)
+
+
+def _successful_analytical_outputs(result: object) -> list[str]:
+    """Return concise successful tool payloads from a completed specialist run."""
+    outputs: list[str] = []
+    for item in getattr(result, "new_items", []):
+        if not isinstance(item, ToolCallOutputItem):
+            continue
+        output = item.output
+        try:
+            payload = json.loads(output) if isinstance(output, str) else output
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, Mapping) and payload.get("status") == "ok":
+            outputs.append(json.dumps(payload, separators=(",", ":"), default=str))
+    return outputs
+
+
+async def extract_data_analyst_output(result: object) -> str:
+    """Prevent a false unavailable claim when deterministic evidence succeeded.
+
+    Normally the specialist's answer passes through unchanged. The recovery path is
+    deliberately narrow and returns only successful, already-concise tool payloads
+    so the orchestrator can synthesize them without invented metrics.
+    """
+    final_output = str(getattr(result, "final_output", ""))
+    normalized = final_output.lower()
+    if not any(marker in normalized for marker in UNAVAILABLE_EVIDENCE_MARKERS):
+        return final_output
+    successful_outputs = _successful_analytical_outputs(result)
+    if not successful_outputs:
+        return final_output
+    evidence = "\n".join(f"- {output}" for output in successful_outputs)
+    return (
+        "Calculated evidence is available from successful deterministic tool calls. "
+        "The prior summary incorrectly described it as unavailable. Synthesize the "
+        "following outputs, preserving their metrics, filters, samples, periods, and "
+        "uncertainties:\n" + evidence
+    )
 
 
 def build_data_analyst_agent() -> Agent:
