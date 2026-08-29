@@ -1,0 +1,197 @@
+[
+  {
+    "id": "eu_latency_regression",
+    "question": "What happened to EU latency?",
+    "category": "reliability",
+    "expected_specialists": ["Data Analyst"],
+    "normally_not_required": ["Product Strategist", "Technical Product Manager"],
+    "required_evidence": [
+      {"id": "time_regression", "response_any": ["regression", "regressed", "increased", "worsened"], "tool_families_any": ["latency"]},
+      {"id": "non_eu_control", "response_any": ["non-eu", "non-eu latency"], "tool_families_any": ["latency"]},
+      {"id": "tail_latency", "response_any": ["p95", "95th percentile"], "tool_families_any": ["latency"]}
+    ],
+    "expected_knowledge_sources": [],
+    "expected_tool_families": ["latency"],
+    "conclusion_characteristics": [["regional", "eu-specific", "eu specific"], ["does not establish", "does not identify", "cause is unknown", "root cause", "not proof", "correlation"]],
+    "known_uncertainties": ["Exact technical root cause is not established by call records."],
+    "mode": "quantitative"
+  },
+  {
+    "id": "primary_personas",
+    "question": "Who are CallGuard's main personas and what matters most to them?",
+    "category": "personas",
+    "expected_specialists": ["Product Strategist"],
+    "normally_not_required": ["Data Analyst", "Technical Product Manager"],
+    "required_evidence": [
+      {"id": "carrier_persona", "response_any": ["carrier"], "tool_families_any": []},
+      {"id": "bank_persona", "response_any": ["bank", "fraud"], "tool_families_any": []},
+      {"id": "technical_persona", "response_any": ["integration", "sre", "api"], "tool_families_any": []}
+    ],
+    "expected_knowledge_sources": ["personas.md"],
+    "expected_tool_families": [],
+    "conclusion_characteristics": [["false positive", "legitimate"], ["latency", "uptime", "reliability"]],
+    "known_uncertainties": ["Documents describe fictional target personas, not observed user research."],
+    "mode": "retrieval"
+  },
+  {
+    "id": "v32_complaint_spike",
+    "question": "Why did customer complaints spike after model v3.2?",
+    "category": "model_quality",
+    "expected_specialists": ["Data Analyst", "Product Strategist"],
+    "normally_not_required": ["Technical Product Manager"],
+    "required_evidence": [
+      {"id": "complaint_trend", "response_any": ["complaint", "ticket"], "tool_families_any": ["complaints"]},
+      {"id": "tier_one_concentration", "response_any": ["tier 1", "tier one"], "tool_families_any": ["complaints"]},
+      {"id": "false_positive_tradeoff", "response_any": ["false positive", "precision"], "tool_families_any": ["model_performance"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md"],
+    "expected_tool_families": ["complaints", "model_performance"],
+    "conclusion_characteristics": [["associated", "coincid", "supports"], ["not prove", "does not prove", "causality"]],
+    "known_uncertainties": ["Timing and concentration do not prove the model release caused every complaint."],
+    "mode": "both"
+  },
+  {
+    "id": "global_v32_rollback",
+    "question": "Should we roll back v3.2 globally?",
+    "category": "rollout_decision",
+    "expected_specialists": ["Data Analyst", "Product Strategist"],
+    "normally_not_required": ["Technical Product Manager"],
+    "required_evidence": [
+      {"id": "precision_recall_tradeoff", "response_any": ["precision", "recall"], "tool_families_any": ["model_performance"]},
+      {"id": "segment_concentration", "response_any": ["tier 1", "segment", "concentrated"], "tool_families_any": ["complaints"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md"],
+    "expected_tool_families": ["model_performance", "complaints"],
+    "conclusion_characteristics": [["not", "avoid"], ["targeted", "segment", "canary"]],
+    "known_uncertainties": ["Counterfactual customer outcomes and statistical significance are not fully established."],
+    "mode": "both"
+  },
+  {
+    "id": "tier1_v32_rollback",
+    "question": "Should we roll back v3.2 specifically for Tier 1 carriers, considering customer strategy and technical mitigation options?",
+    "category": "rollout_decision",
+    "expected_specialists": ["Data Analyst", "Product Strategist", "Technical Product Manager"],
+    "normally_not_required": [],
+    "required_evidence": [
+      {"id": "tier1_quality", "response_any": ["tier 1", "tier one"], "tool_families_any": ["model_performance"]},
+      {"id": "complaints", "response_any": ["complaint", "ticket"], "tool_families_any": ["complaints"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md", "architecture.md"],
+    "expected_tool_families": ["model_performance", "complaints"],
+    "conclusion_characteristics": [["targeted", "tenant", "carrier-specific"], ["reversible", "canary", "rollback"]],
+    "known_uncertainties": ["Tenant routing controls and carrier-level causal effects require validation."],
+    "mode": "both"
+  },
+  {
+    "id": "high_value_customer_risk",
+    "question": "Which high-value customers are most at risk?",
+    "category": "customer_risk",
+    "expected_specialists": ["Data Analyst"],
+    "normally_not_required": ["Product Strategist", "Technical Product Manager"],
+    "required_evidence": [
+      {"id": "high_arr", "response_any": ["arr", "high-value", "high value"], "tool_families_any": ["customer_risk"]},
+      {"id": "risk_signal", "response_any": ["retention risk", "churn risk", "at risk"], "tool_families_any": ["customer_risk"]}
+    ],
+    "expected_knowledge_sources": [],
+    "expected_tool_families": ["customer_risk"],
+    "conclusion_characteristics": [["CUST-001", "Northstar"]],
+    "known_uncertainties": ["Risk flags indicate prioritization needs, not certain churn."],
+    "mode": "quantitative"
+  },
+  {
+    "id": "explainability_value",
+    "question": "Is the explainability feature creating customer value?",
+    "category": "feature_value",
+    "expected_specialists": ["Data Analyst", "Product Strategist"],
+    "normally_not_required": ["Technical Product Manager"],
+    "required_evidence": [
+      {"id": "usage", "response_any": ["usage", "queries", "adoption"], "tool_families_any": ["feature_usage"]},
+      {"id": "outcome", "response_any": ["action rate", "customer value", "outcome"], "tool_families_any": ["feature_usage"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md"],
+    "expected_tool_families": ["feature_usage"],
+    "conclusion_characteristics": [["not enough", "low", "does not"], ["validate", "experiment", "measure"]],
+    "known_uncertainties": ["Observed actions are an imperfect proxy for customer value."],
+    "mode": "both"
+  },
+  {
+    "id": "exp008_success",
+    "question": "Is EXP-008 a successful experiment?",
+    "category": "experiment",
+    "expected_specialists": ["Data Analyst"],
+    "normally_not_required": ["Product Strategist", "Technical Product Manager"],
+    "required_evidence": [
+      {"id": "aggregate_result", "response_any": ["aggregate", "overall"], "tool_families_any": ["experiments"]},
+      {"id": "segment_reversal", "response_any": ["tier 1", "segment"], "tool_families_any": ["experiments"]}
+    ],
+    "expected_knowledge_sources": [],
+    "expected_tool_families": ["experiments"],
+    "conclusion_characteristics": [["not", "mixed", "qualified"], ["roll out", "segment", "guardrail"]],
+    "known_uncertainties": ["The dataset does not establish long-term retention impact."],
+    "mode": "quantitative"
+  },
+  {
+    "id": "v32_vs_explainability",
+    "question": "Should CallGuard prioritize fixing v3.2 or investing in explainability?",
+    "category": "prioritization",
+    "expected_specialists": ["Data Analyst", "Product Strategist"],
+    "normally_not_required": ["Technical Product Manager"],
+    "required_evidence": [
+      {"id": "model_harm", "response_any": ["false positive", "precision", "complaint"], "tool_families_any": ["model_performance", "complaints"]},
+      {"id": "feature_value", "response_any": ["action rate", "explainability"], "tool_families_any": ["feature_usage"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md"],
+    "expected_tool_families": ["model_performance", "feature_usage"],
+    "conclusion_characteristics": [["v3.2", "model quality"], ["first", "priority", "prioritize"]],
+    "known_uncertainties": ["Engineering effort and opportunity cost are not quantified."],
+    "mode": "both"
+  },
+  {
+    "id": "eu_latency_roadmap",
+    "question": "Given the EU latency regression and current roadmap, what should CallGuard reprioritize?",
+    "category": "reliability_prioritization",
+    "expected_specialists": ["Data Analyst", "Product Strategist", "Technical Product Manager"],
+    "normally_not_required": [],
+    "required_evidence": [
+      {"id": "eu_regression", "response_any": ["eu", "latency"], "tool_families_any": ["latency"]},
+      {"id": "control", "response_any": ["non-eu", "regional"], "tool_families_any": ["latency"]}
+    ],
+    "expected_knowledge_sources": ["roadmap.md", "architecture.md"],
+    "expected_tool_families": ["latency"],
+    "conclusion_characteristics": [["reliability", "latency restoration", "stabil"], ["repriorit", "sequence", "defer"]],
+    "known_uncertainties": ["The dataset does not identify the infrastructure root cause or engineering effort."],
+    "mode": "both"
+  },
+  {
+    "id": "v32_mitigation_plan",
+    "question": "Design a mitigation plan for the v3.2 false-positive problem that minimizes customer harm without giving up all recall gains.",
+    "category": "mitigation",
+    "expected_specialists": ["Data Analyst", "Product Strategist", "Technical Product Manager"],
+    "normally_not_required": [],
+    "required_evidence": [
+      {"id": "quality_tradeoff", "response_any": ["precision", "recall", "false positive"], "tool_families_any": ["model_performance"]},
+      {"id": "segment_harm", "response_any": ["tier 1", "segment"], "tool_families_any": ["complaints", "model_performance"]}
+    ],
+    "expected_knowledge_sources": ["product_strategy.md", "architecture.md"],
+    "expected_tool_families": ["model_performance", "complaints"],
+    "conclusion_characteristics": [["canary", "staged", "targeted"], ["guardrail", "monitor", "threshold"], ["reversible", "rollback"]],
+    "known_uncertainties": ["Technical root cause and production control readiness remain unverified."],
+    "mode": "both"
+  },
+  {
+    "id": "architecture_mitigation",
+    "question": "How does CallGuard's API architecture affect mitigation options for the v3.2 incident?",
+    "category": "architecture",
+    "expected_specialists": ["Technical Product Manager"],
+    "normally_not_required": ["Data Analyst", "Product Strategist"],
+    "required_evidence": [
+      {"id": "routing", "response_any": ["routing", "tenant", "policy"], "tool_families_any": []},
+      {"id": "reversibility", "response_any": ["rollback", "reversible", "canary"], "tool_families_any": []}
+    ],
+    "expected_knowledge_sources": ["architecture.md"],
+    "expected_tool_families": [],
+    "conclusion_characteristics": [["tradeoff", "risk", "verify"], ["threshold", "model version", "feature flag"]],
+    "known_uncertainties": ["Documentation is high level and does not prove every control is production-ready."],
+    "mode": "retrieval"
+  }
+]

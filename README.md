@@ -24,6 +24,10 @@ Product Manager Orchestrator
                                                 |
                                                 v
                                   allowlisted synthetic knowledge/*.md
+
+Separate evaluation path (never imported by production agents):
+evaluation/cases.json -> evaluation runner -> deterministic scoring -> local results
+                                      +----> optional LLM judge
 ```
 
 - `app.py` loads local environment variables, manages the visible chat history,
@@ -50,9 +54,12 @@ Product Manager Orchestrator
 - `tools/` contains read-only pandas analyses for model quality, complaints,
   customer risk, reliability, feature usage, and experiments.
 - `tests/` covers the dataset and analytical tools without calling the OpenAI API.
+- `evaluation/` contains the Phase 6 case dataset, lifecycle instrumentation,
+  deterministic scoring, optional model-based judge, pricing configuration, and
+  ignored local results. Evaluation code is separate from answer generation.
 
-There is intentionally no multi-agent flow, handoff, authentication, external
-database, LangChain, LlamaIndex, or deployment configuration.
+There are intentionally no handoffs, authentication, external database, LangChain,
+LlamaIndex, or deployment configuration.
 
 ## Specialization and delegation
 
@@ -74,7 +81,41 @@ answer:
 Specialization keeps permissions clear and outputs focused, but each specialist call
 adds model requests, latency, and API cost. The orchestrator is explicitly instructed
 not to call every specialist by default. Streamlit shows public agent names and tool
-metadata, never chain-of-thought.
+metadata, response latency, and actual SDK token usage when available—never
+chain-of-thought.
+
+## Evaluation and observability
+
+Phase 6 adds a repeatable evaluation layer because an agentic answer can sound
+reasonable while routing inefficiently, missing evidence, or making unsupported
+claims. The checked-in dataset contains 12 representative quantitative, retrieval,
+and cross-functional decisions.
+
+Deterministic evaluation scores objective behavior:
+
+- required and unnecessary specialist calls;
+- routing coverage and precision;
+- analytical tool-family and retrieved-source coverage;
+- required evidence and conclusion characteristics using wording-tolerant checks;
+- total latency, specialist calls, analytical calls, and successful/failed calls;
+- actual input, output, and total token usage exposed by the Agents SDK.
+
+The optional LLM judge scores recommendation quality, uncertainty, unsupported
+causality, synthesis, and PM judgment from 1–5. These scores are explicitly
+model-based opinions, not objective ground truth, and never modify the production
+response.
+
+`evaluation/ground_truth.py` is the only intentional access path for the developer
+guide in `data/ground_truth.md`. Production code under `app.py`, `agents/`, `rag/`,
+and `tools/` neither imports nor references that guide. The evaluation runner does
+not add expected answers or ground truth to production-agent prompts.
+
+The SDK provides aggregate token usage for nested agent runs. Cost estimation is
+disabled unless explicit rates are added to the single configuration file
+`evaluation/pricing.json`; reported costs are always labeled estimates. Nested
+hosted File Search calls are not exposed through local tool hooks, so retrieval-call
+count uses retrieval-specialist invocations as a documented proxy while source
+coverage uses public filename citations.
 
 ## RAG and analytical tools
 
@@ -144,12 +185,30 @@ Python 3.13 is required.
    python -m unittest discover -s tests
    ```
 
+7. Run one live evaluation or the full suite:
+
+   ```powershell
+   python scripts/run_evaluations.py --case eu_latency_regression
+   python scripts/run_evaluations.py
+   ```
+
+   Add `--judge` to enable the optional model-based qualitative evaluator. Results
+   are written as JSON plus a Markdown summary under `evaluation/results/`; transient
+   result files are ignored by Git. After adding explicit rates to
+   `evaluation/pricing.json`, pass `--pricing-model <table-key>` to enable a clearly
+   labeled estimate.
+
 ## Project status
 
-This is **Phase 5**: one Product Manager Orchestrator, three least-privilege
+This is **Phase 6**: one Product Manager Orchestrator, three least-privilege
 specialists, one chat interface, a fully synthetic company and dataset,
 deterministic analytical tools, and OpenAI File Search over a strictly allowlisted
-synthetic knowledge base.
+synthetic knowledge base, plus a separate evaluation and observability layer.
+
+Evaluation limitations include model-routing variability, wording-based evidence
+checks that cannot prove semantic correctness, incomplete attribution of nested
+hosted retrieval calls, and qualitative-judge subjectivity. Evaluation results
+should guide investigation rather than serve as an infallible quality score.
 
 All company knowledge, customer records, metrics, incidents, and roadmap details in
 this repository are synthetic and intended only for learning and evaluation.

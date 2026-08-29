@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Phase 6 evaluation outputs are local and may be large. Keep the directory only.
+evaluation/results/*
+!evaluation/results/.gitkeep

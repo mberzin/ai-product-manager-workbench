@@ -3,6 +3,7 @@
 import importlib.util
 import logging
 import os
+import time
 from collections.abc import Mapping
 from pathlib import Path
 
@@ -91,13 +92,35 @@ def agents_involved_in_run(result) -> list[str]:
     return names
 
 
+def execution_metadata(result, latency_seconds: float) -> dict:
+    """Return safe, public execution metrics exposed by the SDK."""
+    metadata = {"Response latency": f"{max(0.0, latency_seconds):.2f} seconds"}
+    wrapper = getattr(result, "context_wrapper", None)
+    usage = getattr(wrapper, "usage", None)
+    if usage is not None and getattr(usage, "total_tokens", 0):
+        metadata.update({
+            "Model requests": int(getattr(usage, "requests", 0) or 0),
+            "Input tokens": int(getattr(usage, "input_tokens", 0) or 0),
+            "Output tokens": int(getattr(usage, "output_tokens", 0) or 0),
+            "Total tokens": int(getattr(usage, "total_tokens", 0) or 0),
+        })
+    return metadata
+
+
+def show_execution_metadata(metadata: dict) -> None:
+    """Display metrics without prompts, private traces, or chain-of-thought."""
+    with st.expander("Execution metadata"):
+        for label, value in metadata.items():
+            st.write(f"{label}: {value}")
+
+
 # Load local environment variables without reading, printing, or displaying them.
 load_dotenv()
 product_manager_agent = load_product_manager_agent()
 
 st.set_page_config(page_title="AI Product Manager Workbench", page_icon="🧭")
 st.title("AI Product Manager Workbench")
-st.caption("Phase 5 — selective specialist analysis synthesized by a Product Manager orchestrator.")
+st.caption("Phase 6 — observable specialist analysis with a separate evaluation framework.")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -114,6 +137,8 @@ for message in st.session_state.messages:
         if message.get("agents"):
             with st.expander("Agents involved"):
                 st.write(" → ".join(message["agents"]))
+        if message.get("execution"):
+            show_execution_metadata(message["execution"])
 
 product_problem = st.chat_input("Describe a product problem...")
 
@@ -126,6 +151,7 @@ if product_problem:
         tools_used = []
         knowledge_used = []
         agents_involved = []
+        execution = {}
         if not os.getenv("OPENAI_API_KEY"):
             response = (
                 "`OPENAI_API_KEY` is not configured. Add it to your local `.env` "
@@ -140,14 +166,17 @@ if product_problem:
                         {"role": message["role"], "content": message["content"]}
                         for message in st.session_state.messages
                     ]
+                    started_at = time.perf_counter()
                     result = Runner.run_sync(
                         product_manager_agent,
                         conversation,
                     )
+                    latency_seconds = time.perf_counter() - started_at
                 response = str(result.final_output)
                 tools_used = tools_used_in_run(result)
                 knowledge_used = knowledge_used_in_run(result)
                 agents_involved = agents_involved_in_run(result)
+                execution = execution_metadata(result, latency_seconds)
                 st.markdown(response)
                 if tools_used:
                     with st.expander("Tools used"):
@@ -158,6 +187,7 @@ if product_problem:
                 if agents_involved:
                     with st.expander("Agents involved"):
                         st.write(" → ".join(agents_involved))
+                show_execution_metadata(execution)
             except Exception as exc:
                 # Log useful diagnostics while defensively redacting the API key.
                 exception_message = str(exc)
@@ -184,5 +214,6 @@ if product_problem:
             "tools": tools_used,
             "knowledge": knowledge_used,
             "agents": agents_involved,
+            "execution": execution,
         }
     )

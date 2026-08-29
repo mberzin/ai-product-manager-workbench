@@ -83,7 +83,10 @@ answer. Keep the final response concise, practical, and PM-oriented.
 """.strip()
 
 
-def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
+def build_product_manager_agent(
+    vector_store_id: str | None = None,
+    specialist_hooks=None,
+) -> Agent:
     """Build the orchestrator and its three least-privilege specialist tools."""
     configured_id = vector_store_id if vector_store_id is not None else load_vector_store_id()
     data_analyst = build_data_analyst_agent()
@@ -102,6 +105,7 @@ def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
                 "questions that require no calculated evidence."
             ),
             max_turns=8,
+            hooks=specialist_hooks,
         ),
         product_strategist.as_tool(
             tool_name="consult_product_strategist",
@@ -112,6 +116,7 @@ def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
                 "unless the question itself requires quantitative or technical evidence."
             ),
             max_turns=6,
+            hooks=specialist_hooks,
         ),
         technical_pm.as_tool(
             tool_name="consult_technical_pm",
@@ -120,6 +125,7 @@ def build_product_manager_agent(vector_store_id: str | None = None) -> Agent:
                 "rollout, reliability mitigation, operational risk, and engineering tradeoffs."
             ),
             max_turns=6,
+            hooks=specialist_hooks,
         ),
     ]
     return Agent(

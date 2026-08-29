@@ -1,0 +1,5 @@
+{
+  "currency": "USD",
+  "per_million_tokens": {},
+  "note": "Populate explicit model input/output rates before enabling cost estimates. Empty by default so the evaluator never invents pricing."
+}
