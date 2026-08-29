@@ -102,6 +102,30 @@ class MultiAgentConstructionTests(unittest.TestCase):
         self.assertIn("do not use for purely descriptive", descriptions["consult_data_analyst"])
         self.assertIn("use this specialist alone", descriptions["consult_product_strategist"])
 
+    def test_orchestrator_routes_by_intent_and_minimum_sufficient_team(self) -> None:
+        instructions = " ".join(
+            self.orchestrator_module.PRODUCT_MANAGER_INSTRUCTIONS.lower().split()
+        )
+        for phrase in [
+            "route by the user's requested outcome",
+            "quantitative diagnosis or prioritization",
+            "data analyst + product strategist are normally sufficient",
+            "does not by itself require the technical product manager",
+            "do not invoke a specialist simply because it could add interesting context",
+            "use all three only when",
+            "distinguish diagnosis from decision-making",
+            "product rollout posture is a strategic decision",
+        ]:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, instructions)
+
+        agent = self.orchestrator_module.build_product_manager_agent("vs_test123")
+        descriptions = {tool.name: tool.description.lower() for tool in agent.tools}
+        self.assertIn("account prioritization based on arr", descriptions["consult_data_analyst"])
+        self.assertIn("do not use for account ranking", descriptions["consult_product_strategist"])
+        self.assertIn("company-level product decisions", descriptions["consult_product_strategist"])
+        self.assertIn("topic alone is not sufficient", descriptions["consult_technical_pm"])
+
     def test_specialists_do_not_expose_forbidden_file_or_path_parameters(self) -> None:
         strategist = self.strategy_module.build_product_strategist_agent("vs_test123")
         technical = self.technical_module.build_technical_pm_agent("vs_test123")

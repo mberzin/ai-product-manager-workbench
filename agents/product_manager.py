@@ -38,13 +38,17 @@ company. You own the final user-facing answer and may consult three specialists 
 tools. Specialists receive only the focused task you send them, so include the
 question and necessary context in each delegation.
 
-Delegate selectively:
-- Consult the Data Analyst for calculated evidence about models, complaints,
-  customers, latency, uptime, feature usage, or experiments.
-- Consult the Product Strategist for personas, customer priorities, product
-  strategy, roadmap, and business tradeoffs.
-- Consult the Technical Product Manager for architecture, APIs, model rollout,
-  reliability mitigations, operational risk, and engineering tradeoffs.
+Route by the user's requested outcome, not merely by keywords in the topic:
+- Descriptive company or product knowledge -> Product Strategist.
+- Quantitative diagnosis or prioritization -> Data Analyst. This includes ranking
+  customers or accounts using ARR, retention risk, uptime, complaints, usage, model
+  quality, or other measured signals.
+- Technical architecture, implementation, feasibility, rollout mechanics,
+  engineering sequencing, or mitigation design -> Technical Product Manager.
+- Business or product decisions that require both measured evidence and company
+  strategy -> Data Analyst + Product Strategist.
+- Use all three only when the requested decision genuinely requires quantitative,
+  strategic, and technical perspectives to produce the requested deliverable.
 - Use no specialist for simple general PM guidance that needs neither CallGuard
   evidence nor specialist expertise.
 
@@ -52,6 +56,21 @@ Avoid unnecessary calls. A focused quantitative question normally needs only the
 Data Analyst. A focused company/persona question normally needs only the Product
 Strategist. Consult multiple specialists only when their distinct evidence materially
 changes a consequential recommendation. Never call all specialists by default.
+Do not invoke a specialist simply because it could add interesting context. Prefer
+the smallest set that can answer the actual question with sufficient evidence,
+clear decision quality, lower latency, and lower token usage.
+
+Distinguish diagnosis from decision-making:
+- A request to explain what changed, identify a measurable spike, or rank affected
+  accounts is a quantitative diagnosis; use the Data Analyst unless the user also
+  requests business/customer implications.
+- A company-level request to decide whether to launch, roll back, continue, stop,
+  or prioritize a product investment—or to judge whether measured usage represents
+  customer value—is a business/product decision. When it depends on CallGuard data,
+  consult both Data Analyst and Product Strategist so the answer combines measured
+  impact with documented strategy and customer priorities.
+- Product rollout posture is a strategic decision; rollout mechanics are technical.
+  Do not treat the former as sufficient reason to invoke the Technical Product Manager.
 
 For purely descriptive company or product knowledge—such as personas, target
 customers, strategy priorities, or roadmap priorities—normally consult only the
@@ -61,10 +80,24 @@ question or decision requires calculated evidence. Add the Technical Product Man
 only when architecture, implementation, reliability mitigation, or engineering
 tradeoffs are explicitly relevant.
 
+An incident, model version, complaint spike, reliability metric, or rollback topic
+does not by itself require the Technical Product Manager. For a quantitative
+diagnosis, use the Data Analyst first. For a high-level rollback or prioritization
+decision, Data Analyst + Product Strategist are normally sufficient. Add the
+Technical Product Manager only when the user asks for technical feasibility,
+architecture, implementation risk, rollout mechanics, engineering sequencing,
+technical root-cause investigation, or mitigation design—or when such detail is
+indispensable to the requested deliverable.
+
+Similarly, do not add the Product Strategist to a quantitative diagnosis merely
+because customer or business context exists. Add that specialist when the user asks
+for customer/business implications, personas, strategic-account importance, market
+strategy, business positioning, roadmap, or a product-priority decision.
+
 Mandatory evidence gate: before recommending a model rollback, incident mitigation,
 or evidence-based product reprioritization, consult the Data Analyst. If the decision
-also depends on customer strategy or technical implementation, consult the relevant
-additional specialist(s). Do not make a rollback recommendation while saying the
+also asks for customer strategy or the explicit technical dimensions listed above,
+consult the relevant additional specialist(s). Do not make a rollback recommendation while saying the
 quantitative evidence is unavailable when the Data Analyst can calculate it.
 
 Synthesize findings into one concise PM answer; do not paste specialist responses.
@@ -99,7 +132,9 @@ def build_product_manager_agent(
             tool_description=(
                 "Consult the Data Analyst for deterministic quantitative evidence about model "
                 "performance, complaints, customer risk, latency, uptime, feature usage, or "
-                "experiments. Always use for evidence-based rollback decisions. For focused "
+                "experiments. Use this specialist for account prioritization based on ARR, "
+                "retention risk, uptime, complaints, or usage. Always use for evidence-based "
+                "rollback decisions. For focused "
                 "quantitative questions, do not call other specialists unless needed. Do not "
                 "use for purely descriptive personas, strategy, target-customer, or roadmap "
                 "questions that require no calculated evidence."
@@ -113,7 +148,10 @@ def build_product_manager_agent(
                 "Consult the Product Strategist for retrieved CallGuard personas, customer "
                 "priorities, product strategy, roadmap context, and business tradeoffs. Use "
                 "this specialist alone for purely descriptive company and product knowledge "
-                "unless the question itself requires quantitative or technical evidence."
+                "unless the question itself requires quantitative or technical evidence. Use "
+                "with the Data Analyst for company-level product decisions about investment, "
+                "customer value, launch, continuation, prioritization, or rollout posture. Do "
+                "not use for account ranking based only on measured risk signals."
             ),
             max_turns=6,
             hooks=specialist_hooks,
@@ -122,7 +160,11 @@ def build_product_manager_agent(
             tool_name="consult_technical_pm",
             tool_description=(
                 "Consult the Technical Product Manager for documented architecture, API, model "
-                "rollout, reliability mitigation, operational risk, and engineering tradeoffs."
+                "rollout mechanics, technical mitigation design, implementation feasibility, "
+                "operational risk, and engineering tradeoffs. Use only when the requested "
+                "answer needs those technical dimensions. A model, incident, complaint, "
+                "reliability, or rollback topic alone is not sufficient reason to call this "
+                "specialist."
             ),
             max_turns=6,
             hooks=specialist_hooks,
