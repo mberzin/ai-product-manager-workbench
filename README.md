@@ -11,22 +11,31 @@ hypotheses, tradeoffs, and next steps for the fictional CallGuard AI company.
 Streamlit chat UI (app.py)
         |
         v
-Product Manager agent (agents/product_manager.py)
-        |                         |
-        v                         v
-Deterministic tools        OpenAI File Search
-        |                         |
-        v                         v
-Synthetic CSVs             Vector store
-                                  |
-                                  v
-                         Allowlisted knowledge/*.md
+Streamlit chat UI
+        |
+        v
+Product Manager Orchestrator
+        |
+        +--> Data Analyst ------------> 13 deterministic pandas tools --> synthetic CSVs
+        |
+        +--> Product Strategist ------> scoped OpenAI File Search
+        |
+        +--> Technical Product Manager -> scoped OpenAI File Search
+                                                |
+                                                v
+                                  allowlisted synthetic knowledge/*.md
 ```
 
 - `app.py` loads local environment variables, manages the visible chat history,
   and runs the agent.
-- `agents/product_manager.py` contains the single agent, its evidence-aware
-  instructions, analytical tools, and conditional File Search registration.
+- `agents/product_manager.py` contains the user-facing orchestrator and its three
+  agent-as-tool delegations.
+- `agents/data_analyst.py` owns quantitative analysis and the 13 deterministic
+  pandas tools.
+- `agents/product_strategist.py` owns personas, strategy, roadmap, customer, and
+  business context through scoped File Search.
+- `agents/technical_pm.py` owns architecture, API, rollout, reliability, and
+  engineering tradeoffs through scoped File Search.
 - The local `agents/` directory deliberately has no `__init__.py`, because the
   Agents SDK itself uses the Python package name `agents`. The app loads the local
   definition by file path to keep the requested layout without shadowing the SDK.
@@ -45,6 +54,28 @@ Synthetic CSVs             Vector store
 There is intentionally no multi-agent flow, handoff, authentication, external
 database, LangChain, LlamaIndex, or deployment configuration.
 
+## Specialization and delegation
+
+Phase 5 replaces Phase 4's single agent with a manager-style orchestration pattern.
+Specialists are exposed to the Product Manager as tools, so the orchestrator remains
+in control of the conversation and final answer; specialists never take over through
+a handoff.
+
+The orchestrator delegates only when specialist evidence materially improves the
+answer:
+
+- Focused quantitative questions normally use only the Data Analyst.
+- Persona, customer, strategy, or roadmap questions normally use only the Product
+  Strategist.
+- Architecture, rollout, API, and engineering-risk questions use the Technical PM.
+- Consequential cross-functional decisions may use two or three specialists.
+- General PM guidance may need no specialist.
+
+Specialization keeps permissions clear and outputs focused, but each specialist call
+adds model requests, latency, and API cost. The orchestrator is explicitly instructed
+not to call every specialist by default. Streamlit shows public agent names and tool
+metadata, never chain-of-thought.
+
 ## RAG and analytical tools
 
 Retrieval-augmented generation (RAG) lets the agent search a small OpenAI vector
@@ -58,9 +89,9 @@ RAG is different from the deterministic pandas tools:
 - **Analytical tools** calculate reproducible metrics from synthetic CSVs and return
   definitions, filters, sample sizes, and time periods.
 
-The agent is instructed to combine both when a decision requires company priorities
-and quantitative evidence, and to distinguish retrieved facts, calculated facts,
-and hypotheses.
+The orchestrator combines specialist findings when a decision requires company
+priorities and quantitative evidence, distinguishing retrieved knowledge,
+calculated evidence, hypotheses, and the final recommendation.
 
 ## Local setup
 
@@ -115,10 +146,10 @@ Python 3.13 is required.
 
 ## Project status
 
-This is **Phase 4**: one Product Manager agent, one chat interface, a fully synthetic
-company and dataset, deterministic analytical tools, and OpenAI File Search over a
-strictly allowlisted synthetic knowledge base. Multi-agent patterns remain out of
-scope.
+This is **Phase 5**: one Product Manager Orchestrator, three least-privilege
+specialists, one chat interface, a fully synthetic company and dataset,
+deterministic analytical tools, and OpenAI File Search over a strictly allowlisted
+synthetic knowledge base.
 
 All company knowledge, customer records, metrics, incidents, and roadmap details in
 this repository are synthetic and intended only for learning and evaluation.

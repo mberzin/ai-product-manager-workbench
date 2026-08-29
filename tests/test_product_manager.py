@@ -29,37 +29,34 @@ class ProductManagerAgentTests(unittest.TestCase):
 
     def test_instructions_require_evidence_awareness(self) -> None:
         instructions = PRODUCT_MANAGER_INSTRUCTIONS.lower()
-        self.assertIn("known facts", instructions)
-        self.assertIn("assumptions", instructions)
-        self.assertIn("insufficient data", instructions)
-        self.assertIn("calculated facts", instructions)
-        self.assertIn("do not claim a root cause", instructions)
-        self.assertIn("retrieved facts", instructions)
-        self.assertIn("use both file search", instructions)
+        self.assertIn("calculated evidence", instructions)
+        self.assertIn("retrieved knowledge", instructions)
+        self.assertIn("hypotheses", instructions)
+        self.assertIn("do not claim causality", instructions)
+        self.assertIn("never call all specialists by default", instructions)
 
-    def test_agent_has_all_phase_three_tools(self) -> None:
+    def test_orchestrator_has_only_specialist_delegation_tools(self) -> None:
         tool_names = {tool.name for tool in product_manager_agent.tools}
-        analytical_tools = {
-            "compare_model_versions", "calculate_precision", "calculate_recall",
-            "calculate_false_positive_rate", "segment_model_performance",
-            "analyze_complaint_trends", "segment_complaints",
-            "identify_high_risk_customers", "analyze_latency_by_region",
-            "analyze_uptime_by_customer", "analyze_feature_usage",
-            "analyze_experiment", "compare_experiment_segments",
-        }
-        self.assertTrue(analytical_tools.issubset(tool_names))
-        self.assertEqual(len(analytical_tools & tool_names), 13)
+        self.assertEqual(
+            tool_names,
+            {
+                "consult_data_analyst",
+                "consult_product_strategist",
+                "consult_technical_pm",
+            },
+        )
 
-    def test_configured_agent_has_retrieval_and_analytical_tools(self) -> None:
+    def test_orchestrator_can_be_built_with_configured_retrieval(self) -> None:
         configured_agent = build_product_manager_agent("vs_test123")
-        tool_names = {tool.name for tool in configured_agent.tools}
-        self.assertEqual(len(tool_names), 14)
-        self.assertIn("file_search", tool_names)
-        self.assertIn("compare_model_versions", tool_names)
-        file_search = next(tool for tool in configured_agent.tools if tool.name == "file_search")
-        self.assertEqual(file_search.vector_store_ids, ["vs_test123"])
-        self.assertEqual(file_search.max_num_results, 5)
-        self.assertTrue(file_search.include_search_results)
+        self.assertEqual(configured_agent.name, "Product Manager Orchestrator")
+        self.assertEqual(
+            {tool.name for tool in configured_agent.tools},
+            {
+                "consult_data_analyst",
+                "consult_product_strategist",
+                "consult_technical_pm",
+            },
+        )
 
 
 if __name__ == "__main__":

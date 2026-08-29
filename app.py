@@ -9,9 +9,16 @@ from pathlib import Path
 import streamlit as st
 from agents import Runner
 from dotenv import load_dotenv
+from rag import KNOWLEDGE_FILES
 
 
 LOGGER = logging.getLogger(__name__)
+
+SPECIALIST_AGENT_NAMES = {
+    "consult_data_analyst": "Data Analyst",
+    "consult_product_strategist": "Product Strategist",
+    "consult_technical_pm": "Technical Product Manager",
+}
 
 
 def load_product_manager_agent():
@@ -62,7 +69,26 @@ def knowledge_used_in_run(result) -> list[str]:
                 filename = getattr(search_result, "filename", None)
             if filename and filename not in filenames:
                 filenames.append(filename)
+    # Nested specialist runs return concise text to the orchestrator rather than
+    # exposing their internal run items. Specialists are instructed to name source
+    # files, so recover those public citations from their outputs and the synthesis.
+    public_outputs = [str(result.final_output)]
+    public_outputs.extend(str(item.output) for item in result.new_items if hasattr(item, "output"))
+    combined_output = "\n".join(public_outputs)
+    for filename in KNOWLEDGE_FILES:
+        if filename in combined_output and filename not in filenames:
+            filenames.append(filename)
     return filenames
+
+
+def agents_involved_in_run(result) -> list[str]:
+    """Return public agent names from delegation calls, without hidden reasoning."""
+    names = ["Product Manager Orchestrator"]
+    for tool_name in tools_used_in_run(result):
+        agent_name = SPECIALIST_AGENT_NAMES.get(tool_name)
+        if agent_name and agent_name not in names:
+            names.append(agent_name)
+    return names
 
 
 # Load local environment variables without reading, printing, or displaying them.
@@ -71,7 +97,7 @@ product_manager_agent = load_product_manager_agent()
 
 st.set_page_config(page_title="AI Product Manager Workbench", page_icon="🧭")
 st.title("AI Product Manager Workbench")
-st.caption("Phase 4 — combine product judgment, calculated evidence, and retrieved company context.")
+st.caption("Phase 5 — selective specialist analysis synthesized by a Product Manager orchestrator.")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -85,6 +111,9 @@ for message in st.session_state.messages:
         if message.get("knowledge"):
             with st.expander("Knowledge used"):
                 st.write(", ".join(message["knowledge"]))
+        if message.get("agents"):
+            with st.expander("Agents involved"):
+                st.write(" → ".join(message["agents"]))
 
 product_problem = st.chat_input("Describe a product problem...")
 
@@ -96,6 +125,7 @@ if product_problem:
     with st.chat_message("assistant"):
         tools_used = []
         knowledge_used = []
+        agents_involved = []
         if not os.getenv("OPENAI_API_KEY"):
             response = (
                 "`OPENAI_API_KEY` is not configured. Add it to your local `.env` "
@@ -117,6 +147,7 @@ if product_problem:
                 response = str(result.final_output)
                 tools_used = tools_used_in_run(result)
                 knowledge_used = knowledge_used_in_run(result)
+                agents_involved = agents_involved_in_run(result)
                 st.markdown(response)
                 if tools_used:
                     with st.expander("Tools used"):
@@ -124,6 +155,9 @@ if product_problem:
                 if knowledge_used:
                     with st.expander("Knowledge used"):
                         st.write(", ".join(knowledge_used))
+                if agents_involved:
+                    with st.expander("Agents involved"):
+                        st.write(" → ".join(agents_involved))
             except Exception as exc:
                 # Log useful diagnostics while defensively redacting the API key.
                 exception_message = str(exc)
@@ -149,5 +183,6 @@ if product_problem:
             "content": response,
             "tools": tools_used,
             "knowledge": knowledge_used,
+            "agents": agents_involved,
         }
     )

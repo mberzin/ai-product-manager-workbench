@@ -1,4 +1,4 @@
-"""Run two optional live Phase 4 smoke evaluations.
+"""Run two optional live Phase 5 multi-agent smoke evaluations.
 
 This script makes OpenAI API calls and is intentionally excluded from unittest
 discovery. It prints questions, answers, tool names, and retrieved filenames, but
@@ -39,7 +39,14 @@ def raw_field(item, name: str):
     return getattr(raw_item, name, None)
 
 
-def evidence_used(result) -> tuple[list[str], list[str]]:
+SPECIALIST_AGENT_NAMES = {
+    "consult_data_analyst": "Data Analyst",
+    "consult_product_strategist": "Product Strategist",
+    "consult_technical_pm": "Technical Product Manager",
+}
+
+
+def evidence_used(result) -> tuple[list[str], list[str], list[str]]:
     tools: list[str] = []
     knowledge: list[str] = []
     for item in result.new_items:
@@ -57,10 +64,27 @@ def evidence_used(result) -> tuple[list[str], list[str]]:
                 )
                 if filename and filename not in knowledge:
                     knowledge.append(filename)
-    return tools, knowledge
+
+    # Agent-as-tool summaries do not always expose a specialist's nested file
+    # search items in the outer run. Specialists cite exact allowlisted source
+    # filenames, so scan only their public output as a transparent fallback.
+    from rag import KNOWLEDGE_FILES
+
+    public_text = "\n".join(
+        [str(result.final_output)]
+        + [str(getattr(item, "output", "")) for item in result.new_items]
+    )
+    for filename in KNOWLEDGE_FILES:
+        if filename in public_text and filename not in knowledge:
+            knowledge.append(filename)
+    agents = ["Product Manager Orchestrator"]
+    agents.extend(SPECIALIST_AGENT_NAMES[name] for name in tools if name in SPECIALIST_AGENT_NAMES)
+    return tools, knowledge, list(dict.fromkeys(agents))
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     load_dotenv()
     if not os.getenv("OPENAI_API_KEY"):
         print("Live RAG evaluations skipped: OPENAI_API_KEY is unavailable.")
@@ -68,13 +92,15 @@ def main() -> int:
 
     agent = load_agent()
     questions = [
-        "Who are CallGuard's primary customer personas and what do they care about? Keep the answer under 250 words.",
+        "What happened to EU latency? Use only the specialist analysis needed and keep the answer under 250 words.",
         (
-            "Given the quantitative evidence and company strategy, should CallGuard prioritize "
-            "fixing v3.2 or investing in the explainability feature? Use both retrieval and "
-            "analytical tools, cite the evidence used, and keep the answer under 250 words."
+            "Should we roll back v3.2 specifically for Tier 1 carriers, considering customer "
+            "strategy and technical mitigation options? Use the specialists that materially "
+            "improve the decision, cite evidence, and keep the answer under 350 words."
         ),
     ]
+    if "--complex-only" in sys.argv:
+        questions = questions[1:]
     for number, question in enumerate(questions, 1):
         print(f"Evaluation {number}: {question}")
         try:
@@ -86,7 +112,8 @@ def main() -> int:
                 message = message.replace(api_key, "[REDACTED]")
             print(f"Evaluation {number} failed: {type(exc).__name__}: {message}")
             return 1
-        tools, knowledge = evidence_used(result)
+        tools, knowledge, agents = evidence_used(result)
+        print(f"Agents involved: {' -> '.join(agents)}")
         print(f"Tools used: {', '.join(tools) if tools else 'none'}")
         print(f"Knowledge used: {', '.join(knowledge) if knowledge else 'none'}")
         print(str(result.final_output))
