@@ -1,5 +1,6 @@
 """Deterministic checks for Phase 7 demo and deployment safeguards."""
 
+import ast
 import subprocess
 import unittest
 from pathlib import Path
@@ -74,6 +75,67 @@ class DeploymentSafetyTests(unittest.TestCase):
         app_source = (ROOT / "app.py").read_text(encoding="utf-8")
         self.assertIn("all company, customer, and product data are synthetic", app_source)
         self.assertEqual(app_source.count("Featured · Tier 1 rollback"), 1)
+
+    def test_demo_questions_and_capability_labels_are_exact(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        module = ast.parse(app_source)
+        assignment = next(
+            node
+            for node in module.body
+            if isinstance(node, ast.Assign)
+            and any(
+                isinstance(target, ast.Name) and target.id == "DEMO_QUESTIONS"
+                for target in node.targets
+            )
+        )
+        questions = ast.literal_eval(assignment.value)
+        self.assertEqual(
+            questions,
+            (
+                (
+                    "EU latency diagnosis",
+                    "Quantitative analysis",
+                    "What happened to EU latency?",
+                    False,
+                ),
+                (
+                    "Customer personas",
+                    "Knowledge retrieval",
+                    "Who are CallGuard's main personas and what matters most to them?",
+                    False,
+                ),
+                (
+                    "Featured · Tier 1 rollback",
+                    "Full multi-agent decision",
+                    "Should we roll back v3.2 specifically for Tier 1 carriers? Consider "
+                    "model performance, customer strategy, and technical mitigation options.",
+                    True,
+                ),
+                (
+                    "Product prioritization",
+                    "Data + strategy",
+                    "Should CallGuard prioritize fixing v3.2 or investing further in "
+                    "explainability?",
+                    False,
+                ),
+            ),
+        )
+
+    def test_execution_transparency_remains_collapsed_and_complete(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        for label in (
+            "Agents involved",
+            "Tools used",
+            "Knowledge used",
+            "Execution metadata",
+            "Response latency",
+            "Model requests",
+            "Input tokens",
+            "Output tokens",
+            "Total tokens",
+        ):
+            self.assertIn(label, app_source)
+        self.assertGreaterEqual(app_source.count("expanded=False"), 5)
 
     def test_env_is_ignored_and_example_is_placeholder_only(self) -> None:
         ignored = subprocess.run(

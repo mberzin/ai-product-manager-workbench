@@ -27,21 +27,35 @@ SPECIALIST_AGENT_NAMES = {
     "consult_technical_pm": "Technical Product Manager",
 }
 
+TOOL_DISPLAY_NAMES = {
+    "consult_data_analyst": "Data Analyst consultation",
+    "consult_product_strategist": "Product Strategist consultation",
+    "consult_technical_pm": "Technical PM consultation",
+}
+
 DEMO_QUESTIONS = (
-    ("EU latency diagnosis", "What happened to EU latency?", False),
+    (
+        "EU latency diagnosis",
+        "Quantitative analysis",
+        "What happened to EU latency?",
+        False,
+    ),
     (
         "Customer personas",
+        "Knowledge retrieval",
         "Who are CallGuard's main personas and what matters most to them?",
         False,
     ),
     (
         "Featured · Tier 1 rollback",
+        "Full multi-agent decision",
         "Should we roll back v3.2 specifically for Tier 1 carriers? Consider model "
         "performance, customer strategy, and technical mitigation options.",
         True,
     ),
     (
         "Product prioritization",
+        "Data + strategy",
         "Should CallGuard prioritize fixing v3.2 or investing further in explainability?",
         False,
     ),
@@ -74,6 +88,19 @@ def tools_used_in_run(result) -> list[str]:
         if item_type == "function_call" and name and name not in names:
             names.append(name)
     return names
+
+
+def tool_display_name(tool_name: str) -> str:
+    """Humanize a tool identifier for display without changing stored metadata."""
+    if tool_name in TOOL_DISPLAY_NAMES:
+        return TOOL_DISPLAY_NAMES[tool_name]
+    return tool_name.replace("_", " ").strip().capitalize()
+
+
+def show_tools_used(tool_names: list[str]) -> None:
+    """Display actual tools with concise, human-readable labels."""
+    with st.expander("Tools used", expanded=False):
+        st.write(", ".join(tool_display_name(name) for name in tool_names))
 
 
 def knowledge_used_in_run(result) -> list[str]:
@@ -135,7 +162,7 @@ def execution_metadata(result, latency_seconds: float) -> dict:
 
 def show_execution_metadata(metadata: dict) -> None:
     """Display metrics without prompts, private traces, or chain-of-thought."""
-    with st.expander("Execution metadata"):
+    with st.expander("Execution metadata", expanded=False):
         for label, value in metadata.items():
             st.write(f"{label}: {value}")
 
@@ -146,7 +173,7 @@ load_dotenv()
 st.set_page_config(
     page_title="AI Product Manager Workbench",
     page_icon=":material/explore:",
-    layout="centered",
+    layout="wide",
 )
 
 
@@ -165,14 +192,15 @@ def configure_api_key_from_streamlit_secrets() -> None:
 configure_api_key_from_streamlit_secrets()
 product_manager_agent = load_product_manager_agent()
 limits = load_demo_limits()
+content = st.container(width=1200)
 
-st.title("AI Product Manager Workbench")
-st.markdown("#### Agentic product decision support over a synthetic B2B AI product.")
-st.info(
+content.title("AI Product Manager Workbench")
+content.markdown("#### Agentic product decision support over a synthetic B2B AI product.")
+content.info(
     "**Demo environment — all company, customer, and product data are synthetic.**",
     icon=":material/science:",
 )
-st.write(
+content.write(
     "The workbench combines specialized AI agents, deterministic analytics, "
     "company knowledge retrieval, and evidence-grounded recommendations."
 )
@@ -184,23 +212,25 @@ if "request_count" not in st.session_state:
 
 limit_reached = request_limit_reached(st.session_state.request_count, limits)
 
-st.subheader("Try an example")
-st.caption("Choose a scenario to submit it. The featured question exercises the full system.")
+content.subheader("Try an example")
+content.caption("Choose a scenario to submit it. The featured question exercises the full system.")
 selected_question = None
-question_columns = st.columns(2)
-for index, (label, question, featured) in enumerate(DEMO_QUESTIONS):
+question_columns = content.columns(2, gap="medium")
+for index, (label, capability, question, featured) in enumerate(DEMO_QUESTIONS):
     with question_columns[index % 2]:
-        if st.button(
-            label,
-            key=f"demo_question_{index}",
-            type="primary" if featured else "secondary",
-            icon=":material/stars:" if featured else None,
-            disabled=limit_reached,
-            width="stretch",
-        ):
-            selected_question = question
+        with st.container(border=True):
+            st.markdown(f"**{label}**")
+            st.caption(capability)
+            if st.button(
+                "Run featured example" if featured else "Run example",
+                key=f"demo_question_{index}",
+                type="primary" if featured else "secondary",
+                disabled=limit_reached,
+                width="stretch",
+            ):
+                selected_question = question
 
-with st.expander("About this project"):
+with content.expander("About this project", expanded=False):
     st.markdown(
         """
 CallGuard AI is a fictional company and every record in this demo is synthetic.
@@ -219,27 +249,26 @@ synthesis. Validate recommendations before acting on them.
     )
 
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
+    with content.chat_message(message["role"]):
         st.markdown(message["content"])
         if message.get("agents"):
-            with st.expander("Agents involved"):
+            with st.expander("Agents involved", expanded=False):
                 st.write(" → ".join(message["agents"]))
         if message.get("tools"):
-            with st.expander("Tools used"):
-                st.write(", ".join(message["tools"]))
+            show_tools_used(message["tools"])
         if message.get("knowledge"):
-            with st.expander("Knowledge used"):
+            with st.expander("Knowledge used", expanded=False):
                 st.write(", ".join(message["knowledge"]))
         if message.get("execution"):
             show_execution_metadata(message["execution"])
 
 if limit_reached:
-    st.warning(
+    content.warning(
         "This demo session has reached its request limit. Refresh the page to start "
         "a new session, or run the project locally for continued exploration."
     )
 
-typed_question = st.chat_input(
+typed_question = content.chat_input(
     "Ask a product question...",
     key="product_problem_input",
     max_chars=limits.max_prompt_chars,
@@ -251,7 +280,7 @@ product_problem = selected_question or typed_question
 if product_problem:
     validation_error = validate_prompt(product_problem, limits)
     if validation_error:
-        st.warning(validation_error)
+        content.warning(validation_error)
         st.stop()
 
     st.session_state.request_count += 1
@@ -259,10 +288,10 @@ if product_problem:
     st.session_state.messages = bounded_history(
         st.session_state.messages, limits.max_history_messages
     )
-    with st.chat_message("user"):
+    with content.chat_message("user"):
         st.markdown(product_problem)
 
-    with st.chat_message("assistant"):
+    with content.chat_message("assistant"):
         tools_used = []
         knowledge_used = []
         agents_involved = []
@@ -306,13 +335,12 @@ if product_problem:
                 execution = execution_metadata(result, latency_seconds)
                 st.markdown(response)
                 if agents_involved:
-                    with st.expander("Agents involved"):
+                    with st.expander("Agents involved", expanded=False):
                         st.write(" → ".join(agents_involved))
                 if tools_used:
-                    with st.expander("Tools used"):
-                        st.write(", ".join(tools_used))
+                    show_tools_used(tools_used)
                 if knowledge_used:
-                    with st.expander("Knowledge used"):
+                    with st.expander("Knowledge used", expanded=False):
                         st.write(", ".join(knowledge_used))
                 show_execution_metadata(execution)
             except Exception as exc:
