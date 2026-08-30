@@ -10,6 +10,12 @@ from pathlib import Path
 import streamlit as st
 from agents import Runner
 from dotenv import load_dotenv
+from demo_config import (
+    bounded_history,
+    load_demo_limits,
+    request_limit_reached,
+    validate_prompt,
+)
 from rag import KNOWLEDGE_FILES
 
 
@@ -20,6 +26,26 @@ SPECIALIST_AGENT_NAMES = {
     "consult_product_strategist": "Product Strategist",
     "consult_technical_pm": "Technical Product Manager",
 }
+
+DEMO_QUESTIONS = (
+    ("EU latency diagnosis", "What happened to EU latency?", False),
+    (
+        "Customer personas",
+        "Who are CallGuard's main personas and what matters most to them?",
+        False,
+    ),
+    (
+        "Featured · Tier 1 rollback",
+        "Should we roll back v3.2 specifically for Tier 1 carriers? Consider model "
+        "performance, customer strategy, and technical mitigation options.",
+        True,
+    ),
+    (
+        "Product prioritization",
+        "Should CallGuard prioritize fixing v3.2 or investing further in explainability?",
+        False,
+    ),
+)
 
 
 def load_product_manager_agent():
@@ -116,34 +142,123 @@ def show_execution_metadata(metadata: dict) -> None:
 
 # Load local environment variables without reading, printing, or displaying them.
 load_dotenv()
-product_manager_agent = load_product_manager_agent()
 
-st.set_page_config(page_title="AI Product Manager Workbench", page_icon="🧭")
+st.set_page_config(
+    page_title="AI Product Manager Workbench",
+    page_icon=":material/explore:",
+    layout="centered",
+)
+
+
+def configure_api_key_from_streamlit_secrets() -> None:
+    """Use a deployment secret when no environment-based key is configured."""
+    if os.getenv("OPENAI_API_KEY"):
+        return
+    try:
+        api_key = st.secrets.get("OPENAI_API_KEY")
+    except (FileNotFoundError, KeyError):
+        api_key = None
+    if api_key:
+        os.environ["OPENAI_API_KEY"] = str(api_key)
+
+
+configure_api_key_from_streamlit_secrets()
+product_manager_agent = load_product_manager_agent()
+limits = load_demo_limits()
+
 st.title("AI Product Manager Workbench")
-st.caption("Phase 6 — observable specialist analysis with a separate evaluation framework.")
+st.markdown("#### Agentic product decision support over a synthetic B2B AI product.")
+st.info(
+    "**Demo environment — all company, customer, and product data are synthetic.**",
+    icon=":material/science:",
+)
+st.write(
+    "The workbench combines specialized AI agents, deterministic analytics, "
+    "company knowledge retrieval, and evidence-grounded recommendations."
+)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "request_count" not in st.session_state:
+    st.session_state.request_count = 0
+
+limit_reached = request_limit_reached(st.session_state.request_count, limits)
+
+st.subheader("Try an example")
+st.caption("Choose a scenario to submit it. The featured question exercises the full system.")
+selected_question = None
+question_columns = st.columns(2)
+for index, (label, question, featured) in enumerate(DEMO_QUESTIONS):
+    with question_columns[index % 2]:
+        if st.button(
+            label,
+            key=f"demo_question_{index}",
+            type="primary" if featured else "secondary",
+            icon=":material/stars:" if featured else None,
+            disabled=limit_reached,
+            width="stretch",
+        ):
+            selected_question = question
+
+with st.expander("About this project"):
+    st.markdown(
+        """
+CallGuard AI is a fictional company and every record in this demo is synthetic.
+This portfolio project explores how an AI Product Manager can combine repeatable
+calculations with company context to support—not replace—human product judgment.
+
+- **Deterministic tools** calculate auditable metrics from allowlisted CSV files.
+- **RAG** retrieves qualitative context from five allowlisted knowledge documents.
+- **Specialists** separate quantitative, strategic, and technical responsibilities.
+- **Evaluation** measures routing, evidence, latency, and variability on synthetic cases.
+
+This is a learning system, not production decision automation. It has no live
+customer data, authentication, durable memory, or guarantee of consistent model
+synthesis. Validate recommendations before acting on them.
+"""
+    )
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        if message.get("agents"):
+            with st.expander("Agents involved"):
+                st.write(" → ".join(message["agents"]))
         if message.get("tools"):
             with st.expander("Tools used"):
                 st.write(", ".join(message["tools"]))
         if message.get("knowledge"):
             with st.expander("Knowledge used"):
                 st.write(", ".join(message["knowledge"]))
-        if message.get("agents"):
-            with st.expander("Agents involved"):
-                st.write(" → ".join(message["agents"]))
         if message.get("execution"):
             show_execution_metadata(message["execution"])
 
-product_problem = st.chat_input("Describe a product problem...")
+if limit_reached:
+    st.warning(
+        "This demo session has reached its request limit. Refresh the page to start "
+        "a new session, or run the project locally for continued exploration."
+    )
+
+typed_question = st.chat_input(
+    "Ask a product question...",
+    key="product_problem_input",
+    max_chars=limits.max_prompt_chars,
+    disabled=limit_reached,
+    submit_mode="disable",
+)
+product_problem = selected_question or typed_question
 
 if product_problem:
+    validation_error = validate_prompt(product_problem, limits)
+    if validation_error:
+        st.warning(validation_error)
+        st.stop()
+
+    st.session_state.request_count += 1
     st.session_state.messages.append({"role": "user", "content": product_problem})
+    st.session_state.messages = bounded_history(
+        st.session_state.messages, limits.max_history_messages
+    )
     with st.chat_message("user"):
         st.markdown(product_problem)
 
@@ -160,7 +275,14 @@ if product_problem:
             st.error(response)
         else:
             try:
-                with st.spinner("Analyzing the product problem..."):
+                with st.status(
+                    "Analyzing request...",
+                    expanded=True,
+                ) as run_status:
+                    st.write(
+                        "The orchestrator is selecting relevant specialists and evidence. "
+                        "Complex requests typically take 15–20 seconds."
+                    )
                     # Keep UI-only metadata out of the model's conversation input.
                     conversation = [
                         {"role": message["role"], "content": message["content"]}
@@ -172,21 +294,26 @@ if product_problem:
                         conversation,
                     )
                     latency_seconds = time.perf_counter() - started_at
+                    run_status.update(
+                        label="Recommendation ready",
+                        state="complete",
+                        expanded=False,
+                    )
                 response = str(result.final_output)
                 tools_used = tools_used_in_run(result)
                 knowledge_used = knowledge_used_in_run(result)
                 agents_involved = agents_involved_in_run(result)
                 execution = execution_metadata(result, latency_seconds)
                 st.markdown(response)
+                if agents_involved:
+                    with st.expander("Agents involved"):
+                        st.write(" → ".join(agents_involved))
                 if tools_used:
                     with st.expander("Tools used"):
                         st.write(", ".join(tools_used))
                 if knowledge_used:
                     with st.expander("Knowledge used"):
                         st.write(", ".join(knowledge_used))
-                if agents_involved:
-                    with st.expander("Agents involved"):
-                        st.write(" → ".join(agents_involved))
                 show_execution_metadata(execution)
             except Exception as exc:
                 # Log useful diagnostics while defensively redacting the API key.
@@ -216,4 +343,7 @@ if product_problem:
             "agents": agents_involved,
             "execution": execution,
         }
+    )
+    st.session_state.messages = bounded_history(
+        st.session_state.messages, limits.max_history_messages
     )
