@@ -4,6 +4,12 @@ An agentic product-decision workbench for **CallGuard AI**, a fictional B2B call
 reputation platform. It selectively combines specialist agents, auditable pandas
 analytics, retrieved company context, and evaluation-backed PM recommendations.
 
+## Live Demo
+
+🚀 **Try the live application:** https://ai-pm-workbench.streamlit.app/
+
+The demo uses entirely synthetic company, customer, and product data. Try one of the built-in scenarios or ask your own product-management question.
+
 > **Demo environment:** every company, customer, product, and usage record is synthetic.
 
 ## What It Does
