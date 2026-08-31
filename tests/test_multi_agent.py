@@ -142,6 +142,18 @@ class MultiAgentConstructionTests(unittest.TestCase):
                 self.assertIn("likely contributor", instructions)
                 self.assertIn("throughout", instructions)
 
+    def test_ticket_and_complaint_terminology_is_preserved(self) -> None:
+        analyst = " ".join(self.data_module.DATA_ANALYST_INSTRUCTIONS.lower().split())
+        orchestrator = " ".join(
+            self.orchestrator_module.PRODUCT_MANAGER_INSTRUCTIONS.lower().split()
+        )
+        for instructions in [analyst, orchestrator]:
+            with self.subTest(instructions=instructions[:30]):
+                self.assertIn("support tickets", instructions)
+                self.assertIn("complaint_type", instructions)
+                self.assertIn("never relabel", instructions)
+                self.assertIn("other support-ticket categories", instructions)
+
     def test_successful_tool_evidence_recovers_false_unavailable_summary(self) -> None:
         agent = self.data_module.build_data_analyst_agent()
         successful = self.data_module.ToolCallOutputItem(

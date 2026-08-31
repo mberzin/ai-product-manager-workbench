@@ -17,10 +17,12 @@ def analyze_complaint_trends(
     start_date: str | None = None,
     end_date: str | None = None,
 ) -> str:
-    """Summarize monthly support-ticket trends by complaint type and model version.
+    """Summarize monthly support-ticket trends by ticket category and model version.
 
-    Use for questions about complaint spikes, timing, or whether a release coincides
-    with a change in ticket volume. Counts are shown by month without raw tickets.
+    Use for questions about support or complaint spikes, timing, or whether a release
+    coincides with a change in ticket volume. Unfiltered counts represent all support
+    tickets. A complaint_type filter returns that explicitly named ticket category.
+    Counts are shown by month without raw tickets.
     """
     tickets = load_data("support_tickets.csv")
     if complaint_type and complaint_type not in set(tickets["complaint_type"]):
@@ -40,6 +42,10 @@ def analyze_complaint_trends(
     return to_json(
         {"status": "ok", "metric": "support_ticket_count",
          "definition": "Number of synthetic support tickets created in each calendar month",
+         "terminology": (
+             "Counts are support tickets. When complaint_type is null, do not describe "
+             "their total as complaints; when filtered, name the specific complaint_type."
+         ),
          "sample_size": len(tickets), "time_period": time_period(tickets, "ticket_date"),
          "filters": {"complaint_type": complaint_type, "start_date": start_date, "end_date": end_date},
          "results": grouped.to_dict("records")}
@@ -53,10 +59,11 @@ def segment_complaints(
     complaint_type: str | None = None,
     limit: int = 10,
 ) -> str:
-    """Rank complaint counts and shares across segments, accounts, severity, or model.
+    """Rank support-ticket counts across segments, accounts, severity, or model.
 
-    Use to determine where a complaint increase is concentrated. Returns at most 20
-    groups with counts and share of filtered tickets.
+    Use to determine where support volume or a specifically filtered complaint_type
+    is concentrated. Without complaint_type, every result is an all-category support-
+    ticket count, not a complaint count. Returns at most 20 groups.
     """
     if dimension not in VALID_COMPLAINT_DIMENSIONS:
         return error_result(f"Invalid dimension '{dimension}'.", allowed_dimensions=sorted(VALID_COMPLAINT_DIMENSIONS))
@@ -77,6 +84,10 @@ def segment_complaints(
     return to_json(
         {"status": "ok", "metric": "support_ticket_count_and_share",
          "definition": "Ticket count and share within the requested model/complaint filters",
+         "terminology": (
+             "ticket_count and sample_size are support-ticket counts. Describe them as "
+             "complaints only when complaint_type is non-null, and name that category."
+         ),
          "sample_size": len(tickets), "time_period": time_period(tickets, "ticket_date"),
          "filters": {"model_version": model_version, "complaint_type": complaint_type, "dimension": dimension},
          "results": grouped.to_dict("records")}

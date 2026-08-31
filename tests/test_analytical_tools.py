@@ -49,6 +49,41 @@ class ModelPerformanceToolTests(unittest.TestCase):
 
 
 class CustomerSupportToolTests(unittest.TestCase):
+    def test_unfiltered_v32_counts_are_labeled_as_support_tickets(self) -> None:
+        by_segment = invoke(segment_complaints, "customer_segment", "v3.2", None, 10)
+        by_customer = invoke(segment_complaints, "customer_id", "v3.2", None, 10)
+
+        self.assertEqual(by_segment["metric"], "support_ticket_count_and_share")
+        self.assertIsNone(by_segment["filters"]["complaint_type"])
+        self.assertEqual(by_segment["sample_size"], 470)
+        self.assertEqual(by_segment["results"][0]["customer_segment"], "Tier 1 Carrier")
+        self.assertEqual(by_segment["results"][0]["ticket_count"], 308)
+        self.assertEqual(by_customer["results"][0]["customer_id"], "CUST-001")
+        self.assertEqual(by_customer["results"][0]["ticket_count"], 151)
+        self.assertIn("support-ticket counts", by_segment["terminology"])
+        self.assertIn("complaint_type is non-null", by_segment["terminology"])
+
+    def test_filtered_complaints_remain_distinct_from_all_support_tickets(self) -> None:
+        filtered = invoke(
+            segment_complaints,
+            "customer_segment",
+            "v3.2",
+            "false_positive",
+            10,
+        )
+        risk = invoke(identify_high_risk_customers, 1_000_000, 5)
+        northstar = risk["results"][0]
+
+        self.assertEqual(filtered["filters"]["complaint_type"], "false_positive")
+        self.assertEqual(filtered["sample_size"], 246)
+        self.assertEqual(filtered["results"][0]["ticket_count"], 208)
+        self.assertEqual(northstar["v32_ticket_count"], 151)
+        self.assertEqual(northstar["v32_false_positive_complaints"], 100)
+        self.assertNotEqual(
+            northstar["v32_ticket_count"],
+            northstar["v32_false_positive_complaints"],
+        )
+
     def test_complaint_trends_show_post_release_spike(self) -> None:
         result = invoke(analyze_complaint_trends, "false_positive")
         by_model = {}

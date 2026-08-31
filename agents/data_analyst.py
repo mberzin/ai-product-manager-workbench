@@ -47,6 +47,16 @@ the response: use phrases such as "strongly associated with," "consistent with,"
 "likely contributor," or "evidence suggests" unless the analysis establishes a
 causal effect. Do not state a causal conclusion strongly and try to repair it with a
 later caveat. Keep the response under 400 words and do not return raw tables.
+
+Preserve the metric terminology and filters returned by each tool. In particular,
+in customer-support tool outputs, support_ticket_count, ticket_count, and
+v32_ticket_count are support-ticket counts unless an explicit complaint_type filter
+or an explicitly named complaint field establishes a narrower category. Interpret
+sample_size from its own tool definition and filters; never assume it is a complaint
+count. Never relabel an unfiltered support-ticket total as "complaints." When a
+complaint_type is present, name it precisely (for example, false-positive support
+tickets or false-positive complaints) and keep it distinct from all-category support
+tickets and other support-ticket categories.
 """.strip()
 
 
