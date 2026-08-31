@@ -61,6 +61,35 @@ DEMO_QUESTIONS = (
     ),
 )
 
+CONVERSATION_ANCHOR_ID = "conversation-result-anchor"
+CONVERSATION_FOCUS_HTML = (
+    f'<div id="{CONVERSATION_ANCHOR_ID}" tabindex="-1" '
+    'aria-label="Active conversation"></div>'
+)
+CONVERSATION_FOCUS_CSS = f"""
+#{CONVERSATION_ANCHOR_ID} {{
+    height: 1px;
+    outline: none;
+}}
+"""
+CONVERSATION_FOCUS_JS = """
+export default function(component) {
+  const { data, parentElement } = component
+  const target = parentElement.querySelector("#conversation-result-anchor")
+  const focusToken = Number.isInteger(data?.focusToken) ? data.focusToken : 0
+  const previousToken = Number(target?.dataset.lastFocusToken ?? 0)
+
+  if (!target || focusToken <= 0 || focusToken === previousToken) return
+
+  target.dataset.lastFocusToken = String(focusToken)
+
+  window.requestAnimationFrame(() => {
+    target.scrollIntoView({ behavior: "smooth", block: "start" })
+    target.focus({ preventScroll: true })
+  })
+}
+"""
+
 
 def load_product_manager_agent():
     """Load our local agent definition without shadowing the SDK's `agents` package."""
@@ -176,6 +205,13 @@ st.set_page_config(
     layout="wide",
 )
 
+conversation_focus_component = st.components.v2.component(
+    "conversation_focus_target",
+    html=CONVERSATION_FOCUS_HTML,
+    css=CONVERSATION_FOCUS_CSS,
+    js=CONVERSATION_FOCUS_JS,
+)
+
 
 def configure_api_key_from_streamlit_secrets() -> None:
     """Use a deployment secret when no environment-based key is configured."""
@@ -187,6 +223,37 @@ def configure_api_key_from_streamlit_secrets() -> None:
         api_key = None
     if api_key:
         os.environ["OPENAI_API_KEY"] = str(api_key)
+
+
+def queue_product_problem(question: str) -> None:
+    """Queue one submission with a distinct, server-generated focus token."""
+    current_token = st.session_state.get("request_focus_sequence", 0)
+    if not isinstance(current_token, int) or current_token < 0:
+        current_token = 0
+    next_token = current_token + 1
+    st.session_state.request_focus_sequence = next_token
+    st.session_state.pending_product_request = {
+        "question": question,
+        "focus_token": next_token,
+    }
+
+
+def queue_custom_product_problem() -> None:
+    """Queue the current chat input using its stable widget-state key."""
+    question = st.session_state.get("product_problem_input")
+    if isinstance(question, str) and question:
+        queue_product_problem(question)
+
+
+def show_conversation_focus_target(focus_token: int) -> None:
+    """Mount the fixed anchor, optionally firing its safe focus behavior."""
+    with content:
+        conversation_focus_component(
+            key="conversation_focus_target",
+            data={"focusToken": focus_token},
+            width="stretch",
+            height=1,
+        )
 
 
 configure_api_key_from_streamlit_secrets()
@@ -210,25 +277,33 @@ if "messages" not in st.session_state:
 if "request_count" not in st.session_state:
     st.session_state.request_count = 0
 
+pending_request = st.session_state.pop("pending_product_request", None)
+if isinstance(pending_request, dict):
+    product_problem = pending_request.get("question")
+    active_focus_token = pending_request.get("focus_token", 0)
+else:
+    product_problem = None
+    active_focus_token = 0
+
 limit_reached = request_limit_reached(st.session_state.request_count, limits)
 
 content.subheader("Try an example")
 content.caption("Choose a scenario to submit it. The featured question exercises the full system.")
-selected_question = None
 question_columns = content.columns(2, gap="medium")
 for index, (label, capability, question, featured) in enumerate(DEMO_QUESTIONS):
     with question_columns[index % 2]:
         with st.container(border=True):
             st.markdown(f"**{label}**")
             st.caption(capability)
-            if st.button(
+            st.button(
                 "Run featured example" if featured else "Run example",
                 key=f"demo_question_{index}",
                 type="primary" if featured else "secondary",
                 disabled=limit_reached,
                 width="stretch",
-            ):
-                selected_question = question
+                on_click=queue_product_problem,
+                args=(question,),
+            )
 
 with content.expander("About this project", expanded=False):
     st.markdown(
@@ -268,28 +343,28 @@ if limit_reached:
         "a new session, or run the project locally for continued exploration."
     )
 
-typed_question = content.chat_input(
-    "Ask a product question...",
-    key="product_problem_input",
-    max_chars=limits.max_prompt_chars,
-    disabled=limit_reached,
-    submit_mode="disable",
-)
-product_problem = selected_question or typed_question
-
 if product_problem:
     validation_error = validate_prompt(product_problem, limits)
     if validation_error:
         content.warning(validation_error)
-        st.stop()
+        product_problem = None
+        active_focus_token = 0
 
+focus_target_rendered = False
+if product_problem:
     st.session_state.request_count += 1
     st.session_state.messages.append({"role": "user", "content": product_problem})
     st.session_state.messages = bounded_history(
         st.session_state.messages, limits.max_history_messages
     )
+
     with content.chat_message("user"):
         st.markdown(product_problem)
+
+    # The latest request boundary now exists in the browser stream. Its unique
+    # token makes every real submission a distinct client-side scroll event.
+    show_conversation_focus_target(focus_token=active_focus_token)
+    focus_target_rendered = True
 
     with content.chat_message("assistant"):
         tools_used = []
@@ -375,3 +450,20 @@ if product_problem:
     st.session_state.messages = bounded_history(
         st.session_state.messages, limits.max_history_messages
     )
+
+if not focus_target_rendered:
+    # Keep the stable anchor present, but ordinary reruns never request scrolling.
+    show_conversation_focus_target(focus_token=0)
+
+# This is intentionally the final interactive element. At root level, Streamlit
+# pins the single chat input below the conversation while the callback queues the
+# next request for processing before the input is rendered on the following run.
+st.chat_input(
+    "Ask a product question...",
+    key="product_problem_input",
+    max_chars=limits.max_prompt_chars,
+    disabled=limit_reached,
+    submit_mode="disable",
+    on_submit=queue_custom_product_problem,
+    width=1200,
+)

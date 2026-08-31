@@ -1,9 +1,13 @@
 """Deterministic checks for Phase 7 demo and deployment safeguards."""
 
 import ast
+import os
 import subprocess
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+from streamlit.testing.v1 import AppTest
 
 from demo_config import (
     DemoLimits,
@@ -136,6 +140,95 @@ class DeploymentSafetyTests(unittest.TestCase):
         ):
             self.assertIn(label, app_source)
         self.assertGreaterEqual(app_source.count("expanded=False"), 5)
+
+    def test_conversation_focus_is_fixed_and_one_shot(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn('CONVERSATION_ANCHOR_ID = "conversation-result-anchor"', app_source)
+        self.assertIn('data={"focusToken": focus_token}', app_source)
+        self.assertIn("focusToken === previousToken", app_source)
+        self.assertIn("target.dataset.lastFocusToken = String(focusToken)", app_source)
+
+    def test_buttons_queue_exact_questions_and_request_focus(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn("on_click=queue_product_problem", app_source)
+        self.assertIn("args=(question,)", app_source)
+        self.assertIn("next_token = current_token + 1", app_source)
+        self.assertIn("st.session_state.request_focus_sequence = next_token", app_source)
+
+    def test_focus_advances_only_after_user_request_boundary(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        user_boundary = app_source.rindex('with content.chat_message("user")')
+        focus_call = app_source.rindex(
+            "show_conversation_focus_target(focus_token=active_focus_token)"
+        )
+        assistant_boundary = app_source.rindex('with content.chat_message("assistant")')
+        self.assertLess(user_boundary, focus_call)
+        self.assertLess(focus_call, assistant_boundary)
+
+    def test_ordinary_rerun_mounts_anchor_without_scrolling(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn("if not focus_target_rendered:", app_source)
+        self.assertIn(
+            "show_conversation_focus_target(focus_token=0)", app_source
+        )
+
+    def test_custom_submission_uses_same_focus_lifecycle(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn("queue_product_problem(question)", app_source)
+        self.assertIn("on_submit=queue_custom_product_problem", app_source)
+
+    def test_repeated_requests_generate_distinct_focus_tokens(self) -> None:
+        # Empty key avoids API calls while exercising real Streamlit callbacks,
+        # session state, chat ordering, and repeated canned submissions.
+        with patch.dict(os.environ, {"OPENAI_API_KEY": ""}):
+            app = AppTest.from_file(ROOT / "app.py").run(timeout=30)
+
+            next(
+                button for button in app.button if button.key == "demo_question_0"
+            ).click().run(timeout=30)
+            first_token = app.session_state["request_focus_sequence"]
+            self.assertEqual(app.session_state["messages"][0]["content"],
+                             "What happened to EU latency?")
+
+            # An ordinary rerun, including one caused by non-request UI activity,
+            # must not manufacture a new scroll token.
+            app.run(timeout=30)
+            self.assertEqual(app.session_state["request_focus_sequence"], first_token)
+
+            next(
+                button for button in app.button if button.key == "demo_question_1"
+            ).click().run(timeout=30)
+            second_token = app.session_state["request_focus_sequence"]
+            self.assertEqual(second_token, first_token + 1)
+            self.assertEqual(
+                app.session_state["messages"][-2]["content"],
+                "Who are CallGuard's main personas and what matters most to them?",
+            )
+
+            next(
+                button for button in app.button if button.key == "demo_question_2"
+            ).click().run(timeout=30)
+            third_token = app.session_state["request_focus_sequence"]
+            self.assertEqual(third_token, second_token + 1)
+            self.assertEqual(
+                app.session_state["messages"][-2]["content"],
+                "Should we roll back v3.2 specifically for Tier 1 carriers? Consider "
+                "model performance, customer strategy, and technical mitigation options.",
+            )
+
+            app.chat_input[0].set_value("A custom product question").run(timeout=30)
+            self.assertEqual(
+                app.session_state["request_focus_sequence"], third_token + 1
+            )
+            self.assertEqual(len(app.chat_input), 1)
+
+    def test_single_custom_input_is_after_response_processing(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertEqual(app_source.count("st.chat_input("), 1)
+        chat_input_position = app_source.rindex("st.chat_input(")
+        response_history_position = app_source.rindex('"role": "assistant"')
+        self.assertGreater(chat_input_position, response_history_position)
+        self.assertIn("on_submit=queue_custom_product_problem", app_source)
 
     def test_env_is_ignored_and_example_is_placeholder_only(self) -> None:
         ignored = subprocess.run(
