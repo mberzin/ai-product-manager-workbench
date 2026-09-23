@@ -262,15 +262,47 @@ limits = load_demo_limits()
 content = st.container(width=1200)
 
 content.title("AI Product Manager Workbench")
-content.markdown("#### Agentic product decision support over a synthetic B2B AI product.")
+content.markdown(
+    "#### An AI PM decision-support prototype that investigates product data, "
+    "customer impact and company context to recommend what a product team should do next."
+)
 content.info(
     "**Demo environment — all company, customer, and product data are synthetic.**",
     icon=":material/science:",
 )
+content.subheader("The scenario")
 content.write(
-    "The workbench combines specialized AI agents, deterministic analytics, "
-    "company knowledge retrieval, and evidence-grounded recommendations."
+    "CallGuard AI is a fictional B2B telecom product that helps carriers and "
+    "enterprises detect spam and fraudulent calls while minimizing disruption "
+    "to legitimate calls."
 )
+content.write(
+    "CallGuard recently released model v3.2. It catches more fraud, but the "
+    "synthetic data also shows warning signs—including increased false positives, "
+    "customer support issues, and regional latency concerns. At the same time, "
+    "the team must decide where to invest next."
+)
+content.markdown(
+    "**Your role:** Ask the AI Product Manager to investigate the evidence and "
+    "recommend what the product team should do."
+)
+
+scenario_columns = content.columns(3, gap="small")
+scenario_summaries = (
+    ("Product", "Real-time call fraud/spam detection"),
+    (
+        "Current challenge",
+        "Balance fraud detection, false positives, customer impact and reliability",
+    ),
+    (
+        "Workbench's job",
+        "Combine product data + company context to support PM decisions",
+    ),
+)
+for column, (heading, summary) in zip(scenario_columns, scenario_summaries, strict=True):
+    with column.container(border=True):
+        st.markdown(f"**{heading}**")
+        st.caption(summary)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -287,8 +319,11 @@ else:
 
 limit_reached = request_limit_reached(st.session_state.request_count, limits)
 
-content.subheader("Try an example")
-content.caption("Choose a scenario to submit it. The featured question exercises the full system.")
+content.subheader("Try a product decision")
+content.caption(
+    "Start with one of these questions to see different capabilities, or ask your "
+    "own product question below."
+)
 question_columns = content.columns(2, gap="medium")
 for index, (label, capability, question, featured) in enumerate(DEMO_QUESTIONS):
     with question_columns[index % 2]:

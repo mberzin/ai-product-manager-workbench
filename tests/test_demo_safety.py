@@ -80,6 +80,37 @@ class DeploymentSafetyTests(unittest.TestCase):
         self.assertIn("all company, customer, and product data are synthetic", app_source)
         self.assertEqual(app_source.count("Featured · Tier 1 rollback"), 1)
 
+    def test_landing_context_explains_scenario_before_demo_questions(self) -> None:
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        expected_copy = (
+            "An AI PM decision-support prototype",
+            'content.subheader("The scenario")',
+            "CallGuard AI is a fictional B2B telecom product",
+            "CallGuard recently released model v3.2",
+            "**Your role:** Ask the AI Product Manager",
+            '("Product", "Real-time call fraud/spam detection")',
+            '"Current challenge"',
+            '"Workbench\'s job"',
+            'content.subheader("Try a product decision")',
+            "Start with one of these questions to see different capabilities",
+        )
+        for text in expected_copy:
+            self.assertIn(text, app_source)
+
+        self.assertLess(
+            app_source.index('content.subheader("The scenario")'),
+            app_source.index('content.subheader("Try a product decision")'),
+        )
+
+        # The introduction may frame the investigation, but must not disclose the
+        # synthetic scenario's calculated answers or evaluation-only ground truth.
+        landing_source = app_source[
+            app_source.index('content.subheader("The scenario")'):
+            app_source.index('content.subheader("Try a product decision")')
+        ]
+        for hidden_detail in ("ground_truth", "precision", "recall", "10.45%", "470"):
+            self.assertNotIn(hidden_detail, landing_source)
+
     def test_demo_questions_and_capability_labels_are_exact(self) -> None:
         app_source = (ROOT / "app.py").read_text(encoding="utf-8")
         module = ast.parse(app_source)
